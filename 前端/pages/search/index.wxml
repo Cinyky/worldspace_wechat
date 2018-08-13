@@ -1,0 +1,38 @@
+
+<view class="after-navber" style="height: 100%">
+  <view style="display: flex;flex-direction: column;height:100%;width: 100%">
+    <view style="flex-grow: 0">
+      <form bindsubmit="search">
+        <view class="search-box">
+          <view class="input-box">
+            <view style="font-size: 0">
+              <image class="search-icon" src="/images/icon-search.png"></image>
+            </view>
+            <view style="width: 100%">
+              <input name="keywords" autoFocus="true" bindchange="bindChange" confirmType="search" style="width: 100%"></input>
+            </view>
+          </view>
+          <view>
+           <!--<view bindtap="search" class="search-cancel">搜索</view>-->
+           <button formType="submit" class="search-cancel">搜索</button>
+          </view>
+        </view>
+      </form>
+    </view>
+    <view style="flex-grow: 1;position: relative">
+      <scroll-view bindscrolltolower="onListScrollBottom" lowerThreshold="5" scrollY="true" style="height:100%;width:100%;position: absolute;left: 0;top:0">
+          <view class="search-history">
+            <view>
+              <text class="search-history-title">热门搜索</text>
+            </view>
+            <view class="search-history-list">
+              <block wx:for="{{keyword}}" wx:for-item="item" wx:for-index="index">
+                <view bindtap="click" class="search-history-item" data-word="{{item}}">{{item}}\n</view>
+              </block>
+            </view>
+          </view>
+
+      </scroll-view>
+    </view>
+  </view>
+</view>

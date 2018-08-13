@@ -1,0 +1,381 @@
+page{
+  letter-spacing: 1px;
+  font-size: 14px;
+  background-color: #f2f2f2;
+}
+.container{
+  position: relative;
+}
+.banner{
+  width: 750rpx;
+  height: 360rpx;
+  background-color: #fff;
+}
+
+.banner image {
+  width: 750rpx;
+  height: 360rpx;
+}
+.icons{
+  padding-top: 32rpx;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+}
+.icons .icon{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  float: left;
+  width: 25%;
+  margin-bottom: 32rpx;
+  color: #666;
+}
+.icons .icon image{
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 16rpx;
+}
+.searchbox{
+    padding: 20rpx;
+    background-color: #fff;
+    position: relative;
+    font-size: 12px;
+}
+.searchbox .address{
+    width: 160rpx;
+    background-color: #f7f7f7;
+    line-height: 36rpx;
+    padding: 16rpx 0;
+    padding-right: 6rpx;
+    float: left;
+    color: #666;
+    margin-right: 10rpx;
+    border-radius: 3px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.address image{
+    width: 36rpx;
+    height: 36rpx;
+    float: left;
+    margin: 0 6rpx;
+}
+.searchbox .inputbox{
+    float: left;
+    padding: 4rpx 0;
+    width: 100%;
+    border: 2rpx solid #f2f2f2;
+    border-radius: 30px;
+    position: relative;
+    padding-right: 6px;
+}
+.searchbox button{
+    font-size: 12px;
+    padding: 4rpx 0;
+    width: 98rpx;
+    display: block;
+    position: absolute;
+    right: 20rpx;
+    top: 22rpx;
+    color: #e30c26;
+    background-color: #fff;
+    border: 1px solid #e30c26;
+    box-sizing: border-box;
+    line-height: 1.4rem;
+}
+.searchbox .inputbox image{
+    width: 46rpx;
+    height: 46rpx;
+    float: left;
+    position: absolute;
+    top: 6rpx;
+    left: 10rpx;
+}
+.searchbox .inputbox input{
+    line-height: 1.4rem;
+    height: 1.4rem;
+    min-height:1.4rem;
+    margin-left: 64rpx;
+    display: block;
+    font-size: 12px;
+}
+.dianpuj{
+    background-color: #fff;
+    margin-bottom: 20rpx;
+}
+.dianpuj .dptop{
+    line-height: 80rpx;
+    position: relative;
+    text-align: center;
+}
+.dianpuj .dptop image{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 20rpx;
+    top: 20rpx;
+}
+.dianpuj .dpbox{
+    
+}
+.dianpuj .dpbox .imgbox{
+    width: 20%;
+    float: left;
+}
+.dianpuj .dpbox .imgbox image{
+    width: 120rpx;
+    height: 120rpx;
+    margin: 20rpx auto;
+}
+.prolistbox{
+    background-color: #fff;
+    padding: 14rpx;
+    line-height: 32rpx;
+}
+.prolistbox .prolist{
+    margin: 6rpx;
+    box-sizing: border-box;
+    border: 2rpx solid #f2f2f2;
+    width: 349rpx;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 12rpx;
+}
+.prolistbox .prolist .proimg{
+    width: 345rpx;
+    height: 345rpx;
+}
+.prolistbox .prolist .cart_img{
+    width: 52rpx;
+    height: 52rpx;
+    position: absolute;
+    bottom: 16rpx;
+    right: 20rpx;  
+}
+.zhezhao {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  background: rgba(0, 0, 0, 0.4);
+}
+.content {
+  position: fixed;
+  width: 100%;
+  bottom: 102rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.goodmes {
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx;
+  border-bottom: 1px solid #efeff4;
+  height: 160rpx;
+}
+.goodmes image {
+  width: 160rpx;
+  height: 160rpx;
+  transform: translateY(-40rpx);
+  border-radius: 4px;
+}
+.gooddtl {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+  width: 500rpx;
+}
+.gooddtl .gooddes{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  line-height: 60rpx;
+  width: 500rpx;
+}
+.gooddtl .goodprice {
+  color: #ff6666;
+}
+.scrollview {
+  height: 500rpx;
+}
+.content2, .content5 {
+  padding: 30rpx 15rpx;
+  border-bottom: 1px solid #efeff4;
+}
+.contrnt2title, .contrnt5title {
+  margin-left: 15rpx;
+}
+.contenttext {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10rpx;
+}
+.contenttext text {
+  font-size: 12px;
+  background-color: #f7f7f7;
+  padding: 10rpx 30rpx;
+  margin: 15rpx;
+  border: 1px solid #efeff4;
+  border-radius: 10rpx;
+}
+.contenttext .redbg{
+  background-color: #ff6666;
+  color: #fff;
+}
+.content3 {
+  padding: 30rpx;
+  height: 100rpx;
+}
+.stepper {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 86px;
+  height: 28px;
+  color: darkgray;
+  float: right;
+}
+.stepper text {
+  width: 24px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  float: left;
+}
+.stepper input {
+  float: left;
+  margin: 0 auto;
+  height: 28px;
+  width: 36px;
+  text-align: center;
+  font-size: 14px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.content4 {
+  height: 100rpx;
+  border-top: 1px solid #efeff4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.content4 .jgw, .content4 .gm {
+  width: 30%;
+  text-align: center;
+  line-height: 100rpx;
+  background-color: #ff6666;
+  color: #fff;
+}
+.content4 .jgw{
+  background-color: #ff8855;
+}
+.content4 .zj {
+  float: left;
+  line-height: 88rpx;
+  margin-left: 30rpx;
+  width: 40%;
+}
+.content4 .zj text {
+  color: #ff6666;
+}
+
+.prolistbox .prolist view{
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+}
+.prolistbox .prolist .dtl{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    padding:16rpx 10rpx;
+}
+.dpname{
+    font-size: 24rpx;
+    color: #999;
+    padding-bottom: 20rpx;
+}
+.pricebox{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    padding-bottom: 12rpx;
+}
+.pricebox .price{
+    color: #f75521;
+    margin-right: 10rpx;
+    padding-bottom: 12rpx;
+}
+.pricebox .yprice{
+    color: #999;
+    font-size: 24rpx;
+    text-decoration: line-through;
+    padding-bottom: 6rpx;
+} 
+.probtm{
+    color: #999;
+    padding: 8rpx 0 12rpx;
+}
+.probtm .btml{
+    float: left;
+    font-size: 24rpx;
+}
+.probtm .btmr{
+    float: right;
+    font-size: 24rpx;
+}
+.gengduo{
+    width: 60%;
+    text-align: center;
+    line-height: 80rpx;
+    margin: 40rpx auto 30rpx;
+    border: 1px solid #f2f2f2;
+    border-radius: 3px;
+}
+.prolistbox .protop{
+    padding: 8rpx 0 20rpx;
+    line-height: 14px;
+}
+.prolistbox .protop .topl{
+    float: left;
+    padding-left: 8px;
+    border-left: 2px solid #333;
+    margin-left: 6rpx;
+
+}
+.prolistbox .protop .topr{
+    float: right;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.prolistbox .protop .topr text{
+    color: #999;
+    font-size: 12px;
+}
+.prolistbox .protop .topr image{
+    width: 16px;
+    height: 16px;
+}
+.kefubox{
+    position: fixed;
+    bottom: 260rpx;
+    display: flex;
+    right: 0;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    padding: 14rpx 12rpx 14rpx 14rpx;
+    border-bottom-left-radius: 50rpx;
+    border-top-left-radius: 50rpx;
+    font-size: 12px;
+}
+.kefubox image{
+    width: 40rpx;
+    height: 40rpx;
+}

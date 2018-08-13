@@ -1,0 +1,186 @@
+page{
+    background-color: #f7f7f7;
+}
+.signview{
+    position: relative;
+    color: #fff;
+}
+.signview .bbg{
+    width: 100%;
+    height: 418rpx;
+}
+.signbtn{
+    position: absolute;
+    top: 70rpx;
+    left: 50%;
+    margin-left: -120rpx;
+}
+.signbtn .txtview{
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    color: #007aff;
+}
+.signbtn .txtview .t1{
+    font-size: 36rpx;
+    font-weight: bold;
+    padding-bottom:10rpx;
+}
+.signbtn .txtview .line{
+    width: 160rpx;
+    height: 2rpx;
+    background-color: #eee;
+}
+.signbtn .txtview .t2{
+    padding-top: 8rpx;
+}
+.signbtn image{
+    width: 256rpx;
+    height: 256rpx;
+}
+.signview .jfview{
+    position: absolute;
+    top: 30rpx;
+    left: 30rpx;
+}
+.signview .jfview text{
+    font-size: 36rpx;
+}
+.signview .store{
+    position: absolute;
+    right: 30rpx;
+    top: 30rpx;
+    border: 1px solid #fff;
+    line-height: 52rpx;
+    padding: 0 12rpx;
+    border-radius: 6rpx;
+}
+.signview .tishi{
+    position: absolute;
+    bottom: 30rpx;
+    width: 100%;
+    text-align: center;
+}
+.jiproview{
+    background-color: #fff;
+    margin-bottom: 20rpx;
+}
+.jiproview .protop{
+    padding: 30rpx 30rpx 20rpx;
+}
+.jiproview .leftv{
+    float: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 30rpx;
+}
+.jiproview .leftv image{
+    width: 40rpx;
+    height: 40rpx;
+    display: inline-block;
+    margin-right: 16rpx;
+}
+.jiproview .rightv{
+    float: right;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #007aff;
+}
+.jiproview .rightv image{
+    width: 20rpx;
+    height: 20rpx;
+    display: inline-block;
+    margin-left: 8rpx;
+}
+.promain{
+    padding: 0 20rpx 30rpx;
+}
+.promain .proview{
+    float: left;
+    width: 33.3%;
+    padding: 0 10rpx;
+    box-sizing: border-box;
+    position: relative;
+}
+.promain .proview image{
+    width: 100%;
+}
+.promain .proview text{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    text-align: center;
+    color: #fff;
+}
+
+.selected_date {
+  padding: 20rpx;
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+}
+
+.selected_date>view {
+  width: 25%;
+  float: left;
+}
+
+.selected_date .text_center{
+    text-align: center;
+    font-size: 32rpx;
+    width: 50%;
+}
+
+.calendar_panel {
+  width: 100%;
+  padding: 20rpx 0;
+  background-color: #fff;
+}
+
+.calendar_box {
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+}
+
+.weekday_label {
+  width: 14.28%;
+  float: left;
+  text-align: center;
+  font-size: 28rpx;
+  padding: 10rpx 0;
+}
+
+.weekday_label>text {
+  width:50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  display: inline-block;
+}
+
+.select_icon {
+  width: 30rpx;
+  height: 30rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.active_date{
+  background: #007aff;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.show_box {
+  padding: 20rpx;
+  font-size: 26rpx;
+}

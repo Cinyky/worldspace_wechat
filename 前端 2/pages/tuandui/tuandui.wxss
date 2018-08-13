@@ -1,0 +1,55 @@
+/* pages/tuandui/tuandui.wxss */
+page{
+  background-color: #f2f2f2;
+}
+.contop{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 16px 0;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+.contop .topl{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contop .topl image{
+  width: 46px;
+  height: 46px;
+}
+.contop .topl .tit{
+  margin: 6px 0 3px;
+}
+.contop .topl .tot{
+  color:#ff6666;
+  font-size: 20px;
+}
+.conmain{
+  background-color: #fff;
+  width: 100%;
+}
+.conmain .mainlist{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #f2f2f2;
+}
+.conmain .mainlist .con{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 33.3%;
+  padding: 10px 0;
+}
+.conmain .mainlist .sy{
+  font-size: 18px;
+  color: #ff6666;
+}
+.conmain .mainlist image{
+  width: 36px;
+  height: 36px;
+}

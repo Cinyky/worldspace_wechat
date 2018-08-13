@@ -1,0 +1,43 @@
+<view class='container'>
+  <form bindsubmit='formSubmit' bindreset='formReset'>
+    <view class="inputbox">
+        <text class='p'>商户名称: </text>
+        <input placeholder="请输入账号请为您的店铺起一个闪亮的名字" name="store_name" placeholder-class='pholder'></input>
+    </view>
+    <view class="inputbox">
+        <text class='p'>主营项目: </text>
+        <input placeholder="比如水果、蛋糕等" name="business_scope" placeholder-class='pholder'></input>
+    </view>
+    <view class="inputbox">
+        <text class='p'>姓名：</text>
+        <input placeholder="请输入商家姓名" name="contacts_name" placeholder-class='pholder'></input>
+    </view>
+    <view class="inputbox">
+        <text class='p'>手机号：</text>
+        <input placeholder="请输入手机号" bindblur='userPhoneInput' name="contacts_mobile" placeholder-class='pholder'></input>
+        <view class="yzmbox">
+            <input placeholder="请输入验证码" name="code" placeholder-class='pholder'></input>
+            <button disabled='{{disabled}}' bindtap="getVerificationCode">{{time}}</button>
+        </view>
+    </view>
+
+
+    <view class="btmbox">
+        <label>
+            <checkbox value="key1" bindtap='read' color='#f23131'/>阅读并同意
+            <text catchtap='hyxzboxshow'>《商家入驻协议》</text>
+        </label>
+        <button formType="submit" disabled='{{sub_btn}}'>提交申请</button>
+    </view>
+  </form>
+    <view class="hyxzboxzz" hidden='{{xyshow}}' bindtap='hyxzboxhide'>
+        <view class="hyxzbox">
+            <view class="title">{{enter_title}}</view>
+            <view class="paragraph">
+            <import src="../../wxParse/wxParse.wxml" />
+            <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+            </view>
+        </view>
+    </view>
+</view>
+<include src="/commons/tab/tab"/>

@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="topview">
+    <text class="topl">余额</text>
+    <text class="topr">￥{{user_money}}</text>
+    <view class="clearfix"></view>
+  </view>
+  <form bindsubmit="formSubmit">
+  <view class="topview">充值金额：</view><input value=""  name="money"/>
+  <button form-type="submit">充值</button>
+  </form>
+</view>

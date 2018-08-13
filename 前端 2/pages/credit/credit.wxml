@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="bannerbox">
+        <swiper indicator-color="#ccc" indicator-active-color="#e9302b" indicator-dots="true" autoplay="true" interval="3000" circular="true" class="banner">
+            <swiper-item wx:for="{{images}}">
+                <image mode='aspectFill' src="{{item.ad_code}}"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <scroll-view scroll-x="true" class="weui-navbar" style="width:100%;">
+        <block wx:for-items="{{tabs}}">
+            <view class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" bindtap="swichNav" data-current="{{item.xb}}">{{item.type_name}}</view>
+        </block>
+    </scroll-view>
+    <view class='keyongjf'>可用积分：
+        <text>{{jifen}}</text>
+    </view>
+    <view class='mainbody' wx:for="{{goods}}">
+        
+        <view class="main0box">
+            <navigate class="main0">
+                <image src="{{item.original_img}}"></image>
+                <view class="textbox">
+                    <view class="pd">{{item.goods_name}}</view>
+                    <view class="pb">积分
+                        <text>{{item.jifen_price}}</text>
+                    </view>
+                    <view class="pk">库存
+                        <text>{{item.store_count}}</text>
+                    </view>
+                </view>
+                <view class="clearfix"></view>
+            </navigate>
+            <navigator class="duihuan" url="./detail/detail?objectId={{item.goods_id}}" wx:if="{{item.store_count>0}}">立即兑换</navigator>            
+            <navigate class="duihuan jieshu" bindtap='submit' wx:else>已结束</navigate>
+        </view>
+    </view>
+</view>
+<include src="/commons/tab/tab"/>

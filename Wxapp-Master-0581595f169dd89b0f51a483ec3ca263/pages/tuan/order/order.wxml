@@ -1,0 +1,275 @@
+<!--mallsure.wxml-->
+<block wx:if="{{glo_is_load}}">
+  <view class="glo_load_view">
+    <text class="iconfont icon-loading animated infinite rotate mr5"></text>
+    <text>正在努力加载</text>
+  </view>
+</block>
+<block wx:else>
+  <form bindsubmit="order_formSubmit" report-submit="true">
+
+    <radio-group name="shipping_name" bindchange="shipping_name_change">
+      <view class="flex">
+        <label class="shop-mode sub" wx:if="{{logistics}}">
+          <radio value="本店快递" class='radioMe' checked="{{l_check}}"></radio><view class='radioText'>本店快递</view></label>
+        <label class="shop-mode sub" wx:if="{{since}}">
+          <radio value="到店自提" class='radioMe' checked="{{s_check}}"></radio><view class='radioText'>到店自提</view></label>
+      </view>
+    </radio-group>
+    <!-- 自提信息 -->
+    <view class="ziti-msg" wx:if="{{shipping_name == '到店自提'}}">
+      <view class="ziti-msg-item gridXb">
+        <view class="ziti-msg-title">姓名：</view>
+        <input class="ziti-msg-inp" name="name" value="{{name}}" placeholder="请输入自提人姓名" />
+      </view>
+      <view class="ziti-msg-item gridXb">
+        <view class="ziti-msg-title">电话：</view>
+        <input class="ziti-msg-inp" name="phone" value="{{phone}}" placeholder="请输入自提人手机号" />
+      </view>
+      <view>
+        <view class="ziti-msg-item" wx:if="{{store_id > 0}}">
+          <view class="ziti-msg-title">自提点：</view>
+          <view class="ziti-msg-address">
+          
+            <view class="ziti-msg-shop lineText" bindtap='chooseStie'><text class='iconfont icon-qiehuan fr ml10 grey' style="font-size:28rpx;"> 切换自提点</text>{{siteInfo?siteInfo.address_name:qhaddress.store_name}}</view>
+            <view class='red f18'>{{siteInto?siteInfo.mobile:qhaddress.store_con_mobile}}</view>
+            <view class='flex f14'>
+              <view class='sub'>
+                <view class="ziti-msg-address-text lineText2 grey">{{siteInfo?siteInfo._address+siteInfo.address:qhaddress.detailAddress}}</view>
+              </view>
+              <view class='ziti-daohang' bindtap='mapNavigation'>
+            <text class="iconfont icon-locationfill"></text>导航</view>
+            </view>
+        </view>
+          </view>
+          
+      </view>
+    </view>
+    <!-- 快递信息 -->
+    <view class="express-msg" wx:else>
+      <!-- 收获地址  -->
+      <block wx:if="{{wx_address_info}}">
+        <view class="express-item flex" bindtap="select_address_bind">
+          <view class="ditu mr10 f18">
+            <text class="iconfont icon-locationfill red"></text>
+          </view>
+          <view class="sub">
+            <view>
+              <text>{{wx_address_info.userName}}</text>
+              <text class="ml10">{{wx_address_info.telNumber}}</text>
+            </view>
+            <view class="f14 grey">{{wx_address_info.provinceName}}{{wx_address_info.cityName}}{{wx_address_info.countyName}}{{wx_address_info.detailInfo}}</view>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="express-item flex arrowR" bindtap="select_address_bind">
+          <view class="item-title">收货地址：</view>
+          <view class="sub tr peisong mr15">
+            <text><text class="red">{{this_address_info}}</text></text>
+            <input type="hidden" name="address_id" value="{{this_address_id}}" style="display:none;" />
+          </view>
+        </view>
+      </block>
+      <!--收货地址end  -->
+    </view>
+
+    <!-- 商品信息 -->
+    <view class="mall-order mt10">
+      <view class="mall-name gridXb">
+        <block wx:if="{{store_id>0}}">
+          <text class="iconfont icon-shopfill"></text>
+          <text class="mall-name-text ">{{qhaddress.store_name}}</text>
+        </block>
+      </view>
+      <view class="mall-goods">
+        <block wx:for="{{cart_list}}">
+          <view class="mall-goods-item flex">
+            <image src="{{item.goods_img}}" mode="aspectFill" class="goods-item-img"></image>
+            <view class="sure-info sub">
+              <view class="mall-goods-title lineText mb5">{{item.goods_name}}</view>
+              <view class="mall-goods-title lineText linght">{{item.goods_attr}}</view>
+              <view class="price f18 red">
+                <text class=" fr grey"> x{{item.goods_number}}</text>
+                <text>￥{{item.goods_price}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+
+    <view class="mallsure mt10">
+      <!-- <block wx:for="{{cart_list}}">
+        <view class="sure-item flex">
+            <image src="{{item.goods_img}}" mode="aspectFill"  class="sure-img"></image>
+            <view class="sure-info sub">
+                <text class="sure-title lineText mb5">{{item.goods_name}}</text>
+                <text class="sure-title lineText linght">{{item.goods_attr}}</text>
+                <view class="price f18 red">
+                    <text class=" fr grey"> ×{{item.goods_number}}</text>
+                     <text>￥{{item.goods_price}}</text>
+                </view>
+            </view>
+        </view>
+        </block> -->
+
+      <block wx:if="{{shipping_name == '到店自提'}}">
+        <view wx:if="{{store_id ==0}}">
+          <view class="sure-item flex">
+            <view class="item-title">
+              <text>店铺地址:</text>
+            </view>
+            <view class="sub">
+              {{config.config_info.shop_address}}
+            </view>
+          </view>
+          <view class="sure-item flex">
+            <view class="item-title">
+              <text>店铺电话:</text>
+            </view>
+            <view class="sub">
+              {{config.config_info.shop_phone}}
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="sure-item flex arrowR">
+          <view class="item-title">
+            <text>本店配送：</text>
+          </view>
+          <view class="sub tr peisong mr15">
+            <text>运费<text class="red">￥{{all_g_yunfei}}</text></text>
+            <input type="text" name="shipping_id" value="1" style="display:none;" />
+          </view>
+        </view>
+      </block>
+      <view class="sure-item gridXt flex">
+        <view class="item-title">
+          <text>支付方式：</text>
+        </view>
+        <view class="sub tr peisong">
+          <text>微信支付</text>
+          <input type="text" name="pay_id" value="1" style="display:none;" />
+        </view>
+      </view>
+      <view class="sure-item gridXt flex" wx:if="{{chengtuan_id==0 && tuan_type == 1}}">
+        <view class="item-title sub">
+          <text>团长返佣：</text>
+          <text class="red">+{{award}}</text>
+        </view>
+        <view class="iconfont icon-question"></view>
+      </view>
+      <view class="sure-item gridXt flex" wx:if="{{tuan_type==0&&discounts_status==0}}">
+        <view class="item-title sub">
+          <text>团长特惠：</text>
+          <text class="red">享免单</text>
+        </view>
+      </view>
+      <view class="sure-item gridXt flex" wx:if="{{tuan_type==0&&discounts_status==1}}">
+        <view class="item-title sub">
+          <text>团长特惠：</text>
+          <text class="red">-￥{{discounts_tuanzhang}}</text>          
+        </view>
+      </view>
+      <view class="sure-item gridXt flex">
+        <view class="item-title">
+          <text>买家留言：</text>
+        </view>
+        <view class="sub" style="position:relative;">
+          <input class="message-input" name="post_info" placeholder="点击给商家留言" />
+        </view>
+      </view>
+    </view>
+
+    <!--底部浮动 start-->
+    <view class="mallcart-float mt15">
+      <view class="mallcart-foot flex gridXt">
+        <view class="mall-cart-sum sub tc">
+          <view>合计：
+            <!--cart_list[0].btype为2是拼团为1单独购买-->
+            <block wx:if = "{{cart_list[0].btype == 1}}"><text class="red f18">￥{{all_g_price}}</text></block>
+            <block wx:else>
+                <!--团长的情况下 -->                
+                <block wx:if = "{{tuan_type==0&&discounts_status==0&&chengtuan_id==0}}">￥{{all_g_yunfei}}</block>
+                <block wx:if = "{{tuan_type==0&&discounts_status==1&&chengtuan_id==0}}">￥{{tuanzhang_g_price}}</block>
+                <block wx:if = "{{tuan_type==0&&discounts_status==2&&chengtuan_id==0}}">￥{{all_g_price}}</block>
+                
+                <block wx:if = "{{tuan_type!=0&&chengtuan_id==0}}">￥{{all_g_price}}</block>                
+                <!--团员-->
+                <block wx:if = "{{chengtuan_id !=0}}">￥{{all_g_price}}</block>
+            </block>
+          </view>
+        </view>
+        <button class="mall-cart-btn ml10" formType="submit" disabled="{{btn_submit_disabled}}">立即支付</button>
+      </view>
+    </view>
+    <!--底部浮动 end-->
+  </form>
+  <!--配送方式选择 start-->
+  <view class="pssel" style="display:none;">
+    <view class="psselbox">
+      <view class="psseltit gridXb tc f18">
+        <text class="iconfont icon-close fr"></text>
+        <text>配送方式</text>
+      </view>
+      <view class="psselitem gridXb flex">
+        <view class="psselicon active mr10">
+          <text class="iconfont icon-check"></text>
+        </view>
+        <view class="psselcon sub">
+          <view class="lineText">
+            <text>快递发货 ￥10.00</text>
+          </view>
+          <view class="grey f12">
+            <text>由商家选择合作快递为您服务</text>
+          </view>
+        </view>
+      </view>
+      <view class="psselitem gridXb flex">
+        <view class="psselicon mr10">
+          <text class="iconfont icon-check"></text>
+        </view>
+        <view class="psselcon sub">
+          <view class="lineText">
+            <text>快递发货 ￥10.00</text>
+          </view>
+          <view class="grey f12">
+            <text>由商家选择合作快递为您服务</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--配送方式选择 end-->
+
+  <!--收货地址选择 start-->
+  <view class="pssel" wx:if="{{is_show_address}}">
+    <view class="psselbox">
+      <view class="psseltit gridXb tc f18">
+        <text class="iconfont icon-close fr" bindtap="select_address_close_bind"></text>
+        <text>选择收货地址</text>
+      </view>
+
+      <block wx:for="{{address_list}}">
+        <view class="psselitem gridXb flex" bindtap="chose_address_bind" id="{{item.id}}">
+          <view class="psselicon {{item.is_check}} mr10">
+            <text class="iconfont icon-check"></text>
+          </view>
+          <view class="psselcon sub">
+            <view class="lineText">
+              <text>({{item.consignee}}:{{item.mobile}}){{item.province}}{{item.city}}{{item.district}}</text>
+            </view>
+            <view class="grey f12">
+              <text>{{item.address}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view class="add-address-btn" bindtap="index_item_bind">新增收货地址</view>
+    </view>
+  </view>
+  <!--收货地址选择 end-->
+</block>

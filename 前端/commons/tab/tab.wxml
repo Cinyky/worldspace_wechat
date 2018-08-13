@@ -1,0 +1,16 @@
+
+    <view class='tabview'>
+    <block  wx:for="{{_navbar}}">
+  <navigator wx:if="{{item.type == 0}}" url="{{item.url}}" open-type="redirect" class="tab {{item.currentTab==index ? 'on' : ''}}"  bindtap="swichNav" data-current="{{index}}"   >
+            <image src='{{item.ad_code}}' data-current="{{index}}" ></image>
+            <view wx:if="{{item.is_shownum >=0}}" class="dian">{{item.is_shownum}}</view>
+            <text data-current="{{index}}">{{item.name}}</text>
+  </navigator>
+  <navigator  wx:if="{{item.type == 1}}" target="miniProgram" open-type="navigate" app-id="{{item.appid}}" path="{{item.url}}" extra-data="" version="release" class="tab {{item.currentTab==index ? 'on' : ''}}"  bindtap="swichNav" data-current="{{index}}">
+            <image src='{{item.ad_code}}' data-current="{{index}}" ></image>
+            <view wx:if="{{item.is_shownum >=0}}" class="dian">{{item.is_shownum}}</view>
+            <text data-current="{{index}}">{{item.name}}</text>
+  </navigator>       
+    </block>
+    </view>
+    <view class='bottomzj'></view>

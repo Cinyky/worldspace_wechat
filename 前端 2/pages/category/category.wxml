@@ -1,0 +1,23 @@
+<view class="container">
+	<!-- 侧边栏 -->
+	<scroll-view  scroll-y class="sidebar">
+		<view wx:for="{{topCategories}}" wx:key="id" bindtap="tapTopCategory" data-id="{{item.id}}" data-banner="{{item.mobile_name}}" data-index="{{index}}" class="sidelist {{highlight[index]}}"><text>{{item.mobile_name}}</text></view>
+	</scroll-view>
+	<!-- right -->
+	<scroll-view  scroll-y class="main">
+		<!-- banner -->
+		<image class="banner" src="{{banner.image}}" mode="scaleToFill"  bindtap="clickBanner"  data-ad-link="{{banner.ad_link}}" />
+		<!-- GridView -->
+		<view class="gridview">
+			<dl wx:for="{{subCategories}}" wx:key="id">
+				<dt>
+					<image src="{{item.image}}" mode="scaleToFit" bindtap="avatarTap" data-object-id="{{item.id}}"/>
+				</dt>
+				<dd>
+					<text>{{item.mobile_name}}</text>
+				</dd>
+			</dl>
+		</view>
+	</scroll-view>
+    <include src="/commons/tab/tab"/>
+</view>

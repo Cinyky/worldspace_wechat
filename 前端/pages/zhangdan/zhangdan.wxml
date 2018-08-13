@@ -1,0 +1,24 @@
+<!--pages/zhangdan/zhangdan.wxml-->
+<view class="container">
+  <view class="content1">
+    <view class="zsr">总收入(元)</view>
+    <view class="zpri">{{all_amount}}</view>
+  </view>
+  <view class="content2"  wx:for="{{list}}" wx:key="">
+    <view class="list">
+      <view class="fl">{{item.user_money}}</view>
+      <view class="fr">{{item.change_time}}</view>
+      <view class="clearfix"></view>
+    </view>
+    <!-- <view class="list">
+      <view class="fl">+7.00</view>
+      <view class="fr">2017-08-07</view>
+      <view class="clearfix"></view>
+    </view>
+    <view class="list">
+      <view class="fl">+7.00</view>
+      <view class="fr">2017-08-07</view>
+      <view class="clearfix"></view>
+    </view> -->
+  </view>
+</view>

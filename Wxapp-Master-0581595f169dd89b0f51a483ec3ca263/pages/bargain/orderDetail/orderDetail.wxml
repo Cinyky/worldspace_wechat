@@ -1,0 +1,332 @@
+<!--订单详情页  -->
+
+<!--订单详情-->
+<import src="../template/orderDetail.wxml" />
+<form bindsubmit="updateorder" report-submit='true'>
+  <!--顶部订单状态  -->
+  <view>
+
+    <!--快递 或 同城情况下的 状态  -->
+    <view wx:if="{{orderinfo.get_type==1}}">
+      <!--待支付  -->
+
+      <view class='topStaBox flex flexCCen flexMBtw  ' wx:if="{{orderinfo.pay_status!=1}}">
+        <view class='topboxLf'>
+
+          <view class='lijiPay bold' wx:if="{{notpay}}">待支付</view>
+          <view class='lijiPay bold' wx:else>已过期</view>
+
+          <view class='mt10'>{{cutdown.hh}}:{{cutdown.mm}}:{{cutdown.ss}}后订单失效</view>
+        </view>
+        <view class='tsIconBox'>
+          <text class='iconfont icon-dingdanzhuangtai-daizhifu'></text>
+        </view>
+      </view>
+
+      <view class='flex red f12 payTipBox' wx:if="{{orderinfo.pay_status!=1}}">
+        <view class='iconfontBox'>
+          <text class='iconfont icon-huodongshuoming'></text>
+        </view>
+        <view>订单超时未支付将自动取消，请尽快支付，否则可能因为商品售罄导致您无法购买！</view>
+      </view>
+
+      <!--待发货  -->
+      <view class='topStaBox flex flexCCen flexMBtw ' wx:if="{{orderinfo.order_status==1&&orderinfo.pay_status==1}}">
+        <view class='topboxLf'>
+          <view class='lijiPay bold'>待发货</view>
+          <view class='mt10'>请等待商家发货</view>
+        </view>
+        <view class='tsIconBox'>
+          <text class='iconfont icon-dingdanzhuangtai-daifahuo'></text>
+        </view>
+      </view>
+
+      <!--待收货  -->
+      <view class='topStaBox flex flexCCen flexMBtw ' wx:elif="{{orderinfo.order_status==2}}">
+        <view class='topboxLf'>
+          <view class='lijiPay bold'>待收货</view>
+          <view class='mt10'>物流配送中</view>
+        </view>
+        <view class='tsIconBox'>
+          <text class='iconfont icon-dingdanzhuangtai-daishouhuo'></text>
+        </view>
+      </view>
+
+
+
+      <!--已完成  -->
+      <view class='topStaBox flex flexCCen flexMBtw ' wx:elif="{{orderinfo.order_status==3}}">
+        <view class='topboxLf'>
+          <view class='lijiPay bold'>已完成</view>
+          <view class='mt10'>交易完成</view>
+        </view>
+        <view class='tsIconBox'>
+          <text class='iconfont icon-dingdanzhuangtai-yiwancheng'></text>
+        </view>
+      </view>
+      <!--退款中 -->
+      <view class='topStaBox flex flexCCen flexMBtw ' wx:elif="{{orderinfo.order_status==4}}">
+        <view class='topboxLf'>
+          <view class='lijiPay bold'>退款中</view>
+          <view class='mt10 f14'>等待商家退款</view>
+        </view>
+        <view class='tsIconBox'>
+          <text class='iconfont icon-dingdanzhuangtai-tuikuanzhong'></text>
+        </view>
+      </view>
+
+      <!--已退款 -->
+      <view class='topStaBox flex flexCCen flexMBtw ' wx:elif="{{orderinfo.order_status==5}}">
+        <view class='topboxLf'>
+          <view class='lijiPay bold'>已退款</view>
+          <view class='mt10 f14'>退款完成</view>
+        </view>
+        <view class='tsIconBox'>
+          <text class='iconfont icon-dingdanzhuangtai-tuikuanwancheng'></text>
+        </view>
+      </view>
+    </view>
+
+
+    <!--自提情况下的状态  -->
+    <view>
+
+      <!--待支付  -->
+      <view class='topStaBox flex flexCCen flexMBtw  ' wx:if="{{orderinfo.get_type==3&&orderinfo.order_status==1&&orderinfo.pay_status!=1}}">
+        <view class='topboxLf'>
+          <view class='lijiPay bold' wx:if="{{notpay}}">待支付</view>
+          <view class='lijiPay bold' wx:else>已过期</view>
+
+          <view class='mt10'>{{cutdown.hh}}:{{cutdown.mm}}:{{cutdown.ss}}后订单失效</view>
+        </view>
+        <view class='tsIconBox'>
+          <text class='iconfont icon-dingdanzhuangtai-daizhifu'></text>
+        </view>
+      </view>
+
+      <view class='flex red f12 payTipBox' wx:if="{{orderinfo.get_type==3&&orderinfo.order_status==1&&orderinfo.pay_status!=1}}">
+        <view class='iconfontBox'>
+          <text class='iconfont icon-huodongshuoming'></text>
+        </view>
+        <view>订单超时未支付将自动取消，请尽快支付，否则可能因为商品售罄导致您无法购买！</view>
+      </view>
+
+
+      <!--待自提  -->
+      <view class='topStaBox flex flexCCen flexMBtw ' wx:if="{{orderinfo.get_type==3&&orderinfo.order_status==1&&orderinfo.pay_status==1}}">
+        <view class='topboxLf'>
+          <view class='lijiPay bold'>待自提</view>
+          <view class='mt10 '>商家备货中</view>
+        </view>
+        <view class='tsIconBox'>
+          <text class='iconfont icon-dingdanzhuangtai-daiziti'></text>
+        </view>
+      </view>
+
+      <!--已完成  -->
+
+      <view class='topStaBox flex flexCCen flexMBtw ' wx:if="{{orderinfo.get_type==3&&orderinfo.order_status==3}}">
+        <view class='topboxLf'>
+          <view class='lijiPay bold'>已完成</view>
+          <view class='mt10 '>交易完成</view>
+        </view>
+        <view class='tsIconBox'>
+          <text class='iconfont icon-dingdanzhuangtai-yiwancheng'></text>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+
+
+  <!--顶部状态下信息  -->
+  <view>
+
+    <!--快递 或 同城 情况下   -->
+    <view class='mb10' wx:if="{{orderinfo.get_type==1}}">
+      <!--收货人信息 -->
+      <view class='orderDetail_recInfo white_bg flex flexCCen' catchtap='myaddress'>
+        <view class=' f18 grey mainColor'>
+          <text class='iconfont icon-daohang mr15'></text>
+        </view>
+        <view class='f14 sub'>
+          <view class='recTop '>
+            <view class='recName mr15'>{{real_name}}</view>
+            <input type='text' hidden='true' name="real_name" value='{{real_name}}' />
+            <view class='recTel'>{{mobile}}</view>
+            <input type='text' hidden='true' name="mobile" value='{{mobile}}' />
+          </view>
+          <view class='recaddress lineText2 grey'>{{pay_address}}</view>
+          <input type='text' hidden='true' name="pay_address" value='{{pay_address}}' />
+        </view>
+      </view>
+      <!--快递信息  -->
+      <view class='orderDetail_mailInfo white_bg gridXt f14' wx:if="{{orderinfo.order_status==2||orderinfo.order_status==3}}">
+        <view>
+          {{orderinfo.express_name}}： {{orderinfo.express_code}}
+        </view>
+      </view>
+    </view>
+
+    <!--自提情况下显示  -->
+    <view class='zitiInfo  mb10 f14' wx:if="{{orderinfo.get_type==3}}">
+      <view class='white_bg mb10'>
+        <view class='ztBoxTop flex' catchtap='toadress'>
+          <view class='zitiPos  linght xiadanren '>自提点：</view>
+          <view class='sub flex flexCCen'>
+            <view class='ztAddDet sub lineText2'>{{orderinfo.buyinfo.goods_adress}}</view>
+            <view class='ztPosIcon mainColor'>
+              <text class='iconfont icon-daohang'></text>
+            </view>
+          </view>
+        </view>
+        <view class='ztBoxTop flex' catchtap='tomobile'>
+          <view class='zitiPos  linght '>联系电话：</view>
+          <view class='sub flex flexCCen'>
+            <view class='ztAddDet sub lineText2'>{{orderinfo.buyinfo.goods_mobile}}</view>
+            <view class='ztPosIcon mainColor'>
+              <text class='iconfont icon-dianhua'></text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class='ztBoxBot  white_bg'>
+        <view>
+          <text class='linght'>下单时间：</text> {{orderinfo.pay_time}}
+        </view>
+        <view class=''>
+          <text class='xiadanren linght'>下单人：</text>{{orderinfo.real_name}}</view>
+        <input type='text' hidden='true' name="real_name" value='{{orderinfo.real_name}}' />
+        <view class=''>
+          <text class='shoujihao linght'>手机号：</text>{{orderinfo.mobile}}</view>
+        <input type='text' hidden='true' name="mobile" value='{{orderinfo.mobile}}' />
+      </view>
+      <input type='text' hidden='true' name="get_type" value='{{orderinfo.get_type}}' />
+      <input type='text' hidden='true' name="paymoney" value='{{orderinfo.buyinfo.buy_price}}' />
+    </view>
+
+  </view>
+
+  <!--商品信息  -->
+  <view class='comOuterBox mb10'>
+    <template is="orderDetail_comInfo" data="{{...orderinfo.buyinfo}}"></template>
+    <!--运费  -->
+    <view class='yunfei flex flexMBtw gridXb' wx:if="{{orderinfo.get_type==1}}">
+      <view class='f14'>运费</view>
+      <view>
+        <text>+</text>
+        <text class='f12'>￥</text>{{orderinfo.buyinfo.fare}}</view>
+      <input type='text' name="fare" hidden='true' value='{{orderinfo.fare}}' />
+    </view>
+    <view class='totalMon' wx:if="{{orderinfo.get_type==1}}">
+      <text>合计：</text>
+      <text class='redColor f12'>￥<text class='f18'>{{orderinfo.buyinfo.pay_price}}</text></text>
+      <input type='text' hidden='true' name="paymoney" value='{{orderinfo.buyinfo.pay_price}}' />
+    </view>
+    <input type='text' hidden='true' name="goods_id" value='{{orderinfo.buyinfo.goods_id}}' />
+  </view>
+
+  <!--订单信息  -->
+  <view class='orderInBox'>
+    <!--订单编号等订单信息  -->
+    <view class='oInfoBox white_bg '>
+      <view class='oTit gridXb'> 订单信息 </view>
+      <view class='oContentBox f14 '>
+        <view class='oContent'>
+          <text>订单编号：{{orderinfo.pay_order}}</text>
+        </view>
+
+        <view class='oContent'>
+          <text>下单时间：{{orderinfo.pay_time}}</text>
+        </view>
+
+        <view class='oContent' wx:if="{{orderinfo.pay_status==1}}">
+          <text>支付时间：{{orderinfo.pay_time}}</text>
+        </view>
+
+        <view class='oContent' wx:if="{{orderinfo.order_status==2}}">
+          <text>发货时间：{{orderinfo.order_time}}</text>
+        </view>
+
+        <view class='oContent' wx:if="{{orderinfo.order_status==3}}">
+          <text>收货时间：{{orderinfo.getgoods_time}}</text>
+        </view>
+        <view class='oContent'>
+          <text>支付方式：微信支付</text>
+        </view>
+        <!-- 
+      <view class='oContent'>
+        <text>留言：无</text>
+      </view> -->
+      </view>
+
+    </view>
+    <!--联系商家  -->
+    <view class='concat tc gridXt white_bg mainColor' hidden="true">
+      <text class='iconfont icon-dianhua mr5'></text>
+      <text>联系商家</text>
+    </view>
+  </view>
+
+
+  <!--底部  -->
+  <view>
+    <!--快递 和 同城情况下  -->
+    <input type='text' hidden='true' name='orderid' value='{{orderinfo.id}}' />
+    <view class='ordDetFooter'>
+      <!--待支付  -->
+      <view class='footerBox gridXt white_bg' wx:if="{{orderinfo.pay_status==0}}">
+        <view class='footBtn gridFour' catchtap='delorder' data-id="{{orderinfo.id}}">取消订单</view>
+        <button class='footBtn fbPay  mainColor_bg ' form-type='submit' wx:if="{{notpay}}">立即支付</button>
+      </view>
+
+      <!--待发货  -->
+      <view class='footerBox gridXt white_bg' wx:if="{{orderinfo.order_status==1&&orderinfo.pay_status==1}}">
+        <view class='refund gridFour  mainColor' catchtap='refund' data-id="{{orderinfo.id}}">申请退款</view>
+      </view>
+
+      <!--待收货  -->
+      <view class='footerBox gridXt white_bg' wx:if="{{orderinfo.order_status==2&&orderinfo.pay_status==1}}">
+        <view class='footBtn gridFour' catchtap='refund' data-id="{{orderinfo.id}}">申请退款</view>
+        <view class='footBtn fbPay  mainColor_bg' catchtap='getgoods' data-id="{{orderinfo.buyinfo.goods_id}}"> 确认收货</view>
+      </view>
+    </view>
+
+    <!--删除订单  -->
+    <!-- <view class='footerBox gridXt white_bg' wx:if="{{orderinfo.order_status==3}}">
+      <view class='footBtn gridFour'>删除订单</view>
+    </view> -->
+
+    <!--自提情况下  -->
+    <!-- <view class='ordDetFooter'>
+      待自提  
+      <view class='footerBox gridXt white_bg display_hide'>
+        <view class='footBtn gridFour'>申请退款</view>
+        <view class='footBtn fbPay  mainColor_bg '>提货码</view>
+      </view>
+
+      待支付  
+      <view class='footerBox gridXt white_bg display_hide'>
+        <view class='footBtn gridFour'>取消订单</view>
+        <button class='footBtn fbPay  mainColor_bg '>立即支付</button>
+      </view>
+
+    </view> -->
+
+  </view>
+
+
+
+  <!--弹窗  -->
+
+  <!--支付方式  -->
+</form>
+<!--超时未支付 订单取消弹窗 -->
+<view class='shade_bg' hidden='{{lose}}'>
+  <view class='commdityDetail_zrbk pt25 white_bg tc fadein'>
+    <view class=' f14'>超时未支付，订单已被自动取消</view>
+    <button class='zrbkBtn mainColor_bg' bindtap='tomyorder'>确定</button>
+  </view>
+</view>

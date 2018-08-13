@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfobox">
+    <view  bindtap="bindViewTap" class="userinfo">
+      <image class="userinfo-avatar" src="{{usercenter.head_pic}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{usercenter.nick_name}}</text>
+    </view>
+  </view>
+    <view class="qtconbox">
+    <view class="qtcon" bindtap="my_team" >
+      <image src="/images/tuandui.png"></image>
+      <text>我的团队</text>
+    </view>
+    <view class="qtcon"  bindtap="my_bill" >
+      <image src="/images/zhangdan.png"></image>
+      <text>我的账单</text>
+    </view>
+    <view class="qtcon" bindtap="my_tixian">
+      <image src="/images/tixian.png"></image>
+      <text>提现</text>
+    </view>
+  </view>
+  <include src="/commons/tab/tab"/>
+</view>

@@ -1,0 +1,179 @@
+
+/* 字体文件 */
+@import "/pages/tuan/common/infoFont.wxss";
+.iconfont{font-size: inherit;display: inline-block;vertical-align: bottom;}
+/* 多色版文件 */
+@import "/css/DuoguanTuan/DuoguanTuan-template-default.wxss";
+@import "/wxParse/wxParse.wxss";
+
+.no-content-img{width: 50%;}
+
+/* 拼图提示 */
+.pin-tipsbox{position:fixed;top: 40rpx;left: 20rpx;z-index: 10;background: rgba(0, 0, 0, 0.5);color: #fff;font-size: 24rpx;border-radius: 6rpx;overflow: hidden;opacity: 0;transform: translateX(-100%);transition: all .3s linear;}
+.pin-tipsbox.tips-show{opacity:1;transform: translateX(0);transition: all .3s linear;}
+.pin-img{width: 60rpx;height: 60rpx;}
+.pin-cont{display: inline-block;vertical-align: middle;line-height: 60rpx;padding: 0 20rpx;white-space: nowrap;max-width: 500rpx;overflow: hidden;text-overflow: ellipsis;}
+
+/* 轮播图 */
+.swiper{width:100%;position:relative;padding-bottom:60%;overflow: hidden;}
+.swiper .swiper-conter{position:absolute;left:0;top:0;width:100%;height:100%}
+.swiper .swiper-img,.swiper-video{width:100%;height:100%}
+
+/* .swiper-btnbox{position: absolute;bottom: 10rpx;left: 50%;transform: translateX(-50%);z-index: 1}
+.swiper-btn{font-size: 12px;line-height: 20px;height: 20px;padding: 0 20rpx;background: #fafafa;border-radius: 60rpx;display: inline-block;vertical-align: top;}
+.swiper-btn:not(:last-child){margin-right: 20rpx;}
+.swiper-btn.active{background: #f66;color: #fff;} */
+/* 倒计时 */
+.count-down{position: absolute;bottom: 0;background: #f66;padding: 20rpx;width: 100%;color:#fff;}
+.count-down .time{background: #fff;color: #f66;margin: 0 8rpx;padding: 3rpx 6rpx;border-radius: 6rpx;}
+.gd-info{background:#fff;padding:10px}
+.share-btn{width: 100rpx;height: 60rpx;line-height: 60rpx;margin-right:-10px;font-size: 40rpx;color: #666;background: transparent;border-radius: 50%;transition: all .2s linear;}
+.share-btn:active{background: #f5f5f5;border-radius: 0;transition: all .2s linear;}
+
+.activity-item{background: #fff;padding: 20rpx;display: flex;justify-content: space-between;align-items: center;font-size: 32rpx;}
+.activity-item .tips-font{font-size: 0.8em;}
+.rebate-desc{width: 80rpx;text-align: center;color: #999;}
+/* 分享 */
+.goods-share-ico{color: #f8be59;}
+
+/* 团长优惠 */
+button.chiefDiscount{line-height: 48rpx;font-size: 24rpx;border-radius: 48rpx;padding: 0 20rpx;position: relative;padding-left: 70rpx;background: #ffe6e6;overflow: visible;color: #f15959;margin: 20rpx auto;display: inline-block;}
+.chiefDiscount::after{border: none;}
+.chiefDiscountIco{display: inline-block;vertical-align: middle;width: 60rpx;height:60rpx;line-height:60rpx;font-size: 32rpx;border-radius: 50%;background: #f15959;color:#fff;position: absolute;left: 0;top: 50%;transform: translateY(-50%);}
+
+.gd-tags,.gd-tags-item{display:inline-block}
+.gd-tags-item{padding:1px 6px;border-radius:3px;background-color: transparent;}
+.gd-tags{-webkit-transform:scale(.8);transform:scale(.8);-webkit-transform-origin:center top;transform-origin:center top}
+.gd-o-team{background:#fff;}
+.gd-o-tit{padding: 20rpx;}
+.right-more{padding-right: 26rpx;}
+.gd-o-avatar,.gd-o-avatar image{width:40px;height:40px;border-radius:50%;}
+.gd-o-btn button{line-height:28px;padding:0 12px;font-size:12px;border-radius: 6rpx;vertical-align: bottom;}
+.gd-o-item{padding:20rpx;align-items: center;}
+.gd-o-item.gridXt::before{left: 20rpx;}
+.gd-o-item .sub,.gd-o-name{padding:4px 0;line-height:16px}
+.gd-o-name{overflow:hidden}
+/* 更多参与拼团 弹出框 */
+.popup-pintuan{z-index: 2;}
+.pintuan-content{width:660rpx;padding: 30rpx;background: #fff;z-index: 1;border-radius: 14rpx;}
+.gd-o-list{max-height: 600rpx;overflow: auto;-webkit-overflow-scrolling: touch;}
+.floatBox .close{color:#fff;width:76rpx;height: 76rpx;line-height: 76rpx;text-align: center;font-size: 48rpx;position: absolute;bottom: -150rpx;border:1px solid currentColor;border-radius: 50%;left: 50%;transform: translateX(-50%);}
+.floatBox .close:active{background: rgba(255, 255, 255, 0.2);}
+.floatBox .close::before{content: '';display: block;width: 1px;height: 80rpx;background: currentColor;position: absolute;top: -80rpx;left: 50%;transform: translateX(-50%);}
+
+.pt-play{background:#fff;padding:10px}
+.pt-play .iconfont{font-size:28px;padding:15px 0 10px;display:block}
+.pt-item{line-height:140%;padding:0 5px}
+
+/* 自选团 */
+.group-buy-item{text-align: center;display: inline-block;width: calc(33.33% - 6px);padding: 10rpx;background: #f5f5f5;margin-top: 20rpx;color: #888;border-radius: 6rpx;}
+.group-buy-item:active{opacity: 0.8;}
+.group-buy-item:not(:nth-child(3n)){margin-right: 9px;}
+.group-buy-item.active{background: transparent;border: 1px solid;color: #f66;}
+
+/* 店铺信息 */
+.pt-shop-msg{background: #fff;padding: 20rpx;}
+.pt-more-msg{font-size: 24rpx;color: #888;}
+.pt-shop-name{font-weight: bold;}
+.pt-shop-msgbox{margin-top: 20rpx;display: flex;display: -webkit-flex;align-items: center;}
+.pt-shop-info{flex: 1;overflow: hidden;}
+.pt-shop-address{color: #888;font-size: 24rpx;line-height: 1.4;}
+.pt-shop-tell{color: var(--mColor);font-size: 52rpx;line-height: 1.2;background: transparent;margin-left: 20rpx;}
+.pt-shop-tell::after{border: none;border-left: 1px solid #d3d3d3;border-radius: 0;}
+
+.gd-desc{background:#fff;padding:10px}
+.gd-desc-tit{padding-bottom:10px}
+.gd-desc-box{line-height:160%;max-width: 100%!important;}
+.gd-desc-box view{max-width: 100%!important;width: auto!important;}
+.group-nav{height:46px}
+.group-f{position:fixed;left:0;bottom:0;height:46px;width:100%;background:#fff;z-index:1}
+.group-f:before{background:rgba(0,0,0,.1)}
+.group-f .iconfont{font-size: 40rpx;}
+.back-home{padding:6px 20px;line-height:150%;position: relative;}
+.back-home button{width: 100%;height: 100%;position: absolute;top: 0;left: 0;opacity: 0;}
+.group-btn{display: flex;align-items: center;justify-content: center;color:#fff}
+.o-buy-cont,.t-buy-cont{display:block;padding:6px 0;line-height:17px;}
+.add-cart-box{position:fixed;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,.8);z-index:2}
+.layout{position:absolute;left:0;bottom:0;width:100%;background:#fff}
+.layout-info{padding:10px;line-height:30px}
+.layout-info image{width:66px;height:66px;margin-top:-26px;border:2px solid #fff}
+.layout-info .sub{line-height:23px;overflow:hidden}
+.options{padding:0 10px;max-height: 600rpx;overflow-y: auto;-webkit-overflow-scrolling: touch;}
+.g-lineText{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;height:23px}
+.options-item{padding:20rpx 0;overflow:hidden;}
+.options-item-price{flex-wrap: wrap;}
+.options-item-price .group-buy-item{margin-top: 0;padding: 6rpx 0;}
+.options-item-price .group-buy-item:nth-child(n+4){margin-top: 20rpx;}
+.number-name{align-self: center;}
+.count-set{width:auto;border:1px solid #eee;}
+.count-set text{display:block;line-height:30px;padding:0 15px}
+.count-set .number{width: 60px;}
+.buy-couts{border-left:1px solid #eee;border-right:1px solid #eee;height:30px}
+.count-set .flase{background:rgba(0,0,0,.05);color:#999}
+.add-cart-btn{color:#fff;border-radius:0}
+.add-cart-btn::after{border: none;}
+.add-cart-close{position:absolute;right:10px;top:-50px;border:1px solid #fff;color:#fff;width:40px;height:40px;border-radius:50%;display:block;line-height:40px;text-align:center;font-size:28px;-webkit-transform:scale(.8);transform:scale(.8)}
+.options-ss{padding:3px 8px;border-radius:3px;display:inline-block;margin-right:6px;margin-bottom:6px}
+.options-ss:before{border-color:rgba(0,0,0,.1)}
+.options-ss.active{color:#fff}
+.gd-desc-item{padding:30rpx 0}
+.desc-user-img{width:60rpx;height:60rpx}
+.desc-user-img image{width:100%;height:100%;border-radius:50%}
+.desc-content-img image{width:200rpx;height:200rpx;float:left;margin:0;margin-top:10rpx;margin-right:10rpx}
+.desc-content-img image:nth-child(3n+3){margin-right:0}
+.help{font-size: 48rpx;}
+/*弹出框  底部弹出  */
+
+/*模板 商品详情 分享选择  */
+
+.commdityDetail_share {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  padding: 30rpx;
+  box-shadow: 0rpx 4rpx 30rpx  rgba(0, 0, 0, 0.35);
+  animation: bounce 0.3s linear forwards;
+}
+
+.shareButton {
+  font-size: 30rpx;
+  background: transparent;
+  line-height: 1;
+  color: #666;
+  background-color: #fff;
+  padding: 72rpx 0 50rpx 0;
+  border-radius: 0;
+}
+
+.shareButton::after {
+  display: none;
+}
+
+/* 遮罩层 */
+
+.shade {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+}
+
+.shade_bg {
+  position: absolute;
+  bottom: 0;
+  z-index: 99;
+}
+
+.subIconBox .iconfont {
+  font-size: 56rpx;
+}
+
+.subIconBox .iconfont.blue {
+  color: #009aff;
+}
+
+.cancleBtn {
+  padding-top: 30rpx;
+}

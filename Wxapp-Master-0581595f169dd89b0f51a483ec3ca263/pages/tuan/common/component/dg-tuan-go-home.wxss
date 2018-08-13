@@ -1,0 +1,10 @@
+/* pages/tuan/common/component/dg-tuan-go-home.wxss */
+/* 返回首页提示 */
+.return-home-tips{background: rgba(0, 0, 0, 0.4);color: #fff;position: fixed;top: 10rpx;right: 20rpx;padding: 8rpx 30rpx;font-size: 24rpx;border-radius: 80rpx;z-index: 20;}
+.return-home-tips::before{content: '';display: block;border-bottom: 12rpx solid rgba(0, 0, 0, 0.4);border-left: 10rpx solid transparent;border-right: 10rpx solid transparent;position: absolute;top: -10rpx;right: 120rpx;}
+
+.return-home-colse{width: 40rpx;height: 40rpx;position: relative;display: inline-block;vertical-align: middle;}
+.return-home-colse:active{background: rgba(0, 0, 0, 0.4);border-radius: 50%;}
+.return-home-colse::before,.return-home-colse::after{content: '';display: block;width: 50%;height: 1px;background: currentColor;position: absolute;top: 50%;left: 50%;}
+.return-home-colse::before{transform:translate(-50%,-100%) rotate(45deg);}
+.return-home-colse::after{transform:translate(-50%,-100%) rotate(-45deg);}

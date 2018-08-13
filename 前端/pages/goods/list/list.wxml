@@ -1,0 +1,120 @@
+
+<view class="after-navber">
+  <view class="top-bar">
+    <view class="flex-row sort-bar">
+      <view bindtap="tapSubMenu" class="flex-grow-1 flex-x-center flex-row sort-item {{sort==0?'active':''}}" data-default_sort_type="0" data-sort="0">
+        <view class="flex-y-center">价格</view>
+        <view class="flex-y-center sort-icon-box">
+          <view>
+            <view>
+              <block wx:if="{{sort==0&&sort_type==0}}">
+                <image class="sort-icon-up" src="/images/icon-sort-up-active.png"></image>
+              </block>
+              <block wx:else>
+                <image class="sort-icon-up" src="/images/icon-sort-up.png"></image>
+              </block>
+            </view>
+            <view>
+              <block wx:if="{{sort==0&&sort_type==1}}">
+                <image class="sort-icon-up" src="/images/icon-sort-down-active.png"></image>
+              </block>
+              <block wx:else>
+                <image class="sort-icon-up" src="/images/icon-sort-down.png"></image>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view bindtap="tapSubMenu" class="flex-grow-1 flex-x-center flex-row sort-item {{sort==1?'active':''}}" data-default_sort_type="0" data-sort="1">
+        <view class="flex-y-center">销量</view>
+        <view class="flex-y-center sort-icon-box">
+          <view>
+            <view>
+              <block wx:if="{{sort==1&&sort_type==0}}">
+                <image class="sort-icon-up" src="/images/icon-sort-up-active.png"></image>
+              </block>
+              <block wx:else>
+                <image class="sort-icon-up" src="/images/icon-sort-up.png"></image>
+              </block>
+            </view>
+            <view>
+              <block wx:if="{{sort==1&&sort_type==1}}">
+                <image class="sort-icon-up" src="/images/icon-sort-down-active.png"></image>
+              </block>
+              <block wx:else>
+                <image class="sort-icon-up" src="/images/icon-sort-down.png"></image>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view bindtap="tapSubMenu" class="flex-grow-1 flex-x-center flex-row sort-item {{sort==2?'active':''}}" data-default_sort_type="0" data-sort="2">
+        <view class="flex-y-center">最新</view>
+        <view class="flex-y-center sort-icon-box">
+          <view>
+            <view>
+              <block wx:if="{{sort==2&&sort_type==0}}">
+                <image class="sort-icon-up" src="/images/icon-sort-up-active.png"></image>
+              </block>
+              <block wx:else>
+                <image class="sort-icon-up" src="/images/icon-sort-up.png"></image>
+              </block>
+            </view>
+            <view>
+              <block wx:if="{{sort==2&&sort_type==1}}">
+                <image class="sort-icon-up" src="/images/icon-sort-down-active.png"></image>
+              </block>
+              <block wx:else>
+                <image class="sort-icon-up" src="/images/icon-sort-down.png"></image>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view bindtap="tapSubMenu" class="flex-grow-1 flex-x-center flex-row sort-item {{sort==3?'active':''}}" data-default_sort_type="0" data-sort="3">
+        <view class="flex-y-center">评价</view>
+        <view class="flex-y-center sort-icon-box">
+          <view>
+            <view>
+              <block wx:if="{{sort==3&&sort_type==0}}">
+                <image class="sort-icon-up" src="/images/icon-sort-up-active.png"></image>
+              </block>
+              <block wx:else>
+                <image class="sort-icon-up" src="/images/icon-sort-up.png"></image>
+              </block>
+            </view>
+            <view>
+              <block wx:if="{{sort==3&&sort_type==1}}">
+                <image class="sort-icon-up" src="/images/icon-sort-down-active.png"></image>
+              </block>
+              <block wx:else>
+                <image class="sort-icon-up" src="/images/icon-sort-down.png"></image>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="goods-list">
+    <block wx:if="{{empty}}">
+      <view class="no-data-tip">该类目暂无内容</view>
+    </block>
+    <block wx:for="{{goods}}" wx:for-item="item" wx:for-index="index">
+      <navigator class="goods-item" openType="navigate" style="font-size:11pt;" url="/pages/goods/detail/detail?objectId={{item.goods_id}}">
+        <image class="goods-pic" mode="aspectFill" src="{{item.image}}"></image>
+        <view class="goods-info" style="padding:12rpx 20rpx;">
+          <text class="mb-10 text-more-2" style="height:2.8em;line-height:1.4;">{{item.goods_name}}</text>
+          <view class="flex-row">
+            <view class="flex-grow-1" style="color:#ff334b">￥{{item.shop_price}}</view>
+            <view class="flex-grow-0 fs-sm" style="color:#999;">已售{{item.sales_sum}}</view>
+            <view class="flex-grow-0 fs-sm" style="color:#999;">评价{{item.comment_count}}</view>
+          </view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+  <view class="loading-bar {{show_loading_bar?'active':''}}" style="text-align: center">
+    <image src="/images/icon-loading.gif" style="width: 160rpx;height: 80rpx"></image>
+  </view>
+</view>

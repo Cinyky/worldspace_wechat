@@ -1,0 +1,86 @@
+/* pages/bargain/shopCenter/shopCenter.wxss */
+@import "../common.wxss";
+@import "/css/DuoguanBargain/DuoguanBargain-template-default.wxss";
+.shopInfo{
+  padding: 20rpx;
+}
+.shopNameBox{
+  align-items: center;
+  color: #666;
+}
+.shopNameBox .iconfont{
+  font-size: 36rpx;
+}
+.shopName{
+  font-weight: 600;
+  
+}
+.shareBtn{
+  width: 170rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  font-size: 28rpx;
+  padding: 0;
+  color: #fff;
+  margin-left: 60rpx;
+}
+.shareBtn::after{
+  display: none;
+}
+.shareBtn:active{
+   opacity: 0.85;
+}
+
+.flexCon{
+  line-height: 40rpx;
+  margin-top: 8rpx;
+}
+
+
+/*  */
+.commdityItem{
+  position: relative;
+}
+.countdown{
+  padding: 20rpx;
+  color: #fff;
+}
+.countdown>text{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.countDown {
+  position: absolute;
+  left: 50%;
+  line-height: 2;
+  border-radius: 3px 3px 0 0;
+  bottom: 0;
+  white-space: nowrap;
+  text-align: center;
+  padding: 0 30rpx;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  transform: translateX(-50%);
+}
+
+.commdityList:only-child .comPicBox {
+  height: 450rpx;
+}
+
+.maohao {
+  width: 30rpx;
+  text-align: center;
+}
+
+.hms{
+  width: 48rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  background-color: #fff;
+}
+.commInfo{
+  padding: 20rpx 20rpx 40rpx 20rpx;
+}

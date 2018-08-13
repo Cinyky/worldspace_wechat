@@ -1,0 +1,41 @@
+<!--列表  -->
+    <block wx:for="{{goods}}" wx:key="index">
+      <view class='commdityItem' bindtap='cutgoods' data-id="{{item.id}}">
+        <view class='comPicBox'>
+          <!--5:3  -->
+          <image class='comPic' mode='aspectFill' src='{{item.goods_icon_url}}'></image>
+          <view class='bottPriBox flex'>
+            <view class='boxLf sub '>
+              <view class='zdkgj '>最低砍购价</view>
+              <view class='kPriYPri flex'>
+                <view class='kPri mr15 lineText'>
+                  <text>￥</text>
+                  <text class=' f20 bold'>{{item.low_price}}</text>
+                </view>
+                <view class='yPri lineText'>
+                  <text class='mr5'>价格</text>
+                  <text><text class='f12'  >￥</text>{{item.const_price}}</text>
+                </view>
+              </view>
+            </view>
+            <view class='boxRg tc lineText'>
+              <text>立即参与</text>
+              <text class='iconfont icon-lijicanyu '></text>
+            </view>
+          </view>
+        </view>
+        <view class='commInfo f14'>
+          <view class='itemTit mb5 lineText2'>{{item.goods_name}}</view>
+          <view class='grey lineText'>
+            <text class='iconfont icon-huodongshijian  mr5'></text>
+            <text>活动日期：</text>
+            <text>{{item.start_time}} 至 {{item.end_time}}</text>
+          </view>
+          <view class='partiCou redColor lineText'>
+            <text class='iconfont icon-canyurenshu mr5'></text>
+            <text class='cyrs'>2000人</text>
+            <text class='grey'>正在参加</text>
+          </view>
+        </view>
+      </view>
+    </block>

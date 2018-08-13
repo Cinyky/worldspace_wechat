@@ -1,0 +1,113 @@
+page{
+  background-color: #efeff4;
+}
+.userinfobox{
+  background-color:#fffcfc;
+  width: 100%;
+  border-bottom: 1px #e6e6e6 solid;
+  margin-bottom: 10px;  
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  padding: 50rpx 0;
+  align-items: center;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.userinfo-nickname {
+  color: #333;
+  font-size: 18px;
+}
+.orderbox,.qtconbox{
+  background-color: #fff;
+  width: 100%;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+}
+.orderbox .ordertop{
+  border-bottom: 1px solid #e6e6e6;
+  line-height: 46px;
+  height: 46px;
+  padding: 0 15px;
+}
+.ordertop .otl{
+  float: left;
+}
+.ordertop .otr{
+  float: right;
+  font-size: 13px;
+  color: #999;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.ordertop .otr image{
+  width: 22px;
+  height: 22px;
+}
+.ordermain{
+  padding: 16px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.ordermain .main0{
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 13px;
+  line-height: 14px;
+}
+.ordermain .main0 image{
+  width: 26px;
+  height: 26px;
+  margin-bottom: 6px;
+}
+.qtconbox{
+  margin-top: 10px;
+  padding: 10px;
+  height: 90px;
+}
+.qtconbox .qtcon{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 33.3%;
+  font-size: 13px;
+  border-right: 1px solid #efeff4;
+  border-bottom: 1px solid #efeff4;
+  box-sizing: border-box;
+  color: #666;
+  float: left;
+  padding: 10px 0;
+}
+.qtconbox .qtcon:nth-child(3n){
+  border-right: none;
+}
+.qtconbox .qtcon:nth-last-child(-n+3){
+  border-bottom: none;
+}
+.qtconbox .qtcon image{
+  width: 36px;
+  height: 36px;
+  margin-bottom: 3px;
+}
+.zhichi{
+  color: #bfbfc3;
+  font-size: 13px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.zhichi image{
+  width: 103px;
+  height: 26px;
+  margin-bottom: 3px;
+}

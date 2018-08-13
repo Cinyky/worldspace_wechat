@@ -1,0 +1,11 @@
+page {
+	display: flex;
+	flex-direction: column;
+}
+
+.desc {
+	line-height: 40px;
+	color: #333;
+	text-align: center;
+	display: block;
+}

@@ -1,0 +1,23 @@
+<!--pages/tuiguang/tuiguang.wxml-->
+<view class="container">
+  <view class="userinfobox">
+    <view  bindtap="bindViewTap" class="userinfo">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <view class="userinfo-nickname">我是<text>{{userInfo.nickName}}</text></view>
+    </view>
+    <view class="daiyan">
+      我要为<text>识别图中二维码</text>代言
+    </view>
+  </view>
+  <view class="erweimbox">
+    <view class="erweim1">
+      【消费变成投资,人人都是老板】
+    </view>
+    <view class="erweim2">
+      <image src="/images/erweim.png"></image>
+    </view>
+    <view class="erweim3">
+      长按此图 识别图中二维码  搞定！
+    </view>
+  </view>
+</view>

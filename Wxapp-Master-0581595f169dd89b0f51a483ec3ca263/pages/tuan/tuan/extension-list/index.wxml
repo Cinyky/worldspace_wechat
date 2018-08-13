@@ -1,0 +1,88 @@
+<block wx:if="{{glo_is_load}}">
+  <view class="glo_load_view">
+    <text class="iconfont icon-loading animated infinite rotate mr5"></text>
+    <text>正在努力加载</text>
+  </view>
+</block>
+<block wx:else>
+  <block wx:if="{{tuanlist.length==0}}">
+    <!--暂无内容提示 start-->
+    <view class="no-content tc">
+      <text class="no-content-icon iconfont icon-yemianwuneirong"></text>
+      <view class="no-content-font">暂无拼团信息</view>
+    </view>
+    <!--暂无内容提示 end-->
+  </block>
+  <block wx:else>
+    <view class="ol-list">
+      <block wx:for="{{tuanlist}}">
+        <view class="ol-item">
+          <view class="ol-item-info" bindtap="user_orderinfo_bind" id="{{item.id}}">
+            <view class="ol-item-tim-tag" wx:if="{{item.tuan_type==1}}">返</view>
+            <view class="ol-item-tim-tag" wx:if="{{item.tuan_type==0}}">拼</view>
+            <view class="ol-item-tim-tag" wx:if="{{item.tuan_type==-1}}">推</view>
+            <view class="ol-item-time">{{item.tuan_begin_time}}</view>
+            <block wx:if="{{item.tuan_type == -1}}">
+            <view class="ol-item-state red">
+              <text wx:if="{{item.tuan_status==1}}">推广中</text>
+              <text wx:if="{{item.tuan_status==2}}">推广成功</text>
+              <text wx:if="{{item.tuan_status==3}}">推广失败</text>
+            </view>
+            </block>
+            <block wx:if="{{item.tuan_type != -1}}">
+                <view class="ol-item-state red">
+              <text wx:if="{{item.tuan_status==1}}">待成团</text>
+              <text wx:if="{{item.tuan_status==2}}">拼团成功</text>
+              <text wx:if="{{item.tuan_status==3}}">拼团失败</text>
+            </view>
+            </block>
+          </view>
+          <view class="ol-item-con" bindtap="user_orderinfo_bind" id="{{item.id}}">
+            <!--单个商品 start-->
+            <view class="ol-one flex">
+              <view class="ol-img">
+                <image src="{{item.ginfo.g_img}}" mode="aspectFill"></image>
+              </view>
+              <view class="ol-one-info sub">
+                <view class='ol-one-name lineText2'>{{item.ginfo.g_name}}</view>
+                <view class="ol-one-other">
+                  <view class='ol-one-price'>￥{{item.ginfo.tuan_price}}</view>
+                  <view>{{item.tuan_num}}人团</view>
+                </view>
+              </view>
+            </view>
+            <!--单个商品 end-->
+          </view>
+          <view class="ol-item-foot f12">
+            <view class="ol-item-pay flex" wx:if="{{item.tuan_type == -1}}">
+              <button wx:if="{{item.tuan_status==1}}" type='primary' size='mini' id="{{item.id}}" bindtap='tuan_info_bind'>推广</button>
+              <button wx:if="{{item.tuan_status!=1}}" type='primary' size='mini' id="{{item.goods_id}}" bindtap='goods_info_bind'>继续推广</button>
+              <button wx:if="{{item.tuan_status!=1}}" type='primary' plain size='mini' hover-class='none'  id="{{item.id}}" bindtap='tuan_info_bind'>查看推广</button>
+            </view>
+            <view class="ol-item-pay flex" wx:if="{{item.tuan_type != -1}}">
+              <button wx:if="{{item.tuan_status==1}}" type='primary' size='mini' id="{{item.id}}" bindtap='tuan_info_bind'>找小伙伴凑单</button>
+              <button wx:if="{{item.tuan_status!=1}}" type='primary' size='mini' id="{{item.goods_id}}" bindtap='goods_info_bind'>再来一单</button>
+              <button wx:if="{{item.tuan_status!=1}}" type='primary' plain size='mini' hover-class='none'  id="{{item.id}}" bindtap='tuan_info_bind'>查看拼团</button>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!-- 底部提示信息 -->
+    <view class='grey f12 tc'>
+      <!-- <text>拼团信息仅支持查看2018年5月10日以后,之前的请前往我的订单查看</text> -->
+    </view>
+    <!--loading start-->
+    <view class="m20 tc grey loading" wx:if="{{bottom_load}}">
+      <text class="iconfont icon-loading animated infinite rotate mr5"></text>
+      <text>正在加载...</text>
+    </view>
+    <!--loading end-->
+    <view class="bottom-line">
+      <text class='bottom-lint-text'></text>
+      <text>已经到底了</text>
+      <text class='bottom-lint-text'></text>
+    </view>
+
+  </block>
+</block>

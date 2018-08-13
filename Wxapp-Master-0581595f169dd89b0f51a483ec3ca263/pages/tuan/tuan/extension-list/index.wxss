@@ -1,0 +1,63 @@
+@import "/css/DuoguanTuan/DuoguanTuan-template-default.wxss";
+
+/*orderlist.wxss*/
+.ol-item{ background: #fff; margin-bottom: 10px;}
+.ol-item-info,.ol-item-con{ padding: 20rpx;}
+.ol-item-info{display: flex;display: -webkit-flex;align-items: center;}
+.ol-item-con{background: #fafafa;margin: 0 20rpx;}
+.ol-item-time{color: #888;font-size: 24rpx;flex: 1;}
+.ol-item-tim-tag{color: #f66;border: 1px solid;width: 20px;height: 20px;font-size: 12px;display: inline-flex;align-items: center;justify-content: center;border-radius: 50%;transform: scale(0.8);margin-right: 6rpx;}
+.ol-img{ width: 60px; height: 60px;}
+.ol-img image{ width: 100%; height: 100%;}
+.ol-one-info{ margin-left: 15px; line-height: 20px; height: 60px; overflow: hidden;display: flex;display: -webkit-flex;flex-direction: column;justify-content: space-between;}
+.ol-one-name{word-wrap:break-word;}
+.ol-one-other{display: flex;display: -webkit-flex;align-items: center;justify-content: space-between;color: #999;}
+.ol-item-foot{ padding: 10px;}
+.ol-item-pay{align-items: center;justify-content: flex-end;}
+.ol-one-price{color: #f66;}
+.ol-item-pay button{border-radius: 6rpx;padding: 0 16rpx;margin:0;}
+.ol-item-pay button:not(:last-child){margin-right:10rpx;}
+.ol-item-pay button:not([plain]):after{border: none;}
+.ol-item-pay button[plain]{line-height: 54rpx;color: var(--mColor);border-color: var(--mColor);}
+.ol-item-pay button[plain]:active{color: var(--mColor);border-color: var(--mColor);background: rgba(var(--mColorRgb),0.1);}
+.ol-oneplus{ width: 100%; overflow: hidden; white-space: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;}
+.ol-oneplus .ol-img{ margin-right: 6px; display:inline-block;}
+.ol-item-del{ width: 22px; height: 22px; display: block; line-height: 22px; text-align: center; font-size: 18px;}
+.ping-order-icon{color:#ff0000;font-size:16px;line-height: 24px;}
+
+
+
+.bottom-line{display: flex;padding: 30rpx;text-align: center;align-items: center;color: #999;font-size: 24rpx;}
+.bottom-lint-text{flex: 1;border-top: 1px solid #dadada;margin: 0 20rpx;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

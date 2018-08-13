@@ -1,0 +1,12 @@
+/* pages/store/market-topics/index.wxss */
+@import "/pages/store/store-common/common.wxss";
+.goodsItemBox{padding: 20rpx;}
+.goodsItem{width: calc(50% - 5px);display: inline-block;vertical-align: top;margin-bottom: 20rpx;background: #fff;border-radius: 6rpx;overflow: hidden;}
+.goodsItem:not(:nth-child(2n)){margin-right: 10px;}
+.goodsImg{width: 100%;padding-bottom: 100%;position: relative;}
+.goodsInfo{padding: 10rpx 16rpx;}
+.goodsName{font-weight: bold;}
+.goodsShopName{font-size: 28rpx;color: #999;}
+.goodsPriceBox{align-items: center;}
+.goodsPrice{color: #f66;}
+.buyBtn{display: inline-block;line-height: 40rpx;font-size: 24rpx;padding: 0 24rpx;color: #fff;background: #ff4032;border-radius: 40rpx;vertical-align: top;}

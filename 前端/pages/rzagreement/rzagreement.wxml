@@ -1,0 +1,37 @@
+<view class="container">
+    <view class="rzban">
+        <image src="/images/xyban.jpg"></image>
+    </view>
+    <view class="mainbox">
+	
+	<form bindsubmit="formSubmit" bindreset="formReset">
+        <view class="inputnox">
+            <text>商户名称</text>
+            <input placeholder-class="placeholder" placeholder="请为您的店铺起一个闪亮的名字" name="store_name" />
+        </view>
+        <view class="inputnox">
+            <text>主营项目</text>
+            <input placeholder-class="placeholder" placeholder="比如水果、蛋糕等" name="business_scope" />
+        </view>
+        <view class="inputnox">
+            <text>简单介绍</text>
+            <textarea maxlength="50"  placeholder-class="placeholder" placeholder="简单介绍一下您的铺子（50字以内）" name="sales_volume" />
+        </view>
+        <view class="inputnox">
+            <text>联 系 人</text>
+            <input placeholder-class="placeholder" placeholder="您的姓名" name="contacts_name" />
+        </view>
+        <view class="inputnox">
+            <text decode="{{true}}">电&nbsp;&nbsp;话</text>
+            <input placeholder-class="placeholder" placeholder="您的手机号" name="contacts_mobile" />
+        </view>
+        <text class="zhushi">请仔细填写联系方式，保证我们能尽快联系到您,登录商户后台的账号密码都是手机号</text>
+        <view class="xybox">
+            <icon wx:if="{{select}}" type="success" color="#09bb07" bindtap="select" />
+            <icon wx:else type="circle" color="#999" bindtap="select" />
+            我已阅读并了解了<text>【入住申请协议】</text>
+        </view>
+		<view class="btn"> <button formType="submit">立即申请入住</button></view>
+	</form>	
+    </view>
+</view>

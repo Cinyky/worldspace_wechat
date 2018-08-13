@@ -1,0 +1,252 @@
+page {
+  background-color: #f7f7f7;
+}
+
+.userban {
+  width: 750rpx;
+  height: 380rpx;
+  position: relative;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
+
+.userban .bgimg {
+  width: 100%;
+  height: 100%;
+  /*filter: blur(5px);*/
+}
+
+.userban .zhyebox {
+  position: absolute;
+  padding: 6rpx 0;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.userban .zhyebox view {
+  width: 50%;
+  text-align: center;
+}
+
+.userban .zhyebox .yebox {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.userban .zhyebox view text {
+  display: block;
+}
+
+.userban .zhyebox  .shul {
+  padding-top: 3px;
+  font-weight: bold;
+}
+
+.userban .hbg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.userinfo-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #fff;
+  margin-top: 20rpx;
+}
+
+.userinfo button {
+  font-size: 14px;
+  margin-top: 200rpx;
+  background-color: #ccc;
+}
+
+.orderbox {
+  background-color: #fff;
+  width: 100%;
+  border-top: 1px solid #f7f7f7;
+  margin-bottom: 20rpx;
+}
+
+.orderbox .ordertop {
+  border-bottom: 1px solid #f7f7f7;
+  line-height: 36px;
+  height: 36px;
+  padding: 0 15px;
+}
+
+.ordertop .otl {
+  float: left;
+  color: #333;
+}
+
+.ordertop .otr {
+  float: right;
+  margin-right: -10px;
+  font-size: 12px;
+  color: #999;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ordertop .otr image {
+  width: 20px;
+  height: 20px;
+}
+
+.ordermain {
+  padding: 20rpx 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ordermain .main0 {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  line-height: 14px;
+  color: #666;
+  position: relative;
+}
+
+.ordermain .main0 .dian {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: #ff558c;
+  color: #fff;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top: -3px;
+  font-size: 10px;
+}
+
+.ordermain .main0 image {
+  width: 52rpx;
+  height: 52rpx;
+  margin-bottom: 6px;
+}
+
+.qtlist {
+  background-color: #fff;
+}
+
+.qtlist .ordertop {
+  border-bottom: 1px solid #f7f7f7;
+  padding: 26rpx 30rpx;
+}
+
+.qtlist .ordertop button {
+  line-height: 40rpx;
+  font-size: 28rpx;
+  padding: 20rpx 0;
+}
+
+.kefubox {
+  position: fixed;
+  bottom: 260rpx;
+  display: flex;
+  right: 0;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  padding: 14rpx 12rpx 14rpx 14rpx;
+  border-bottom-left-radius: 50rpx;
+  border-top-left-radius: 50rpx;
+  font-size: 12px;
+}
+
+.kefubox image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/*������2018-04-10*/
+
+.text-more-2 {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.flex-x-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.flex-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.flex-grow-0 {
+  min-width: 0;
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.option-item {
+  background: #fff;
+  display: block;
+  position: relative;
+}
+
+.option-item.style {
+  width: 25%;
+  padding: 24rpx 0;
+  font-size: 9pt;
+}
+
+.option-item.style .option-icon {
+  margin: 0;
+  margin-bottom: 12rpx;
+}
+
+.option-item .option-icon {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 24rpx;
+}

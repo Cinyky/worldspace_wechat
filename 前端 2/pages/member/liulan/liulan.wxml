@@ -1,0 +1,31 @@
+<view class="order-item" wx:for="{{collects}}" wx:key="">
+
+	<view wx:if="{{item.goods_id}}" class="carts-item">
+		<view>
+			<!-- 缩略图 -->
+			<image class="carts-image" src="{{item.image}}" mode="aspectFill"/>
+		</view>
+		
+		<view class="carts-text">
+			<!-- 商品标题 -->
+			<text class="carts-title">{{item.goods_name}}</text>
+			<view class="carts-subtitle">
+				<!-- 价格 -->
+				<text>￥{{item.shop_price}}</text>
+			</view>
+
+            <view class="order-footer">
+		<text data-goods-id = "{{item.goods_id}}" bindtap="details" class="btn-pay">前去购买</text>
+
+		<text data-goods-id = "{{item.goods_id}}" bindtap="deleteGoods" class="btn-delete">删除</text>
+</view>
+
+
+		</view>
+        
+
+
+	</view>
+    <view wx:else style="margin-left:5rpx;font-size: 28rpx;">{{item}}</view>
+</view>
+<include src="/commons/tab/tab"/>

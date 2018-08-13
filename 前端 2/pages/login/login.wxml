@@ -1,0 +1,10 @@
+<!--pages/login/login.wxml-->
+<view class='container'>
+    <view class='conbox1'>
+        <image mode='widthFix' src='/images/topbg.png'></image>
+    </view>
+    <button class='conbox2'  open-type='getUserInfo' bindgetuserinfo='login'>
+        <image src='/images/wx.png'></image>
+        <text>微信快捷登录</text>
+    </button>
+</view>

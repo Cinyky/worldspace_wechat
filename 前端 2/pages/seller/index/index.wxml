@@ -1,0 +1,87 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="header {{scrollDown?'scrolled':''}}">
+        <view class="location ellipsis" bindtap="navigateToSearch">
+            <image class="icon" src="/images/dz.png"></image>{{address}}
+        </view>
+        <view class="search">
+            <image class="icon" src="/images/ss.png" ></image>
+            <input placeholder='请输入店铺名' placeholder-class='ph' bindblur='tapSearch'></input>
+        </view>
+    </view>
+    <scroll-view class='scrolly' scroll-y="true" bindscroll="onScroll">
+        <view class='bannerbox'>
+            <swiper indicator-color="#ccc" indicator-active-color="#e95a7a" indicator-dots="true" autoplay="true" interval="2000" circular="true" class="banner">
+                <block wx:for="{{banner}}" wx:key="">
+                    <swiper-item>
+                        <image mode='aspectFill' src="{{item.ad_code}}"  data-goods-id="{{item.ad_link}}"  bindtap="clickBanner"></image>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+        <view class="icons">
+            <block wx:for="{{store_class}}" wx:key="">
+            <view class="icon" bindtap="onClickClass" data-id="{{item.sc_id}}">
+               <block wx:if="{{item.sc_image}}">
+                  <image src="{{item.sc_image}}" mode="aspectFit"></image>
+                 </block>
+                <block wx:else>
+                  <image src="/images/default_category.png" mode="aspectFit"></image>
+                 </block>
+                <text wx:if="{{item.select == 1}}" style="color:red">{{item.sc_name}}</text>
+                <text wx:else>{{item.sc_name}}</text>
+            </view>
+            </block>
+            <view class="clearfix"></view>
+        </view>
+        <view class='sfsjbox'>
+            <view class='sjtop'>
+                <text>附近商家</text>
+            </view>
+            <view class="weui-navbar">
+                <block wx:for-items="{{tabs}}">
+                    <view class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" bindtap="swichNavtab" data-current="{{index}}">
+                        <text data-current="{{index}}">{{item}}</text>
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view class="weui-cells__title">
+          <block wx:for="{{stores}}" wx:key=""> 
+            <view class="main1">
+                <view class="maintop" bindtap='seller' data-store_id='{{item.store_id}}'>
+                    <view class="hotelloge">
+                        <image src="{{item.store_logo}}"></image>
+                        <text>{{item.sc_name}}</text>
+                    </view>
+                    <view class="txtbox">
+                        <view class='h3'>{{item.store_name}}</view>
+                        <!-- <view class="ys">
+                            <image src='/images/stars5.png'></image>| 4.8
+                            <text>月售2933</text>
+                        </view> -->
+                        <view class="price">{{item.store_address}}</view>
+                        <view class="price">
+                            <text>描述:{{item.store_desccredit}}</text>
+                            <text>描述:{{item.store_servicecredit}}</text>
+                            <text>描述:{{item.store_deliverycredit}}</text>
+                        </view>
+                    </view>
+                    <view class="prbox">
+                        <view class="juli"> {{item.dest}}</view>
+                    </view>
+                </view>
+                <view class='mainbtm'>
+                    <view class='btmview' wx:for="{{item.goods}}" wx:for-item="it" wx:key="" catchtap='showGoods' data-goods-id="{{it.goods_id}}">
+                        <image src='{{it.original_img}}'></image>
+                        <view class='des'>{{it.goods_name}}</view>
+                        <view class='price'>￥{{it.shop_price}}</view>
+                    </view>
+                    <view class='clearfix'></view>
+                </view>
+            </view>
+          </block>
+        </view>
+    </scroll-view>
+</view>
+<include src="/commons/tab/tab"/>

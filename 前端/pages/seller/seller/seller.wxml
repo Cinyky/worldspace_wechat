@@ -1,0 +1,229 @@
+<view class='container'>
+    <view class="header {{scrollDown?'scrolled':''}}">
+        <view class="location ellipsis" bindtap="navigateToSearch">
+            <image class="icon" src="/images/dz.png"></image>{{address}}
+        </view>
+        <view class="search">
+            <image class="icon" src="/images/ss.png"></image>
+            <input placeholder='请输入商品名' bindblur='tapSearch'></input>
+        </view>
+    </view>
+    <scroll-view class='scroll1' scroll-y="true" bindscroll="onScroll">
+        <view class='bannerbox'>
+            <swiper indicator-color="#ccc" indicator-active-color="#e95a7a" indicator-dots="true" autoplay="true" interval="2000" circular="true" class="banner" >
+                <swiper-item wx:for="{{store.store_slide}}">
+                    <image src="{{item}}"></image>
+                </swiper-item>
+            </swiper>
+        </view>
+        <view class="main1">
+            <view class="maintop">
+                <view class="hotelloge">
+                    <image src="{{store.store_logo}}"></image>
+                    <text>{{store.sc_name}}</text>
+                </view>
+                <view class="txtbox">
+                    <view class='h3'>{{store.store_name}}</view>
+                    <view class="ys">
+                        <!-- <image src='/images/stars5.png'></image>| 4.8 -->
+                        <text>销量:{{store.sales}}</text>
+                    </view>
+                    <!-- <view class="price">起送 ￥15 | 配送 ￥2</view> -->
+                </view>
+                
+                <view class='daohang'  data-name="{{store.store_name}}" data-address="{{store.store_address}}" bindtap="getAddress">
+                    <image src='/images/daohang.png'></image>
+                    <text>导航到店</text>
+                </view>
+                <view class="prbox">
+                    <view class="juli">{{store.time}}分钟 | {{store.dest}}</view>
+                </view>
+            </view>
+        </view>
+        <!-- <view class='saomaview'>
+            <image class='smimg' src='/images/sm.png'></image>
+            <view class='smview1'>
+                <text class='t11'>扫码闪购</text>
+                <text class='t12'>扫码商品轻松购物</text>
+            </view>
+            <view class='smview2'>
+                <view class='v21'>
+                    <text>1</text>自助扫码</view>
+                <view class='v21'>
+                    <text>2</text>微信支付</view>
+                <view class='v21'>
+                    <text>3</text>快速结算</view>
+                <view class='clearfix'></view>
+            </view>
+            <view class='smview3'>
+                <text>立即扫码</text>
+                <image src='/images/more0.png'></image>
+            </view>
+        </view> -->
+        <view class='mainbox'>
+            <view class='retitie'>
+                <view class='allbtn' bindtap='addlistshow'>{{addData}}<image src='/images/icon_xl.png'></image></view>
+                <view class="top-bar">
+                    <view class="flex-row sort-bar">
+                    <view bindtap="tapSubMenu" class="flex-grow-1 flex-x-center flex-row sort-item {{sort==0?'active':''}}" data-default_sort_type="0" data-sort="0">
+                        <view class="flex-y-center">价格</view>
+                        <view class="flex-y-center sort-icon-box">
+                        <view>
+                            <view>
+                            <block wx:if="{{sort==0&&sort_type==0}}">
+                                <image class="sort-icon-up" src="/images/icon-sort-up-active.png"></image>
+                            </block>
+                            <block wx:else>
+                                <image class="sort-icon-up" src="/images/icon-sort-up.png"></image>
+                            </block>
+                            </view>
+                            <view>
+                            <block wx:if="{{sort==0&&sort_type==1}}">
+                                <image class="sort-icon-up" src="/images/icon-sort-down-active.png"></image>
+                            </block>
+                            <block wx:else>
+                                <image class="sort-icon-up" src="/images/icon-sort-down.png"></image>
+                            </block>
+                            </view>
+                        </view>
+                        </view>
+                    </view>
+                    <view bindtap="tapSubMenu" class="flex-grow-1 flex-x-center flex-row sort-item {{sort==1?'active':''}}" data-default_sort_type="0" data-sort="1">
+                        <view class="flex-y-center">销量</view>
+                        <view class="flex-y-center sort-icon-box">
+                        <view>
+                            <view>
+                            <block wx:if="{{sort==1&&sort_type==0}}">
+                                <image class="sort-icon-up" src="/images/icon-sort-up-active.png"></image>
+                            </block>
+                            <block wx:else>
+                                <image class="sort-icon-up" src="/images/icon-sort-up.png"></image>
+                            </block>
+                            </view>
+                            <view>
+                            <block wx:if="{{sort==1&&sort_type==1}}">
+                                <image class="sort-icon-up" src="/images/icon-sort-down-active.png"></image>
+                            </block>
+                            <block wx:else>
+                                <image class="sort-icon-up" src="/images/icon-sort-down.png"></image>
+                            </block>
+                            </view>
+                        </view>
+                        </view>
+                    </view>
+                    <view bindtap="tapSubMenu" class="flex-grow-1 flex-x-center flex-row sort-item {{sort==2?'active':''}}" data-default_sort_type="0" data-sort="2">
+                        <view class="flex-y-center">最新</view>
+                        <view class="flex-y-center sort-icon-box">
+                        <view>
+                            <view>
+                            <block wx:if="{{sort==2&&sort_type==0}}">
+                                <image class="sort-icon-up" src="/images/icon-sort-up-active.png"></image>
+                            </block>
+                            <block wx:else>
+                                <image class="sort-icon-up" src="/images/icon-sort-up.png"></image>
+                            </block>
+                            </view>
+                            <view>
+                            <block wx:if="{{sort==2&&sort_type==1}}">
+                                <image class="sort-icon-up" src="/images/icon-sort-down-active.png"></image>
+                            </block>
+                            <block wx:else>
+                                <image class="sort-icon-up" src="/images/icon-sort-down.png"></image>
+                            </block>
+                            </view>
+                        </view>
+                        </view>
+                    </view>
+                    <view bindtap="tapSubMenu" class="flex-grow-1 flex-x-center flex-row sort-item {{sort==3?'active':''}}" data-default_sort_type="0" data-sort="3">
+                        <view class="flex-y-center">评价</view>
+                        <view class="flex-y-center sort-icon-box">
+                        <view>
+                            <view>
+                            <block wx:if="{{sort==3&&sort_type==0}}">
+                                <image class="sort-icon-up" src="/images/icon-sort-up-active.png"></image>
+                            </block>
+                            <block wx:else>
+                                <image class="sort-icon-up" src="/images/icon-sort-up.png"></image>
+                            </block>
+                            </view>
+                            <view>
+                            <block wx:if="{{sort==3&&sort_type==1}}">
+                                <image class="sort-icon-up" src="/images/icon-sort-down-active.png"></image>
+                            </block>
+                            <block wx:else>
+                                <image class="sort-icon-up" src="/images/icon-sort-down.png"></image>
+                            </block>
+                            </view>
+                        </view>
+                        </view>
+                    </view>
+                    </view>
+                </view>
+            </view>
+            <view class='main0' wx:for="{{goodsList}}" wx:key="{{index}}" bindtap='showGoods' data-goods-id="{{item.goods_id}}">
+                <image class='proimg' mode='aspectFill' src='{{item.original_img}}'></image>
+                <view class='prodes'>{{item.goods_name}}</view>
+                <view class='yishou'>
+                    <text>库存:{{item.store_count}}</text>
+                    <text>点击数:{{item.click_count}}</text>
+                </view>
+                <view class='price'>￥{{item.shop_price}}</view>
+                <image src="/images/cart_img.png" catchtap="addtocart"  class="cart_img"  data-goods="{{item.goods_id}}"></image>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<!-- 弹出购物车 -->
+     <view class="zhezhao" hidden="{{flag}}">
+      <view class="content">
+        <view class="goodmes">
+          <image src="{{goodsone.goods.original_img}}"></image>
+          <view class="gooddtl">
+            <text class="gooddes">{{goodsone.goods.goods_name}}</text>
+            <text class="goodprice">￥{{spec_price}}</text>
+          </view>
+          <view class="btn1" bindtap="b">
+            <icon type="clear" size="18" />
+          </view>
+        </view>
+
+        <scroll-view scroll-y="true" class="scrollview">
+          <view class="content2" wx:for-index="pos"  wx:for="{{goodsone.goods.goods_spec_list}}" >
+            <text class="contrnt2title">{{item[0].spec_name}}</text>
+            <view class="contenttext">
+              <text  data-index="{{pos}}" data-pos="{{index}}" class="{{textStates[item.isClick]}}" bindtap="propClick"  wx:for="{{item}}"> {{item.item}}</text>
+            </view>
+          </view>
+
+          <view class="content3">
+            <text>数量</text>
+            <view class="stepper">
+              <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+              <input type="number" bindchange="bindManual" value="{{num}}" />
+              <text class="normal" bindtap="bindPlus">+</text>
+            </view>
+          </view>
+      
+        </scroll-view>
+        <view class="content4">
+          <view class="zj">总价：
+            <text>￥{{price}}</text>
+          </view>
+          <view class="jgw"  bindtap="addCartdone">加入购物车</view>
+          <view class="gm" bindtap="buy" >马上购买</view>
+        </view>
+      </view>
+    </view>
+     <view class='addDataview' hidden='{{thishid}}'>
+        <view class='addData'>
+            <view class='listtit'>选择分类<image class='thisclose' bindtap='thistap' src='/images/icon-close.png'></image></view>
+            <scroll-view scroll-y="true" class='tab-list'>
+                <block wx:for-items="{{tabs}}" wx:key="unique">
+                    <view class="tab {{currentTab==index ? 'on' : ''}}" bindtap="swichtab" data-current="{{index}}">{{item.name}}({{item.num}})</view>
+                </block>
+            </scroll-view>
+        </view>
+     </view>
+      <view id='share' bindtap="showShareModal">
+            <image src='/images/icon-topic-share.png'></image>
+      </view>

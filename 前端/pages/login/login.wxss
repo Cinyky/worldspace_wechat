@@ -1,0 +1,30 @@
+/* pages/login/login.wxss */
+.container{
+    background-color: #fcfefa;
+    height: 100%;
+}
+.conbox1{
+    margin-bottom: 220rpx;
+}
+.conbox1 image{
+    width: 100%;
+}
+.conbox2{
+    width: 600rpx;
+    height: 92rpx;
+    line-height: 92rpx;
+    margin: 0 auto;
+    background-color: #6bbe52;
+    border-radius: 120rpx;
+}
+.conbox2 image{
+    width: 52rpx;
+    height: 52rpx;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 12rpx;
+}
+.conbox2 text{
+    font-size: 32rpx;
+    color: #fff;
+}

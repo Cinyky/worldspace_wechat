@@ -1,0 +1,226 @@
+/**index.wxss**/
+page{
+    background-color: #f7f7f7;
+    height: 100%;
+}
+.container{
+    padding-top: 96rpx;
+    height: 100%;
+    box-sizing: border-box;
+}
+.scrolly{
+	height: 100%;
+}
+.header{
+	position: fixed;
+	display: -webkit-flex;
+	left: 0;
+	top: 0;
+	width: 100%;
+	padding: 20rpx;
+	box-sizing: border-box;
+	z-index: 1;
+	-webkit-transition: background 0.5s ease-in-out;
+    background-color: #fff;
+}
+.header.scrolled {
+	background-color: #e95a7a;
+}
+.header .icon {
+	width: 40rpx;
+	height: 40rpx;
+    display: inline-block;
+	vertical-align:middle;
+}
+.header .location{
+	color: #fff;
+	font-size: 28rpx;
+	height:56rpx;
+    line-height:56rpx;
+    min-width: 100rpx;
+	max-width: 320rpx;
+	padding: 0 16rpx 0 8rpx;
+	border-radius: 30rpx;
+	background: rgba(0,0,0,0.2);
+	margin-right: 20rpx;
+	vertical-align: middle;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.header .search{
+	-webkit-flex: 1;
+	color: #888;
+    background-color: #f3f3f3;
+	font-size: 28rpx;
+	border-radius: 30rpx;
+    padding: 0 20rpx;
+}
+.header .search input{
+    display: inline-block;
+    height:56rpx;
+    text-overflow:clip;
+    overflow:hidden;
+    white-space:nowrap;
+    font-family:UICTFontTextStyleBody;
+    min-height:56rpx;
+    width: 80%;
+    vertical-align: middle;
+    margin-left: 10rpx;
+}
+.bannerbox{
+    padding: 0 20rpx;
+    background-color: #fff;
+}
+.banner{
+  width: 100%;
+  height:292rpx;
+}
+.banner image {
+  width: 100%;
+  height: 292rpx;
+}
+.icons{
+  padding:12rpx 20rpx;
+  background-color: #fff;
+}
+.icons .icon{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  float: left;
+  width: 25%;
+  margin: 12rpx 0;
+}
+.icons .icon image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 12rpx;
+}
+.sjtop{
+    padding: 20rpx;
+}
+.sjtop text{
+    border-left: 3px solid #e95a7a;
+    padding-left: 16rpx;
+    display: block;
+    line-height: 30rpx;
+}
+
+.weui-navbar {
+    width: 100%;
+    line-height: 72rpx;
+    box-sizing: border-box;
+    white-space: nowrap;
+    z-index: 100;
+    background-color: #fff;
+    border-bottom: 1px solid #f2f2f2;
+}
+.weui-navbar .swiper-tab-list {
+    display: inline-block;
+    text-align: center;
+    width: 33.3%;
+}
+.weui-navbar .on text{
+    color: #e95a7a;
+    border-bottom: 1px solid #e95a7a;
+    padding-bottom: 16rpx;
+}
+.main1{
+    border-bottom: 1px solid #f2f2f2;
+    background-color: #fff;
+}
+.main1 .maintop{
+	padding:20rpx 20rpx 20rpx 166rpx;
+	position:relative;
+    height: 180rpx;
+}
+.main1:last-child{
+	border-bottom: none;
+}
+.hotelloge{
+	width: 140rpx;
+	height:140rpx;
+	border-radius: 50%;
+	box-sizing: border-box;
+	border: 1px solid #f7f7f7;
+    position: absolute;
+    top: 20rpx;
+    left: 20rpx;
+    
+}
+.hotelloge image{
+	width: 100%;
+	height: 100%;
+}
+.hotelloge text{
+    background-color: rgba(233, 90, 122, 0.9);
+    color: #fff;
+    padding: 2rpx 0;
+    font-size: 24rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 106rpx;
+    text-align: center;
+}
+.txtbox{
+	margin-left: 12rpx;
+}
+.txtbox .h3{
+	color: #333;
+	line-height: 52rpx;
+}
+.txtbox .ys{
+	color: #999;
+	font-size: 24rpx;
+	line-height: 40rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 8rpx;
+}
+.txtbox .ys text{
+    margin-left: 16rpx;
+}
+.txtbox .ys image{
+    width: 156rpx;
+    height: 30rpx;
+    margin-right: 12rpx;
+}
+.txtbox .price,.prbox .juli{
+	font-size: 24rpx;
+	color: #999;
+	line-height: 20px;
+}
+.prbox{
+	position: absolute;
+	right: 20rpx;
+	top: 70rpx;
+	color: #999;
+	font-size: 24rpx;
+}
+.mainbtm{
+    padding: 0 14rpx 10rpx 16rpx;
+}
+.mainbtm .btmview{
+    width: 220rpx;
+    margin: 10rpx;
+    float: left;
+}
+.mainbtm .btmview image{
+    width: 220rpx;
+    height: 220rpx;
+}
+.mainbtm .btmview .des{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    line-height: 40rpx;
+    margin: 12rpx 0 4rpx;
+}
+.mainbtm .btmview .price{
+    color: #e95a7a;
+    font-size: 32rpx;
+    line-height: 40rpx;
+}

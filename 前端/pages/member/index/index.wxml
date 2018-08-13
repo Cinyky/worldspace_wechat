@@ -1,0 +1,82 @@
+<view class="container">
+    <view class='userban'>
+        <image class='bgimg' src="{{usercenter.bg_images}}"></image>
+        <view class='hbg'></view>
+        <view class="userinfo">
+                <image class="userinfo-avatar" src="{{usercenter.head_pic}}" background-size="cover"></image>
+                <text class="userinfo-nickname">{{usercenter.nick_name}}</text>
+        </view>
+        <view class='zhyebox'>
+            
+            <view class='yebox'>
+            <navigator url="/pages/member/money/money" >
+                <text>余额</text>
+                <text class='shul'>{{moneys}}</text>
+                </navigator>
+            </view>
+             
+            <view class='jfbox'>
+                <navigator url="/pages/member/point/point" >
+                <text>积分</text>
+                <text class='shul'>{{pay_point}}</text>
+                 </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="orderbox">
+        <view class="ordertop" bindtap='orderlist'>
+            <view class="otl">我的订单</view>
+            <view class="otr"  bindtap="navigateToOrder">
+                <text>查看全部</text>
+                <image src="/images/icon_more.png"></image>
+            </view>
+        </view>
+        <view class="ordermain">
+            <view class="main0" bindtap="navigateToOrder"  data-index="1">
+                <image src="/images/icon_or1.png"></image>
+                <text>待支付</text>
+                <view class='dian' hidden='{{usercenter.waitPay==0}}'>{{usercenter.waitPay}}</view>
+            </view>
+            <view class="main0" bindtap="navigateToOrder"  data-index="2">
+                <image src="/images/icon_or2.png"></image>
+                <text>待发货</text>
+                <view class='dian' hidden='{{usercenter.waitSend==0}}'>{{usercenter.waitSend}}</view>
+            </view>
+            <view class="main0" bindtap="navigateToOrder"  data-index="3">
+                <image src="/images/icon_or3.png"></image>
+                <text>待收货</text>
+                <view class='dian' hidden='{{usercenter.waitReceive==0}}'>{{usercenter.waitReceive}}</view>
+            </view>
+            <view class="main0" bindtap="navigateToEvaluate"  data-index="1">
+                <image src="/images/icon_or4.png"></image>
+                <text>待评价</text>
+                 <view class='dian' hidden='{{usercenter.waitcomment==0}}'>{{usercenter.waitcomment}}</view> 
+            </view>
+            <view class="main0" bindtap="navigateToOrder"  data-index="5">
+                <image src="/images/icon_or5.png"></image>
+                <text>售后</text>
+                <view class='dian' hidden='{{usercenter.aftersale==0}}'>{{usercenter.aftersale}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="options-list" style="background-color: #fff;">
+        <view class="flex-row" style="flex-wrap: wrap">
+
+            <view class="option-item flex-grow-0 style" wx:for="{{nav_user}}" wx:key="">
+              <navigator url="{{item.url}}" open-type="{{item.open_type}}" hover-class="other-navigator-hover">
+                <view class="flex-x-center">
+                  <image class="option-icon" src="{{item.ad_code}}"></image>
+                </view>
+              </navigator>
+              <view class="text-more-2" style="text-align: center">{{item.name}}</view>
+            </view>
+
+        </view>
+    </view>
+    <button open-type="contact">
+    <view class='kefubox'>
+        <image src='/images/kefu.png'></image>
+    </view>
+      </button>
+      <include src="/commons/tab/tab"/>
+</view>

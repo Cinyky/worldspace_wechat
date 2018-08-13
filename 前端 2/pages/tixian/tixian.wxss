@@ -1,0 +1,51 @@
+.container{
+  display: block;
+  padding: 0 32rpx;
+  color: #666;
+}
+.topview{
+  margin-bottom: 20rpx;
+}
+.topview .topl{
+  float: left;
+}
+.topview .topr{
+  float: right;
+  font-size: 16px;
+}
+.clearfix{
+  clear: both;
+}
+input{
+  background-color: #f7f7f7;
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 100%;
+  text-align: left;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+.zhu{
+  margin-top: 20rpx;
+  color: #999;
+  font-size: 13px;
+}
+button{
+  margin-top: 60rpx;
+  background-color: #fff;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  border:1px solid #ff6666;
+  color: #ff6666;
+}
+.topview{
+  margin-bottom: 20rpx;
+  font-size: 14px;
+  padding-top: 20rpx;
+}
+.ziti{
+  margin-bottom: 20rpx;
+  font-size: 14px;
+  padding-top: 20rpx;
+}

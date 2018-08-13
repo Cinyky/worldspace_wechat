@@ -1,0 +1,87 @@
+<view class="class-tab">
+  <text bindtap="tabClick" data-index="0" class="{{tabClasss[0]}}">全部</text>
+  <text bindtap="tabClick" data-index="1" class="{{tabClasss[1]}}">拼团中</text> 
+  <text bindtap="tabClick" data-index="2" class="{{tabClasss[2]}}">拼团成功</text>
+  <text bindtap="tabClick" data-index="3" class="{{tabClasss[3]}}">拼团失败</text> 
+</view>
+<view wx:if="{{length > 0}}" class="order-item" wx:for="{{orders}}" wx:key="">
+
+   <view class="view-title">
+   <text style="color:red;" wx:if="{{item.pint_status==0}}">拼团中，还差{{item.pint_user_num - item.pint_user_num_now}}人成团 
+   </text>
+   <!-- <text wx:if="{{item.pint_status==0}}">剩{{time[item.pint_id].d}}天{{time[item.pint_id].h}}小时{{time[item.pint_id].m}}分钟{{time[item.pint_id].s}}秒</text> -->
+   <text style="color:blue;" wx:if="{{item.pint_status==1}}">拼团成功</text>
+   <text style="color:black;" wx:if="{{item.pint_status==2}}">拼团失败</text>
+   </view>
+	<!-- <view wx:for="{{item.goods_list}}" wx:for-item="mapping" wx:key="" class="carts-item" bindtap="details" data-index="{{index}}"> -->
+	<view class="carts-item">
+		<view class='cartsimgview'>
+			<!-- 缩略图 -->
+			<image class="carts-image" src="{{item.original_img}}" mode="aspectFill"/>
+		</view>
+		<view class="carts-text">
+			<!-- 商品标题 -->
+			<text class="carts-title">{{item.goods_name}}</text>
+			<view class="carts-subtitle">
+				<!-- 价格 -->
+				<text>{{item.spec_key_name}}</text>
+			</view>
+		</view>
+        <view class="carts-right">
+		 <text class="carts-price">￥{{item.member_goods_price}}</text>
+				<text class="carts-num">x{{item.goods_num}}</text> 
+
+
+		</view>
+		</view>
+
+
+	<view class="order-footer1">
+		<text style="color:black">合计：</text>
+		<text style="color:red">￥{{item.order_amount}}</text>
+	</view>
+
+	<!-- <view wx:if="{{item.pay_status == 0 && item.order_status == 0}}" class="order-footer2"> -->
+	<view class="order-footer2">
+		<text class="btn-cancel" bindtap="details" data-index="{{item.order_id}}">查看订单</text>
+		<!-- <button class="btn-pay" data-pint_id="{{item.pint_id}}" data-goods_id="{{item.goods_id}}" openType="share">邀好友拼团</button> -->
+		<text class="btn-pay" bindtap="group" data-pint_id="{{item.pint_id}}">拼团详情</text>
+ </view> 
+
+
+
+
+
+
+
+
+<view wx:if="{{length == 0}}">
+    还没有相关订单哦
+    去开团
+</view>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <view wx:elif="{{item.order_status == 1}}" class="order-footer2">
+    <block wx:if="{{item.shipping_status == 1}}" >
+		<text class="btn-pay" data-index="{{index}}" bindtap="confirm">收货确认</text>
+    <text class="btn-pay" bindtap="checkLogistic" data-index="{{index}}">查看物流</text>
+    </block>
+    <text class="btn-pay" bindtap="details" data-index="{{index}}">查看订单</text>
+    
+
+</view>
+     <view wx:elif="{{item.order_status == 4}}" class="order-footer2">
+	 <text class="btn-pay" bindtap="details" data-index="{{index}}">查看订单</text>
+	 </view>
+     <view wx:else class="order-footer">
+	 </view> -->
+</view>

@@ -1,0 +1,99 @@
+<!--pages/pt/index.wxml-->
+<!-- //  顶部导航 -->
+<!-- <include src="../commons/cat/cat.wxml"/> -->
+<scroll-view class='group-top scroll-view-x'>
+    <view class='flex-row flex-y-center'>
+        <!-- <navigator open-type='navigate' url='/pages/pt/search/search' class='search-icon flex-grow-0 flex-y-center flex-x-center'>
+            <image src='/images/serach-index-icon.png'></image>
+        </navigator> -->
+        <view style='height:48rpx;border-right: 1rpx solid #e2e2e2;'>
+        </view>
+        <view class='flex-grow-1'>
+            <scroll-view scroll-x="true" class="scroll-view-x" scroll-with-animation="true" scroll-left="{{scrollLeft}}">
+                
+                 <block wx:for="{{cat}}" wx:key="unique"> 
+                     <view data-id="{{item.id}}" class="scroll-view-item {{cid==item.id ? 'active' : ''}}" bindtap="switchNav">
+                        {{item.name}}
+                    </view> 
+                </block>
+            </scroll-view>
+        </view>
+    </view>
+</scroll-view>
+
+<include src="/commons/navbar/navbar" />
+<scroll-view class="after-navber" scroll-y style="height: 100%;" bindscrolltolower="pullDownLoading" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <!-- Banner 开始 -->
+    <swiper class="banner" autoplay="true" interval="5000" duration="300" indicator-dots="true" circular="true" indicator-active-color="#ff5c5c">
+        <block wx:for="{{banner}}">
+            <swiper-item>
+                <navigator>
+                    <image src="{{item}}" class="slide-image" mode="aspectFill" />
+                </navigator>
+            </swiper-item>
+        </block>
+    </swiper>
+    <!-- Banner 结束 -->
+    <!--    advert  start   -->
+    <!-- <view class='advert' wx:if="{{ad && ad.length>0}}">
+
+        <view class='division'> </view>
+        <block wx:if="{{ad.length==1}}">
+            <view class="user-block" style="height: auto">
+                <navigator style="display:block;font-size: 0;width: 100%;height: auto;" bindtap="navigatorClick" data-url="{{ad[0].url}}" data-open_type="{{ad[0].open_type}}" url="{{ad[0].url}}">
+                    <image src="{{ad[0].pic_url}}" mode="widthFix" style="width: 100%;"></image>
+                </navigator>
+            </view>
+        </block>
+
+    </view> -->
+    <!--    advert  end    -->
+    <view class='division'> </view>
+
+    <block wx:for="{{goods}}">
+        <!-- <view class='list-item flex-row' data-gid='{{item.id}}' bindtap='goDetails'> -->
+        <navigator url="/pages/pint/details/details?gid={{item.goods_id}}" open-type="navigate" class='list-item flex-row'>
+            <view class='flex-grow-0 corver-pic'>
+                <image lazy-load="true" src='{{item.original_img}}'></image>
+            </view>
+            <view class='flex-grow-1 flex-col'>
+                <view class='flex-grow-1 goods-title'>
+                    {{item.goods_name}}
+                </view>
+                <view class='flex-grow-0 flex-row'>
+                    <view class='group-item' wx:if='{{item.groupList[0]}}'>
+                        <!-- <view wx:for='{{item.groupList}}' wx:for-item="group"> -->
+                            <image src='{{item.original_img}}'></image>
+                        <!-- </view> -->
+                    </view>
+                    <view class='goods-sales'>
+                        已团 {{item.pt_numed}} 件
+                    </view>
+                </view>
+                <view class='flex-grow-0 flex-row flex-y-bottom'>
+                    <view class='flex-grow-0 price flex-row flex-y-bottom'>
+                        <view class='unit flex-grow-0 flex-y-bottom'>
+                            ¥
+                        </view>
+                        <view class='flex-grow-1 flex-y-bottom'>{{item.pt_price}}</view>
+                    </view>
+                    <view class='flex-grow-1 old-price flex-y-bottom'>
+                        ¥ {{item.shop_price}}
+                    </view>
+                    <view class='flex-grow-0 group-btn flex-x-center flex-y-center'>
+                        去开团
+                    </view>
+                </view>
+            </view>
+        </navigator>
+    </block>
+    <view class="loading-bar {{show_loading_bar?'active':''}}" style="text-align: center;{{emptyGoods==1?'display:none':''}}">
+        <image style="width: 160rpx;height: 80rpx" src="/images/loading.svg"></image>
+    </view>
+    <view class="empty-bar flex-row flex-x-center flex-y-center" style="{{emptyGoods!=1?'display:none':''}}">
+        没有更多商品了~
+    </view>
+</scroll-view>
+
+<include src="/commons/get-coupon/get-coupon.wxml" />
+<include src="/commons/float-icon/float-icon.wxml" />

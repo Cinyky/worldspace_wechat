@@ -1,0 +1,69 @@
+<view class='container'>
+    <view class='signview'>
+        <image class='bbg' src='/images/bbg.png'></image>
+        <view class='jfview'>
+            <text>{{jifen_num}}</text>积分
+        </view>
+        <navigator class='store' url="/pages/credit/credit">积分商城</navigator>
+        <view class='signbtn' bindtap="{{disabled==false?'signin':''}}">
+            <image src='/images/signbtn.png'></image>
+            <view class='txtview'>
+                <view class='t1'>{{dataqd}}</view>
+                <view class='line'></view>
+                <view class='t2'>连续{{datalq}}天</view>
+            </view>
+        </view>
+        <view class='tishi'>{{dataqdts}}</view>
+    </view>
+    <view class='jiproview'>
+        <view class='protop'>
+            <view class='leftv'><image src='/images/tuihuan.png'></image>积分兑换</view>
+            <navigator class='rightv' url="/pages/credit/credit">查看更多<image src='/images/gengduo.png'></image></navigator>
+            <view class='clearfix'></view>
+        </view>
+        <view class='promain' wx:for="{{goods}}">
+             <navigator class='proview' url="../credit/detail/detail?objectId={{item.goods_id}}">
+                <image mode='widthFix' src='{{item.original_img}}'></image>
+                <text>{{item.jifen_price}}积分兑换</text>
+            </navigator> 
+            <!-- <navigator class='proview'>
+                <image mode='widthFix' src='/images/jfimg.png'></image>
+                <text>620积分兑换</text>
+            </navigator> -->
+            <!-- <navigator class='proview'>
+                <image mode='widthFix' src='/images/jfimg.png'></image>
+                <text>620积分兑换</text>
+            </navigator> -->
+            <view class='clearfix'></view>
+        </view>
+    </view>
+    <view class="selected_date">
+        <view bindtap="preMonth" style="text-align:right;">
+            <image class="select_icon" src="/images/left.png"></image>
+        </view>
+        <view class="text_center">{{curYear+'-'+curMonth}}</view>
+        <view style="text-align:left;" bindtap="nextMonth">
+            <image class="select_icon" src="/images/right.png"></image>
+        </view>
+    </view>
+    <view class="calendar_panel">
+        <view class="calendar_box">
+            <view class="weekday_label">日</view>
+            <view class="weekday_label">一</view>
+            <view class="weekday_label">二</view>
+            <view class="weekday_label">三</view>
+            <view class="weekday_label">四</view>
+            <view class="weekday_label">五</view>
+            <view class="weekday_label">六</view>
+        </view>
+           <view class="calendar_box" wx:for="{{dateList}}" wx:key="unique" wx:for-item="week" style="{{index==0?'justify-content: flex-end;':''}}">
+       
+            <view class="weekday_label" wx:for="{{week}}" wx:key="unique">
+             
+                <text  class="{{item.active ?'active_date':''}}" bindtap="selectDate" data-date="{{item}}" >{{item.date}}</text>
+             
+            </view>
+        </view>
+    </view>
+</view>
+<include src="/commons/tab/tab"/>

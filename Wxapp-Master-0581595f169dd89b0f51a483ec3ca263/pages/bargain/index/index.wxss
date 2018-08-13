@@ -1,0 +1,220 @@
+@import "../common.wxss";
+@import "/css/DuoguanBargain/DuoguanBargain-template-default.wxss";
+
+.commdityList:only-child {
+  border-radius: 0;
+  margin: 0 -20rpx;
+  padding-top: 20rpx;
+  overflow: hidden;
+}
+
+.commdityList:only-child .commdityItem {
+  margin: 0 0 30rpx 0;
+  width: auto;
+}
+
+.commdityList:only-child .commInfo {
+  padding: 30rpx;
+}
+
+.commdityList:only-child .commNav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.commdityList:only-child .comPicBox {
+  height: 450rpx;
+}
+
+/* 轮播图 */
+
+.swiper {
+  position: relative;
+  width: auto;
+  height: 345rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper swiper {
+  height: 100%;
+  width: 100%;
+}
+
+.wx-swiper-dots.wx-swiper-dots-horizontal {
+  bottom: -10rpx;
+}
+
+.swiper .wx-swiper-dot {
+  width: 16rpx;
+  display: inline-flex;
+  height: 12rpx;
+}
+
+.swiper .wx-swiper-dot::before {
+  content: '';
+  flex-grow: 1;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20rpx;
+}
+
+.swiper .wx-swiper-dot-active {
+  width: 28rpx;
+}
+
+.swiper .wx-swiper-dot-active::before {
+  background: #fff;
+}
+
+
+
+/*分类tab  */
+
+.tabBox {
+  width: auto;
+  background: #fff;
+  border-radius: 10rpx;
+  max-height: 368rpx;
+  overflow: hidden;
+}
+
+.tab_2 .tab {
+  width: 50%;
+}
+
+.tab_3 .tab {
+  width: 33.3333333333%;
+}
+
+.tab_4 .tab {
+  width: 25%;
+}
+
+.tab {
+  display: inline-block;
+  width: 20%;
+  padding: 20rpx 0;
+  text-align: center;
+}
+
+.tab:active {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 8rpx;
+}
+
+.inTabPic {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  margin-bottom: 4rpx;
+}
+
+/*列表  */
+
+.navbar{
+  background-color: #fff;
+  margin-bottom: 10rpx;
+}
+
+.navbar .sub{
+  padding:30rpx 0;
+}
+.navbar .topTab_on{
+  font-weight: 700;
+}
+.navbar .topTab_on::after{
+  width: 250rpx;
+   animation: short 0.2s linear forwards 
+}
+@keyframes short{
+  0%{
+    width: 200rpx;
+  }
+  100%{
+    width: 100rpx;
+  }
+}
+.navbar .navTab{
+  position: relative;
+  line-height: 1;
+}
+.navbar .wedget{
+  position: absolute;
+  top: 20rpx;
+  right: 32rpx;
+  z-index: 1;
+  font-size: 10px;
+  padding: 0 4px;
+  line-height: 12px;
+  color: #fff;
+  border-radius: 6rpx;
+  background-color: #f66;
+
+}
+
+.commdityList{
+  /* padding: 0 20rpx; */
+}
+
+.commdityItem {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+
+.commInfo {
+  padding: 30rpx;
+}
+
+
+
+.scrollToTop{
+  padding-top: 120rpx;
+}
+.scrollToTop  .navbar{
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+}
+
+/*客服悬窗  */
+
+.concatBtn {
+  position: fixed;
+  z-index: 1;
+  bottom: 80rpx;
+  right: 30rpx;
+  width: 92rpx;
+  height: 92rpx;
+  line-height: 92rpx;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 50rpx;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.concatBtn::after {
+  border: none;
+}
+
+.concatBtn:active {
+  opacity: 0.75;
+}
+.concatBtn.toTop{
+  bottom: 192rpx;
+}

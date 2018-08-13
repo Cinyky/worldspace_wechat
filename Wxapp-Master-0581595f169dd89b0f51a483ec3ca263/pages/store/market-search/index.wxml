@@ -1,0 +1,108 @@
+<!--pages/store/market-search/index.wxml-->
+<view class="top-search">
+  <view class="search-box">
+    <text class="mr10 iconfont icon-search"></text>
+    <input class="search-inp" placeholder="搜索" value='{{keywords}}' bindinput="setCon" confirm-type="search" bindconfirm="searchCon" placeholder-style="font-size:14px" />
+  </view>
+  <button class="search-btn" bindtap='btnSearch'>搜索</button>
+</view>
+
+<view class="search-tab">
+  <view class="search-tab-item {{search_type==1?'active':''}}" data-stype="1" bindtap='changeSearchType'>店铺</view>
+  <view class="search-tab-item {{search_type==2?'active':''}}" data-stype="2" bindtap='changeSearchType'>商品</view>
+</view>
+
+<!-- 搜索列表 -->
+<view class="shop-search-item">
+
+
+  <block wx:if="{{search_type==1 && storeArr.length>0}}" wx:for="{{storeArr}}" wx:for-item="good">
+    <view class="shop-list flex gridXb" data-store_id="{{good.store_id}}" bindtap='toStoreInfo'>
+
+      <view class="shop-list-img mr10">
+        <image src="{{good.store_logo}}" mode="aspectFill"></image>
+      </view>
+
+      <view class="sub">
+        <view class="flex">
+          <view class="sub lineText">
+
+            <view class="shop-activity-box">
+              <block wx:if="{{good.card_count>0}}">
+                <text class='shop-activity'>劵</text>
+              </block>
+            </view>
+
+            <view class="shop-title"> {{good.store_name}}</view>
+          </view>
+
+        </view>
+        <view class="flex mt5 f14">
+          <view class="grey">{{good.store_grade}}分 | {{good.commentNum}} 条评论</view>
+          <view class="shop-tag sub grey tr ml5">
+            <block wx:for="{{good.store_fuwu}}" wx:for-item="fuwuItem">
+              <text class="lineText" wx:if="{{fuwuItem}}">{{fuwuItem}}</text>
+            </block>
+          </view>
+        </view>
+        <view class="flex linght f12 shop-adress mt5">
+          <view class="lineText sub">
+            <text class="iconfont icon-locationfill"></text> {{good.store_address}}</view>
+          <view class="">{{good.store_julimi}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{search_type==2 && goodsArr.length>0}}" wx:for="{{goodsArr}}" wx:for-item="good">
+
+    <view class="shop-list gridXb">
+      
+      <!-- 门店信息 -->
+      <view class="flex mb15" data-store_id="{{good.store_id}}" bindtap='toStoreInfo'>
+        <view class="shop-list-logo mr10">
+          <image src="{{good.store_logo}}" mode="aspectFill"></image>
+        </view>
+        <view class="sub">
+          <view class="lineText">
+            <view class="shop-activity-box">
+               <block wx:if="{{good.card_count>0}}">
+                <text class='shop-activity'>劵</text>
+              </block>
+            </view>
+            <view class="shop-title">{{good.store_name}}</view>
+          </view>
+          <view class="flex linght f12 shop-adress mt5">
+            <view class="lineText sub">
+              <text class="iconfont icon-locationfill"></text> {{good.store_address}}</view>
+            <view class="">{{good.store_julimi}}</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 商品信息 -->
+      <block wx:for="{{good.goods}}" wx:for-item="gd">
+      <view class="search-goods-item flex" data-store_id="{{good.store_id}}" bindtap='toStoreGoodsInfo'>
+        <view class="shop-list-img mr10">
+          <image class="img" src="{{gd.g_img}}" mode="aspectFill"></image>
+        </view>
+        <view class="sub">
+          <view class="goods-name lineText">{{gd.g_name}}</view>
+          <view class="grey f12">销量{{gd.sale_all_num}}</view>
+          <view class="new-price mt10">￥{{gd.shop_price}}</view>
+        </view>
+      </view>
+      </block>  
+
+      <view class="more-goods">查看更多</view>
+    </view>
+
+  </block>
+
+
+
+
+
+
+
+</view>

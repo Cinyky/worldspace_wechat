@@ -1,0 +1,60 @@
+<scroll-view scroll-x="true" class="sc-header">
+    <view class="view-header">
+       <view wx:for="{{store_class}}">
+       <text bindtap="onClickClass" wx:if="{{item.select == 1}}" style="color:red" data-id="{{item.sc_id}}">{{item.sc_name}}</text>
+       <text bindtap="onClickClass" wx:else data-id="{{item.sc_id}}">{{item.sc_name}}</text>
+       </view>
+       
+    </view>
+  </scroll-view>
+
+<view class="seller-item" wx:for="{{stores}}">
+   <view class="seller-info">
+       <image mode="aspectFill" src="{{item.store_logo}}"></image>
+       <view class="seller-info-right">
+           <text>店铺:{{item.store_name}}</text>
+           <text style="color:#666;">地址:{{item.store_address}}</text>
+       </view>
+   </view>
+
+  <view class="seller-mark">
+       <view class="seller-mark-item">
+       <text class="text-marktitle">宝贝描述</text>
+       <text class="text-mark">{{item.store_desccredit}}</text>
+  </view>
+  <view class="seller-mark-item">
+       <text class="text-marktitle">卖家服务</text>
+       <text class="text-mark">{{item.store_servicecredit}}</text>
+  </view>
+  <view class="seller-mark-item">
+      <text class="text-marktitle">物流服务</text>
+       <text class="text-mark">{{item.store_deliverycredit}}</text>
+  </view>
+  </view>
+  
+
+
+  <view wx:if="{{item.goods_num>0}}">
+  <text class="text-title">共有宝贝{{item.goods_num}}件</text>
+   
+   <view class="seller-goods">
+   <view class="seller-goods-item" wx:for="{{item.goods}}" wx:for-item="good">
+      <image src="{{good.original_img}}"></image>
+      <view class="view-price">
+      <text>{{good.shop_price}}</text>
+      </view>
+   </view>
+   </view>
+
+<view class="seller-goods-title" >
+<text wx:for="{{item.goods}}" wx:for-item="good">{{good.goods_name}}</text>
+</view>
+
+</view>
+
+<view class="seller-btns">
+<text data-phone="{{item.store_phone}}" bindtap="take">联系客服</text>
+<text data-id="{{item.store_id}}" bindtap="seller">进入店铺</text>
+</view>
+
+</view>

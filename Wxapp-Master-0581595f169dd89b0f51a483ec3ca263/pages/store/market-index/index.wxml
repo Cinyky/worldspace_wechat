@@ -1,0 +1,228 @@
+<import src="/pages/store/store-common/storetpl.wxml" />
+<template is="load_bg" data="{{is_show_load_bg}}">
+</template>
+<block wx:if="{{is_show_load_bg==false}}">
+
+  <!-- 搜索 -->
+  <view class="marker-searchbox">
+    <view class="flex">
+      <view class="marker-location" bindtap='openMap'>
+        <text class="iconfont icon-locationfill"></text>
+        <text class="marker-location-text">{{address}}</text>
+      </view>
+      <view class="marker-search tc sub" bindtap='toSearch'>
+        <input class="marker-search-inp" placeholder="搜索" placeholder-style='font-size:14px;' bindconfirm='keyboardComplete' value='{{keywords}}' />
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类 -->
+  <view class="marker-classify-box mb10">
+
+    <!--分类-->
+    <scroll-view class="marker-classify-itembox" scroll-x="true" scroll-into-view="{{toView}}">
+      <view id="d0" class="marker-classify-item {{cate_id==0?'active':''}}" data-cate_id="0" data-title='推荐' bindtap='setCate'>推荐</view>
+      <block wx:for="{{categorys}}" wx:for-item="citem">
+        <view id="d{{index+1}}" class="marker-classify-item {{citem.id==cate_id?'active':''}}" data-title='{{citem.title}}' data-cate_id='{{citem.id}}' bindtap='setCate'>{{citem.title}}</view>
+      </block>
+    </scroll-view>
+
+    <!--显示全部分类按钮-->
+    <view class="marker-classify-screen {{is_show_cates_v==true?'active':''}}" bindtap='show_or_hide_cate_v'>
+      <text class="iconfont icon-fenlei"></text>
+    </view>
+    <!--全部分类-->
+    <view class="screen-pop" wx:if="{{is_show_cates_v==true}}">
+      <view class="screen-item-box">
+        <view data-index="0" class="screen-item {{cate_id==0?'active':''}}" data-title='推荐' data-id='' bindtap='selectCategory'>推荐</view>
+        <block wx:for="{{categorys}}" wx:for-item="citem">
+          <view data-index="{{index+1}}" class="screen-item {{citem.id==cate_id?'active':''}}" data-title='{{citem.title}}' data-id='{{citem.id}}' bindtap='selectCategory'>{{citem.title}}</view>
+        </block>
+      </view>
+      <view class="screen-popbg"></view>
+    </view>
+
+  </view>
+
+  <block wx:if="{{cate_id==0}}">
+    <!-- 优惠券 -->
+    <view class="mb10">
+      <!--<image class="coupon-enter" src="{{hostPrifix}}/juan.png" mode="aspectFit"></image>
+      <scroll-view scroll-x="true" class="coupon-box" wx:if="{{market_info.config_info.is_show_coupon==true}}">
+        <block wx:if="{{coupons.length>0}}">
+          <block wx:for="{{coupons}}" wx:for-item="coupon">
+
+            <block wx:if="{{coupon.type==0}}">
+              <template is="daijin" data="{{coupon}}"></template>
+            </block>
+
+            <block wx:elif="{{coupon.type==1}}">
+              <template is="zhekou" data="{{coupon}}"></template>
+            </block>
+
+            <block wx:else>
+              <view class="mt10">呀！空空如也~~</view>
+            </block>
+
+          </block>
+        </block>
+      </scroll-view>-->
+
+      <!--动态播报
+      <block wx:if="{{news.length>0}}">
+        <view class="flex coupon-news-box">
+          <image class="coupon-news-img" src="{{hostPrifix}}/newsFont.png" mode="aspectFill"></image>
+          <view class="mr10">{{market_info.config_info.diy_title}}</view>
+          <swiper class="sub coupon-news-itembox" vertical="true" circular="true" autoplay interval="2500">
+            <block wx:for="{{news}}" wx:for-item="new">
+
+              <block wx:if="{{new.type==0}}">
+                <swiper-item class="lineText">
+                  <text class="news-user-name">{{new.nickname}}</text>
+                  <text>刚刚抢到了{{new.full_available}}元劵</text>
+                </swiper-item>
+              </block>
+
+              <block wx:elif="{{new.type==1}}">
+                <swiper-item class="lineText">
+                  <text class="news-user-name">{{new.nickname}}</text>
+                  <text>刚刚抢到了{{new.full_available}}折劵</text>
+                </swiper-item>
+              </block>
+
+              <block wx:else>
+                <view class="mt10">呀！空空如也~~</view>
+              </block>
+
+            </block>
+          </swiper>
+        </view>
+      </block>
+      -->
+    </view>
+
+    <!--轮播图-->
+    <block wx:if="{{bannerArr.length>0}}">
+      <swiper class="marker-banner mb10" autoplay='true' interval='3000'>
+        <block wx:for="{{bannerArr}}" wx:for-item="banner">
+          <swiper-item>
+            <image data-url="{{banner.url}}" bindtap='jumpToUrl' class='img' src="{{banner.img}}" mode="aspectFill"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </block>
+
+    <!--热门店铺-->
+    <view class="content-box mb10">
+
+      <block wx:if="{{hotStore.length>0}}">
+
+        <view class="hot-title">
+          <view class="hot-title-text">热门店铺</view>
+          <view class="hot-title-rightmore arrowR" bindtap='toStoreList'>所有店铺</view>
+        </view>
+        <scroll-view class="hot-shop-box" scroll-x="true">
+          <block wx:for="{{hotStore}}" wx:for-item="store">
+            <view class="hot-shop-item" data-store_id="{{store.id}}" bindtap='toStoreInfo'>
+              <view class="hot-shop-logo">
+                <image class="scale-rule" src="{{store.store_logo?store.store_logo:'/images/default.png'}}" mode="aspectFill"></image>
+              </view>
+              <view class="lineText">
+                <text class="iconfont icon-dianpu"></text> {{store.store_name}}</view>
+            </view>
+          </block>
+        </scroll-view>
+
+      </block>
+
+    </view>
+
+    <!-- 筛选菜单 -->
+    <view class="screen-menu">
+
+    </view>
+
+    <!-- 推荐专题 -->
+    <block wx:if="{{theme_goods.length>0}}">
+      <block wx:for="{{theme_goods}}" wx:for-item="theme_good" wx:if="{{theme_good.goods.length>0}}">
+        <view class="content-box mb10">
+
+          <view class="recommend-tit flex">
+            <view class="sub">{{theme_good.theme.theme_name}}</view>
+            <view class="right-more arrowR" bindtap='toThemeList' data-theme_id="{{theme_good.theme.id}}">更多</view>
+          </view>
+
+          <scroll-view class="recommend-goodsbox" scroll-x="true">
+            <block wx:if="{{theme_good.goods.length>0}}" wx:for="{{theme_good.goods}}" wx:for-item="good">
+
+              <view class="recommend-goods-item" data-store_id="{{good.store_id}}" data-goods_id="{{good.goods_id}}" data-goods_category_id="{{good.goods_category_id?good.goods_category_id:0}}" bindtap='push_to_store'>
+                <view class="recommend-goods-img">
+                  <image class="scale-rule" src="{{good.g_img_url}}" mode="aspectFill"></image>
+                  <view class="goods-popular">人气{{good.visit_user_num}}</view>
+                </view>
+                <view class="recommend-goods-info">
+                  <view class="rec-goods-name lineText">{{good.g_name}}</view>
+                  <view class="rec-goods-shop lineText">
+                    <text class="iconfont icon-shop"></text> {{good.store_name}}</view>
+                  <view class="rec-goods-price lineText">￥{{good.shop_price}}
+                    <!--<text class="del-price ml5">￥{{good.shop_price}}</text>-->
+                  </view>
+                </view>
+              </view>
+
+            </block>
+          </scroll-view>
+
+        </view>
+
+      </block>
+    </block>
+  </block>
+
+
+
+  <!-- 为你推荐 -->
+  <view class="content-box">
+
+    <view class="hot-title">
+      <block wx:if="{{cate_id==0}}">
+        <view class="hot-title-text rosered">为你推荐</view>
+      </block>
+      <view class="recommend-screen">
+        <text class="recommend-screen-item {{sort_type==1?'active':''}}" data-sort="1" bindtap='changeSort'>智能推荐</text>
+        <text class="recommend-screen-item {{sort_type==2?'active':''}}" data-sort="2" bindtap='changeSort'>销量</text>
+        <text class="recommend-screen-item {{sort_type==3?'active':''}}" data-sort="3" bindtap='changeSort'>距离</text>
+      </view>
+    </view>
+
+    <view class="recommend-cont marker-goods-box">
+      <!--距离排序- -->
+      <block wx:if="{{sort_type==3 && goodsArr.length>0}}">
+        <template is="marker-store" data="{{goodsArr}}"></template>
+      </block>
+      <block wx:elif="{{sort_type==1||sort_type==2}}">
+        <!--智能推荐 和销量-->
+        <template is="marker-goods" data="{{goodsArr}}"></template>
+      </block>
+
+
+
+
+    </view>
+
+  </view>
+
+
+  <!-- 返回顶部 -->
+
+  <view class="aside-float-box">
+    <view class="aside-float">
+      <button class="aside-float-btn" type="primary" bindtap='toTop'>
+        <text class="iconfont icon-dingbu"></text>
+      </button>
+      <block wx:if="{{shareBtn==true}}">
+        <button class="aside-float-btn dianpu" bindtap='jumpStore' type="primary">店铺街</button>
+      </block>
+    </view>
+  </view>
+</block>

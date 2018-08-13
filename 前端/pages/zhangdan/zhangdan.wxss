@@ -1,0 +1,42 @@
+/* pages/zhangdan/zhangdan.wxss */
+page{
+  background-color: #f2f2f2;
+  letter-spacing: 1px;
+}
+.container{
+  display: block;
+}
+.content1{
+  background-color: #ff6666;
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+.content1 .zpri{
+  font-size: 20px;
+  margin-top: 8px;
+}
+.content2{
+  background-color: #fff;
+}
+.content2 .list{
+  padding: 16px;
+  border-bottom: 1px solid #f2f2f2;
+}
+.clearfix{
+  clear:both;
+}
+.content2 .list .fl{
+  float: left;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 2px;
+}
+.content2 .list .fr{
+  float: right;
+  color: #999;
+  font-size: 13px;
+}

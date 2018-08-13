@@ -1,0 +1,23 @@
+<view class="searchbox">
+    <view class="address">
+        <image src="/images/mddz.png"></image>
+        <text>{{city}}</text>
+    </view>
+    <view class="inputbox">
+        <image src="/images/ss.png"></image>
+        <input type="text" bindinput="keywordTyping" placeholder="请输入地址"></input>
+    </view>
+    <view class="clearfix"></view>
+</view>
+<view class="header">当前地址</view>
+<view class="current">
+    <text bindtap="geoTapped">{{address}}</text>
+    <image bindtap="reloadCurrent" src="../../../images/geo.png" />
+</view>
+<view class="header">搜索地址</view>
+<view class="list {{inputdown?'postop':''}}">
+    <view class="item" bindtap="addressTapped" data-title="{{item.title}}" data-location='{{item.location}}' wx:for="{{result}}" wx:key="">
+        <text class="title">{{item.title}}</text>
+        <text class="address">{{item.address}}</text>
+    </view>
+</view>

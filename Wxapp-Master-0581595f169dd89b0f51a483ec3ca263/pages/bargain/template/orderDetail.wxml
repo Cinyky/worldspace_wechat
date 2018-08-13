@@ -1,0 +1,24 @@
+<!--订单详情 商品信息 下单页用  -->
+<template name="orderDetail_comInfo">
+  <view class=' orderComInfo flex ' bindtap='gogoodsdetail'>
+    <view class='mr10'>
+      <image class='orderComInfo_pic' mode='aspectFill' src='{{goods_icon_url}}'></image>
+    </view>
+    <view class='oComRg sub flex flexC flexMBtw'>
+      <view class='lineText2'>
+        <text>{{goods_name}}</text>
+      </view>
+      <view class='orderPrice f14 flex flexMBtw'>
+        <text class='olderPri'>价格：{{const_price}}</text>
+        <text class='f14'>砍至： <text class='kanzhi redColor'> <text class='f12'>￥</text>{{buy_price}}</text></text>
+      </view>
+      <input name="goods_id" hidden='true' value='{{goods_id}}'/>
+    </view>
+  </view>
+</template>
+
+<!--订单详情 订单信息  -->
+<template name="orderDetail_ordInfo">
+
+
+</template>

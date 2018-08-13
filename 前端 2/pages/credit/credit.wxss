@@ -1,0 +1,104 @@
+/**index.wxss**/
+page{
+    background-color: #f7f7f7;
+    font-size: 28rpx;
+}
+.banner{
+    width: 100%;
+    height: 250rpx;
+    background-color: #fff;
+}
+.banner image{
+    width: 100%;
+    height: 100%;
+}
+scroll-view {
+    margin: 0px;
+}
+.weui-navbar {
+    width: 100%;
+    line-height: 72rpx;
+    box-sizing: border-box;
+    white-space: nowrap;
+    z-index: 100;
+    background: white;
+    background-color: #fff;
+}
+
+.weui-navbar .swiper-tab-list {
+    display: inline-block;
+    text-align: center;
+    font-size: 14px;
+    box-sizing: border-box;
+    padding: 0 6rpx;
+    margin: 0 30rpx;
+}
+
+.weui-navbar .on {
+    color: #ff558c;
+    border-bottom: 1px solid #ff558c;
+}
+.keyongjf{
+    line-height: 72rpx;
+    text-align: center;
+}
+.keyongjf text{
+    color: #fb5a7e;
+}
+.main0box{
+	background-color: #fff;
+	position: relative;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+.main0box:last-child{
+	margin-bottom: 0;
+}
+.main0{
+	position: relative;
+}
+.main0 image{
+	width: 180rpx;
+	height: 180rpx;
+	margin-right: 12rpx;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.main0 .textbox{
+	margin-left: 200rpx;
+	line-height: 60rpx;
+}
+.main0 .textbox .pd{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.main0 .textbox .pb text{
+	color: #fb5a7e;
+    font-weight: 600;
+}
+.main0 .textbox .pk{
+	font-size: 24rpx;
+	color: #999;
+}
+.main0 .textbox .pk text{
+	margin-left: 12rpx;
+}
+.main0box .duihuan{
+	position: absolute;
+	right: 24rpx;
+	bottom: 24rpx;
+	display: block;
+	width: 160rpx;
+	line-height: 52rpx;
+	border-radius: 8rpx;
+	border: 2rpx solid #fb5a7e;
+	color: #fb5a7e;
+	font-size: 28rpx;
+	text-align: center;
+}
+.main0box .duihuan.jieshu{
+	border: 2rpx solid #999;
+	color: #999;
+}

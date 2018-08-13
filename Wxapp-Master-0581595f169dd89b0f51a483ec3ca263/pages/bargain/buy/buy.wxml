@@ -1,0 +1,250 @@
+<!--购买页  -->
+<import src="../template/orderDetail.wxml" />
+<import src="../template/pay.wxml" />
+
+
+<!--商品信息  -->
+<form bindsubmit="buygoods" report-submit="true">
+  <view class='commonBox mb10 '>
+    <template is="orderDetail_comInfo" data="{{...goodsinfo}}"></template>
+  </view>
+
+
+  <!--选择配送方式  -->
+  <view class='commonBox dilType  arrowR mb10 display_hide'>选择配送方式</view>
+
+  <!--同城配送  -->
+  <view class='tongcheng display_hide'>
+    <view class='mb10'>
+      <view class='peiSongBox gridXb flex flexMBtw'>
+        <text>同城配送</text>
+        <text class='psfei f14 redColor'>配送费：￥0</text>
+      </view>
+      <view class='peiSongBox dilType arrowR '>选择收货地址</view>
+    </view>
+  </view>
+
+
+  <block wx:if="{{allinfo.get_type==0}}">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <view class='radioBox mb10 flex flexMArd'>
+        <label>
+          <radio name='get_type' value="1" checked />
+          <text class='ml5'>快递配送</text>
+        </label>
+        <label>
+          <radio name='get_type' value="3" />
+          <text class='ml5'>到店自提</text>
+        </label>
+        <input type='text' hidden='true' name='get_type' value='{{dis}}' />
+      </view>
+      <template is="kuaidi" wx:if="{{dis==1}}" data="{{...allinfo}}"></template>
+      <template is="ziti" wx:if="{{dis==3}}" data="{{...allinfo}}"></template>
+    </radio-group>
+  </block>
+
+  <!--快递配送  -->
+  <block wx:if="{{allinfo.get_type==1}}">
+    <view class="kuaidi {{allinfo.get_type==1 ? '' : 'display_hide'}} ">
+      <view class='mb10'>
+        <view class='peiSongBox gridXb flex flexMBtw mb10'>
+          <text class=''>配送费</text>
+          <text class='psfei  redColor'>￥{{goodsinfo.fare}}</text>
+          <input type='text' name="fare" hidden='true' value='{{goodsinfo.fare}}' />
+        </view>
+        <view class='peiSongBox dilType arrowR flex flexMBtw mb10' catchtap='myaddress'>
+          <view class=''>选择收货地址</view>
+          <view class='myaddress lineText grey f14'>{{myaddress}}</view>
+        </view>
+        <input type='text' name="pay_address" hidden='true' value='{{myaddress}}' />
+        <input type='text' name="real_name" hidden='true' value='{{real_name}}' />
+        <input type='text' name="mobile" hidden='true' value='{{mobile}}' />
+        <input type='text' name="get_type" hidden='true' value='{{allinfo.get_type}}' />
+      </view>
+    </view>
+  </block>
+
+  <!--到店自提  -->
+  <block wx:if="{{allinfo.get_type==3}}">
+  <template is="ziti" data="{{...allinfo}}"></template>
+  <input name="get_type" value="3" hidden/>
+    <!-- <view class="ziti mb10 {{allinfo.get_type==3 ? '' : 'display_hide'}} ">
+      <view class='mb10'>
+        <view class='peiSongBox gridXb flex flexMBtw'>
+          <view>下单人</view>
+          <input class='zitiInp' name='real_name' style='height:50rpx;' placeholder='请输入您的称呼'></input>
+        </view>
+        <view class='peiSongBox  flex flexMBtw'>
+          <view>手机号</view>
+          <input class='zitiInp' name='mobile' type="number" placeholder='请输入您的手机号'></input>
+        </view>
+      </view>
+      <view class='mb10'>
+        <view class='peiSongBox gridXb flex flexMBtw'>
+          <text>到店自提</text>
+          <text class='zitiAlert f14'>下单后凭取货码自行到店取货</text>
+        </view>
+        <view class='peiSongBox quhuoAddr flex' catchtap='toadress'>
+          <view class='qhAddr'>取货地址</view>
+          <view class='sub flex flexCCen'>
+            <view class='addrDetail grey f14 lineText2'>{{allinfo.goods_adress}}</view>
+            <view class='posIcon sub tc mainColor'>
+              <text class='iconfont icon-daohang'></text>
+            </view>
+          </view>
+        </view>
+        <input type='text' name="get_type" hidden='true' value='{{allinfo.get_type}}' />
+      </view>
+
+
+      <view class='peiSongBox auhuoTime flex flexMBtw arrowR mb10' catchtap='tomobile'>
+        <view>商家电话</view>
+        <view class='zitiTime  grey '>
+          <text>{{allinfo.goods_mobile}}</text>
+        </view>
+      </view> -->
+
+
+
+
+      <!-- 
+      <view class="peiSongBox auhuoTime flex flexMBtw arrowR " hidden=' '>
+        <view>取货时间</view>
+        <picker mode="multiSelector " bindchange="bindMultiPickerChange " bindcolumnchange="bindMultiPickerColumnChange " value="{{multiIndex}} " range="{{multiArray}} ">
+          <view class="zitiTime f14 ">
+            {{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}} 点 {{multiArray[2][multiIndex[2]]}} 分
+          </view>
+        </picker>
+      </view> -->
+    <!-- </view> -->
+  </block>
+
+
+  <!--留言  -->
+  <view class='mb10'>
+    <view class='peiSongBox flex'>
+      <text>给商家留言：</text>
+      <textarea name='pay_words' class='textarea sub' auto-height='true' placeholder=''></textarea>
+    </view>
+  </view>
+
+  <!--优惠券  -->
+  <view class='display_hide'>
+    <template is="pay_coupon "></template>
+  </view>
+
+  <!--实付金额  -->
+  <view class='sfMoneyBox gridXt  display_hide'>
+    <template is="pay_sfMoney "></template>
+  </view>
+
+
+
+  <!--底部按钮  -->
+  <view class='footer tc flex flexMBtw gridXt'>
+    <view class='payVal redColor'>实付款：￥{{dis==1 ? goodsinfo.pay_price : goodsinfo.buy_price}}</view>
+    <input type='text' name='paymoney' value='{{dis==1 ? goodsinfo.pay_price : goodsinfo.buy_price}}' hidden='true'></input>
+    <button class='mainColor_bg footPayBtn' form-type='submit'>立即支付</button>
+  </view>
+
+
+  <!-- 选择配送方式 弹窗  -->
+  <view class='shade_bg ' hidden=' '>
+    <view class='white_bg  commdityDetail_zrbk f14 fadein  '>
+      <view class='cirBox'>
+        <view class='innerCir'></view>
+        <view class='outerCir'>
+          <view class='tble bold'>选择配送方式</view>
+        </view>
+      </view>
+      <view class='mt75'>
+        <view class=' arrowR'>
+          <view class='diTypeltem flex flexMBtw gridXb'>
+            <text>同城配送</text>
+            <text class='grey mr5'>配送费：￥0</text>
+          </view>
+        </view>
+        <view class=' arrowR'>
+          <view class='diTypeltem flex flexMBtw gridXb'>
+            <text>快递配送</text>
+            <text class='grey mr5'>配送费：￥20</text>
+          </view>
+        </view>
+        <view class='arrowR'>
+          <view class='diTypeltem flex flexMBtw'>
+            <text>到店自提</text>
+            <text class='grey mr5'>凭取货码到店取货</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--支付方式 弹窗  -->
+  <!-- <view class='shade_bg display_hide'>
+    <view class='payTypeBox white_bg bounce'>
+      <view class='selType tc'>选择支付方式</view>
+
+      <view class=" ">
+        <radio-group name="pay_name ">
+          <label class='typeBox gridXb  flex flexMBtw'>
+            <view>
+              <text class="iconfont icon-huiyuanqiazhifu mr10 "></text>
+              <text class=''>会员支付(9.5折）</text>
+
+            </view>
+            <radio class='payRadio' value="0 " checked/>
+          </label>
+          <label class='typeBox gridXb flex flexMBtw'>
+            <view class=''>
+              <text class="iconfont icon-weixinzhifu1 mr10 "></text>
+              <text class=''>微信支付</text>
+            </view>
+            <radio class='payRadio' value="1 " />
+          </label>
+        </radio-group>
+      </view>
+
+      <view class='confirmBtn mainColor_bg tc'>确认支付</view>
+    </view>
+  </view> -->
+</form>
+
+<!--自提时间弹窗 -->
+<!-- <view class='shade_bg display_hide'>
+  <view class="dateBox clearfix bounce ">
+    <view class="pchoose grey tc gridXb ">
+      <text>请选择服务时间</text>
+      <text></text>
+    </view>
+
+    <scroll-view class="scroBox tc gridXb " scroll-x="true ">
+      <block wx:for='{{fDate}}' wx:key="index ">
+        <view class="scroItem tab_on ">
+          <view class=" ">
+            <block wx:if='{{item.today == 1}}'>
+              <view>今天</view>
+            </block>
+            <block wx:elif='{{item.today == 2}}'>
+              <view>明天</view>
+            </block>
+            <block wx:else>
+              <view>{{item.week}}</view>
+            </block>
+          </view>
+          <view class="f14 ">
+            {{item.date}}
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+    <view class="tPartBox ">
+      <view class='tPart tc gridFour selTime'>立即拿货</view>
+      <block wx:for="{{tpart1}} " wx:key="index ">
+        <view class="tPart tc gridFour white_bg ">
+          <text class=''> {{item}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+</view> -->
