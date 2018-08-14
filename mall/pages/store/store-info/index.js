@@ -198,7 +198,7 @@ Page({
   //立即购买
   buy_now: function (e) {
     var that = this;
-    _dg.navigateTo({
+    _dg.switchTab({
       url: '../store-order-sure/index?store_id=' + that.data.this_store_id + '&buy_type=1&goods_id=' + e.currentTarget.id
     });
   },

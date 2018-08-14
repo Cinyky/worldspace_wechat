@@ -105,6 +105,7 @@ Page({
       that.setData({
         this_store_id: info.store_id,
       });
+      app.globalData.this_store_id = info.store_id;
       this.getSourceData();
     }, this, { isShowLoading: false });
   },
@@ -593,7 +594,7 @@ Page({
   //配送验证手机号
   comfirm_goods_order: function () {
     var that = this;
-    _dg.navigateTo({
+    _dg.switchTab({
       url: '../store-order-sure/index?store_id=' + that.data.this_store_id + '&buy_type=2'
     });
 

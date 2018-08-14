@@ -107,12 +107,12 @@
     <block wx:else>
       <view class="sub ress-nav-item" bindtap="tabSubBind" id="1">商品</view>
     </block>
-    <block wx:if="{{ tabTit==2 }}">
+    <!-- <block wx:if="{{ tabTit==2 }}">
       <view class="sub ress-nav-item active">评价</view>
     </block>
     <block wx:else>
       <view class="sub ress-nav-item" bindtap="tabSubBind" id="2">评价</view>
-    </block>
+    </block> -->
     <view class="shop-home-btn"  wx:if="{{store_data.is_show_home_page==1&&scroll_to_goods_id}}" bindtap='redirectToStoreHome'>店铺首页</view>
   </view>
   <!--tab end-->

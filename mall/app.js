@@ -106,6 +106,7 @@ App({
     },
     globalData: {
         userInfo: '',
-        utoken: ''
+        utoken: '',
+        this_store_id:0
     }
 })

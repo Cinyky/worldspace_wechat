@@ -3,7 +3,7 @@ import _util from '../../../utils/util';
 const _DgData = require('../../../utils/data');
 const $ = require('../../../utils/underscore');
 const s_common = require('../store-common/common');
-var app = getApp();
+const app = getApp();
 Page({
   data: {
     goods_id: '',
@@ -43,15 +43,28 @@ Page({
     select_card_index: -1,
     can_peisong: false,
   },
+  onUnload: function(options) {
+    console.log("order sure onUnload");
+  },
   onShow: function(options) {
-
+    var that = this;
+    //1单个商品2购物车商品
+    if (that.data.buy_type == 2) {
+      that.getStoreInfo();
+    } else {
+      //单个商品购买目前只有团购
+      var goods_id = that.data.goods_id;
+      that.getGoodsInfo();
+    }
+    //获取卡券列表
+    that.getmycard();
   },
   onLoad: function(options) {
     var that = this;
     _util.trySyncWechatInfo();
     that.getStoreConfig();
-    var buy_type = options.buy_type; //2
-    var store_id = options.store_id;
+    var buy_type = options.buy_type || 2; //2
+    var store_id = options.store_id || app.globalData.this_store_id;
 
     //获取默认地址信息
     var address_info = {};
@@ -78,6 +91,9 @@ Page({
     } else {
       //单个商品购买目前只有团购
       var goods_id = options.goods_id;
+      that.setData({
+        goods_id: goods_id,
+      });
       that.getGoodsInfo();
     }
     //获取卡券列表

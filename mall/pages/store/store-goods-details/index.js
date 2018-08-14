@@ -291,10 +291,7 @@ Page({
   goods_order_bind: function () {
     var that = this;
     //如果是外卖 则限制配送区域
-    that.comfirm_goods_order();
-
-
-    /*if (that.data.store_data.waimai_limit_juli > 0) {
+    if (that.data.store_data.waimai_limit_juli > 0) {
       //获取位置信息
       _dg.showToast({
         title: '配送区域验证中',
@@ -333,13 +330,13 @@ Page({
       });
     } else {
       that.comfirm_goods_order();
-    }*/
+    }
   },
 
   //外卖购物车下单
   comfirm_goods_order: function () {
     var that = this;
-    _dg.navigateTo({
+    _dg.switchTab({
       url: '../store-order-sure/index?store_id=' + that.data.store_id + '&buy_type=2'
     });
 

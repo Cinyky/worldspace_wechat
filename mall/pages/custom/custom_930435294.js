@@ -286,7 +286,7 @@ Page({
   //立即购买
   dgsinglestore_buy_now: function (e) {
     var that = this;
-    wx.navigateTo({
+    wx.switchTab({
       url: '/pages/store/store-order-sure/index?store_id=' + that.data.dgsinglestore_this_store_id + '&buy_type=1&goods_id=' + e.currentTarget.id
     });
   },
