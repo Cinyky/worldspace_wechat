@@ -1,0 +1,91 @@
+<!--我的订单  -->
+
+<!-- 顶部tab  -->
+<view class='moTopBox tc flex flexMBtw gridXb white_bg f14  grey'>
+  <view class="topTab lineText {{searstaus==0 ? 'topTab_on' : ''}}" catchtap='getOrderList' data-id='0'>全部</view>
+  <view class="topTab lineText {{searstaus==1 ? 'topTab_on' : ''}}" catchtap='getOrderList' data-id='1'>待支付</view>
+  <view class="topTab lineText {{searstaus==2 ? 'topTab_on' : ''}}" catchtap='getOrderList' data-id='2'>待收货</view>
+  <view class="topTab lineText {{searstaus==3 ? 'topTab_on' : ''}}" catchtap='getOrderList' data-id='3'>退款</view>
+
+</view>
+
+<!--列表 -->
+
+<view class='orderList'>
+  <!--待支付  -->
+
+  <view class='orderItem white_bg mb10' wx:for="{{orderlist}}" wx:key="index" catchtap='toorder' data-id="{{item.id}}">
+    <view class='flex  orderComInfo f14'>
+      <view class='mr10'>
+        <image class='orderComInfo_pic' mode='aspectFill' src='{{item.goods_icon_url}}'></image>
+      </view>
+      <view class='ordComMid flex flexC flexMBtw'>
+        <view class='comCon lineText2 '>
+          <text>{{item.goods_name}}</text>
+        </view>
+        <view class='kanzhi mt15 f16 '>
+          <text class=' redColor'> <text class='f12'>￥</text>{{item.pay_money}}</text>
+        </view>
+      </view>
+      <block wx:if="{{item.get_type==1}}">
+        <view class='ordStatus sub mainColor' wx:if="{{item.pay_status==0}}">待支付</view>
+        <view class='ordStatus sub grey' wx:if="{{item.order_status==3&&item.pay_status==1}}">已完成</view>
+        <view class='ordStatus sub grey' wx:elif="{{item.order_status==1&&item.pay_status==1}}">待发货</view>
+        <view class='ordStatus sub redColor' wx:elif="{{item.order_status==2&&item.pay_status==1}}">待收货</view>
+        <view class='ordStatus sub redColor' wx:elif="{{item.order_status==4&&item.pay_status==1}}">退款中</view>
+        <view class='ordStatus sub redColor' wx:elif="{{item.order_status==5&&item.pay_status==1}}">已退款</view>
+      </block>
+      <block wx:if="{{item.get_type==3}}">
+        <view class='ordStatus sub mainColor' wx:if="{{item.pay_status==0}}">待支付</view>
+        <view class='ordStatus sub redColor' wx:if="{{item.order_status==1&&item.pay_status==1}}">待自提</view>
+        <view class='ordStatus sub redColor' wx:elif="{{item.order_status==4&&item.pay_status==1}}">退款中</view>
+        <view class='ordStatus sub redColor' wx:elif="{{item.order_status==5&&item.pay_status==1}}">已退款</view>
+         <view class='ordStatus sub grey' wx:if="{{item.order_status==3&&item.pay_status==1}}">已完成</view>
+      </block>
+    </view>
+    <block wx:if="{{item.get_type==1}}">
+      <view class='thmaBox gridXt' wx:if="{{item.order_status==3}}">
+        <view class='tihuoma gridFour f14' catchtap='delorder' data-id="{{item.id}}">删除订单</view>
+      </view>
+    </block>
+    <block wx:if="{{item.get_type==3}}">
+      <view class='tihuomaBox gridXt'>
+        <button class='tihuomaBtn' wx:if="{{item.order_status==1&&item.pay_status==1}}" catchtap='getExam' data-id='{{item.id}}'>提货码</button>
+        <view class='tihuoma gridFour f14' wx:if="{{item.order_status==3&&item.pay_status==1}}" catchtap='delorder' data-id="{{item.id}}">删除订单</view>
+      </view>
+    </block>
+  </view>
+
+  <!--待自提  -->
+  <!-- <view class='orderItem white_bg mb10 '>
+    <view class='flex  orderComInfo f14'>
+      <view class='mr10'>
+        <image class='orderComInfo_pic' mode='aspectFill' src='/images/default.png'></image>
+      </view>
+      <view class='ordComMid flex flexC flexMBtw'>
+        <view class='comCon lineText2 '>
+          <text>这是商品信息说明息打发是商品信息说明息打发是商品信息说明息打发</text>
+        </view>
+        <view class='mt15 f16 kanzhi'>
+          <text class=' redColor'> <text class='f12'>￥</text>30</text>
+        </view>
+      </view>
+      <view class='ordStatus sub redColor'>待自提</view>
+    </view>
+    <view class='thmaBox gridXt '>
+      <view class='tihuoma gridFour f14 '>提货码</view>
+    </view>
+  </view> -->
+</view>
+
+<!--提货码弹窗  -->
+
+<view class="shade_bg flex MCCen {{isExam ? '' :'display_hide'}}" catchtap='setHide'>
+  <view class='tanInnerBox tc'>
+    <view class='grey f18'>提货码</view>
+    <canvas class="scand-img" canvas-id="mycanvas" />
+    <view class=' f18'>{{examid}}</view>
+    <view class='grey f14'>请向商家出示提货码进行核销</view>
+    <!-- <image class='tihuomaCode' mode='aspectFill' src='/images/default.png'></image> -->
+  </view>
+</view>

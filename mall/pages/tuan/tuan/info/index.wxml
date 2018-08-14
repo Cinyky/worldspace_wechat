@@ -1,0 +1,234 @@
+<block wx:if="{{glo_is_load}}">
+  <view class="glo_load_view">
+    <text class="iconfont icon-loading animated infinite rotate mr5"></text>
+    <text>正在努力加载</text>
+  </view>
+</block>
+<block wx:else>
+  <!-- 自提信息 -->
+  <view class="ziti-msg" wx:if="{{oinfo.shipping_name=='到店自提' && oinfo.store_id>0}}">
+    <view class="ziti-msg-item">
+      <view class="ziti-msg-title">自提人：</view>
+      <view class="ziti-msg-address">
+        <text class="ziti-msg-shop mr10">{{oinfo.consignee}}</text>
+        <text class="ziti-msg-address-text">{{oinfo.mobile}}</text>
+      </view>
+    </view>
+    <view class="ziti-msg-item" wx:if="{{oinfo.quaddress && oinfo.site_id==0}}">
+      <view class="ziti-msg-title">自提点：</view>
+      <view class="ziti-msg-address">
+        <view class="ziti-msg-shop lineText">{{oinfo.quaddress.store_name}}</view>
+        <view class="ziti-msg-address-text lineText2">{{oinfo.quaddress.detailAddress}}</view>
+        <view class="ziti-msg-address-text lineText2">{{oinfo.quaddress.store_con_mobile}}</view>
+      </view>
+      <view class='ziti-daohang'  bindtap='mapNavigation'>
+        <text class="iconfont icon-locationfill"></text>导航</view>
+    </view>
+    <view class="ziti-msg-item" wx:if="{{oinfo.site_info && oinfo.site_id>0}}">
+      <view class="ziti-msg-title">自提点：</view>
+      <view class="ziti-msg-address">
+        <view class="ziti-msg-shop lineText">{{oinfo.site_info.address_name}}</view>
+        <view class="ziti-msg-address-text lineText2">{{oinfo.site_info.address}}</view>
+        <view class="ziti-msg-address-text lineText2">{{oinfo.site_info.mobile}}</view>
+      </view>
+      <view class='ziti-daohang'  bindtap='mapNavigation'>
+        <text class="iconfont icon-locationfill"></text>导航</view>
+    </view>
+  </view>
+
+  <view class="mallsure">
+
+    <view class="od-receipt" wx:if="{{oinfo.shipping_name=='本店快递'}}">
+      <!-- <view class="fr">
+        <text class="iconfont icon-mobilefill red"></text> {{oinfo.mobile}}</view> -->
+      <view class="od-name">
+        <text class="iconfont icon-peoplefill red"></text> {{oinfo.consignee}}
+        <text class="ml10">{{oinfo.mobile}}</text>
+      </view>
+      <view class="od-adress grey mt5"> {{oinfo.province}}{{oinfo.city}}{{oinfo.area}}{{oinfo.address}}</view>
+    </view>
+    <!-- 订单号 -->
+    <view class="od-info">
+      <view class="fr">
+        <text wx:if="{{oinfo.txt_status == '000'}}">待支付</text>
+        <block wx:if="{{oinfo.txt_status == '002'}}">
+          <text wx:if="{{oinfo.shipping_name == '到店自提'}}">待自提</text>
+          <text wx:else>待发货</text>
+        </block>
+        <text wx:if="{{oinfo.txt_status == '002_tuan'}}">待成团</text>
+        <text wx:if="{{oinfo.txt_status == '002_tuan_false' || oinfo.txt_status == '0002'}}">已失效</text>
+        <text wx:if="{{oinfo.txt_status == '102'}}">已发货</text>
+        <text wx:if="{{oinfo.txt_status == '202'}}">已收货</text>
+      </view>
+      <view>
+        <block wx:if="{{oinfo.btype == 2}}">
+          <text class="iconfont icon-pingou ping-order-icon"></text>
+        </block>订单号：{{oinfo.order_sn}}</view>
+    </view>
+    <!-- 核销码 -->
+    <view class='hexiao-card gridXt' wx:if="{{oinfo.shipping_name == '到店自提' && confirm_code_show}}">
+      <canvas class="scand-img {{confirm_code_show}}" canvas-id="mycanvas" />
+    </view>
+    <!-- 拼团人数 -->
+    <view wx:if="{{oinfo.btype==2 && oinfo.pay_status==2}}">
+      <view class='pt-numInfo'>
+        <view class="pt-tit">
+          <text class="red mr5 iconfont icon-friend"></text>{{tuan_text}}</view>
+        <view class="pt-num-box">
+          <view class="pt-peo-box">
+            <block wx:for="{{oinfo.tuan_list}}" wx:for-item="titem">
+              <image class="pt-peo" src="{{titem.headimgurl}}" mode="aspectFill"></image>
+            </block>
+          </view>
+          <button class='pt-numMore' bindtap='go_share'>{{share_text}}</button>
+        </view>
+      </view>
+      <view class="sure-item flex" wx:if="{{oinfo.is_tuanzhang==1&&oinfo.tuan_type==1}}">
+        <view class="sub">
+          <text>团长返佣：</text>
+          <text class="red">￥{{oinfo.c_award}}+</text>
+          <text class="ml10 iconfont icon-question" bindtap='bind_help'></text>
+        </view>
+        <view class="right-more arrowR red f12" bindtap='bind_award'>已返{{oinfo.w_award}}元</view>
+      </view>
+    </view>
+    <!-- 商品信息 -->
+    <view class="mall-order mt10">
+      <view class="mall-name" wx:if="{{oinfo.store_id>0}}" bindtap="moreStore" data-id="{{oinfo.store_id}}">
+        <text class="iconfont icon-shopfill"></text>
+        <text class="mall-name-text arrowR">{{oinfo.quaddress.store_name}}</text>
+      </view>
+      <view class="mall-goods">
+        <block wx:for="{{oinfo.glist}}" wx:for-item="gitem">
+          <view class="mall-goods-item flex">
+            <image src="{{gitem.goods_img}}" mode="aspectFill" class="goods-item-img"></image>
+            <view class="sure-info sub">
+              <text class="mall-goods-title lineText2 mb5">{{gitem.goods_name}}</text>
+              <view class="price f18 red">
+                <text class="iconfont icon-close fr grey"> {{gitem.goods_number}}</text>
+                <text>￥{{gitem.goods_price}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="sure-item flex">
+      <view class="item-title">
+        <text>买家留言：</text>
+      </view>
+      <view class="sub">{{oinfo.post_info||'无'}}</view>
+    </view>
+    <view class="mt10">
+      <view class="sure-item">
+        <view class="item-title">
+          <text class="red fr">
+              <block wx:if="{{oinfo.pay_status == 2}}">
+                <text>已支付</text>
+          <text wx:if="{{oinfo.order_status == '3'}}">(已退款)</text>
+    </block>
+    <block wx:else>
+      <text>未支付</text>
+    </block>
+    </text>
+    <text>支付状态</text>
+    </view>
+    <view class="peisong mt10">
+      <view class="flex">
+        <text class="grey">支付方式：</text>
+        <text class="sub">{{oinfo.pay_name}}</text>
+      </view>
+      <view class="flex">
+        <text class="grey">下单时间：</text>
+        <text class="sub">{{oinfo.ctime}}</text>
+      </view>
+      <view class="flex">
+        <text class="grey">订单编号：</text>
+        <text class="sub">{{oinfo.order_sn}}</text>
+      </view>
+      <view class="flex" wx:if="{{oinfo.shipping_time}}">
+        <text class="grey">发货时间：</text>
+        <text class="sub">{{oinfo.shipping_time}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="sure-item">
+  <view class="item-title">
+    <text>配送信息</text>
+  </view>
+  <view class="peisong mt10">
+    <view class="flex">
+      <text class="grey">配送方式：</text>
+      <text class="sub">{{oinfo.shipping_name}}</text>
+    </view>
+    <block wx:if="{{oinfo.shipping_name == '到店自提' }}">
+    <view wx:if="{{oinfo.store_id==0}}">
+    <view class="flex">
+        <text class="grey">店铺地址：{{oinfo.store_i}}</text>
+        <text class="sub">{{config.config_info.shop_address}}</text>
+      </view>
+      <view class="flex">
+        <text class="grey">店铺电话：</text>
+        <text class="sub">{{config.config_info.shop_phone}}</text>
+      </view>
+    </view>
+    </block>
+    <block wx:else>
+      <view class="flex">
+        <text class="grey">快递单位：</text>
+        <text class="sub">{{oinfo.express_name||''}}</text>
+      </view>
+      <view class="flex" bindtap="wuliu_info_bind">
+        <text class="grey">快递单号：</text>
+        <text class="sub">{{oinfo.express_code||''}}</text>
+      </view>
+    </block>
+  </view>
+</view>
+
+<view class="sure-item flex mt10">
+  <view class="item-title">
+    <text>合计：</text>
+  </view>
+  <view class="sub tr peisong">
+    <view class="red f18">¥ {{oinfo.order_amount}}</view>
+    <view>商品总额
+      <text class="od-price">¥ {{oinfo.goods_amount}}</text>
+    </view>
+    <view>+运费
+      <text class="od-price">¥ {{oinfo.shipping_fee}}</text>
+    </view>
+    <view wx:if="{{oinfo.sale>0}}">-优惠
+      <text class="od-price">¥ {{oinfo.sale}}</text>
+    </view>
+  </view>
+</view>
+<view class='fixed-bottom'>
+  <view class="no-pay">
+    <block wx:if="{{oinfo.txt_status == '0000'}}">
+      <button class="no-pay-button" bindtap='go_share'>{{oinfo.tuan_sheng_time}}</button>
+    </block>
+    <!-- <block wx:if="{{oinfo.txt_status == '002'}}">
+      <block wx:if="{{oinfo.shipping_name == '到店自提'}}">
+        <button class="no-pay-button" bindtap='quhuo'>取货</button>
+      </block>
+    </block> -->
+    <block wx:if="{{oinfo.txt_status == '0002'}}">
+      <button class="no-pay-button disabled">拼团已失效</button>
+    </block>
+    <block wx:if="{{oinfo.txt_status == '000'}}">
+      <button class="no-pay-button" bindtap="order_go_pay_bind" id="{{oinfo.id}}" loading="{{submitIsLoading}}" disabled="{{buttonIsDisabled}}">立即支付</button>
+    </block>
+    <block wx:if="{{oinfo.txt_status == '102'}}">
+      <button class="no-pay-button" bindtap="order_go_shouhuo_bind" id="{{oinfo.id}}">确认收货</button>
+    </block>
+    <block wx:if="{{oinfo.txt_status == '202'}}">
+      <button wx:if="{{!oinfo.is_evaluated}}" class="no-pay-button" bindtap="order_go_comment_bind" id="{{oinfo.id}}">去评价</button>
+      <button wx:if="{{oinfo.is_evaluated}}" class="no-pay-button-gray">已评价</button>
+    </block>
+  </view>
+</view>
+</view>
+</block>

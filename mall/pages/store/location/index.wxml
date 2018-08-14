@@ -1,0 +1,18 @@
+<!--pages/store/location/index.wxml-->
+<view class="current-location">
+  <view>当前定位：
+    <text class="current-location-text">{{address}}</text>
+  </view>
+  <view class="location-btn" bindtap='onOpenMapTap'>
+    <text class="iconfont icon-daohang"></text>重新定位
+  </view>
+</view>
+
+<view class="region-cont">
+  <view>{{city}}</view>
+  <view class="region-itembox">
+  <block wx:for="{{cityList}}" wx:for-item="city">
+    <view data-are="{{city.REGION_NAME}}" bindtap='chooseAre' class="region-item">{{city.REGION_NAME}}</view>
+  </block>    
+  </view>
+</view>

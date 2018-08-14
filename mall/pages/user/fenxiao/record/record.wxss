@@ -1,0 +1,76 @@
+/* pages/user/fen/record/record.wxss */
+
+/* .from, .time, .states {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.from {
+  width: 180rpx;
+  margin: 0 20rpx;
+  text-align: left;
+}
+
+.time {
+  width: 180rpx;
+}
+
+.states {
+  width: 120rpx;
+}
+
+.rtit {
+  line-height: 92rpx;
+  font-weight: bold;
+  font-size: 32rpx;
+}
+
+.rtit .from {
+  text-align: center;
+}
+
+.ritem {
+  line-height: 92rpx;
+}
+
+.ritem:nth-child(odd) {
+  background: #fff;
+}
+
+.ritem:active {
+  background: rgba(0, 0, 0, 0.05);
+} */
+
+.recoudItem {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.itemTop, .itemMid, .itemBot {
+  padding: 20rpx;
+}
+
+.scrollBox {
+  white-space: nowrap;
+}
+
+.scrollImg {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 6rpx;
+  margin-left: 20rpx;
+}
+
+.scrollImg:last-child {
+  margin-right: 40rpx;
+}
+
+.itemMid {
+  
+}
+
+.itemBot {
+  
+}
+@import '../../common.wxss';

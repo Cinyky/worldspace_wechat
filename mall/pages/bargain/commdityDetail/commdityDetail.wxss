@@ -1,0 +1,541 @@
+@import "../common.wxss";
+@import "/css/DuoguanBargain/DuoguanBargain-template-default.wxss";
+@import "../../../wxParse/wxParse.wxss";
+
+.topPicBox {
+  position: relative;
+}
+
+.swiper {
+  position: relative;
+  width: 100%;
+  height: 450rpx;
+  overflow: hidden;
+}
+
+.swiper swiper {
+  height: 100%;
+  width: 100%;
+}
+
+.swiper .wx-swiper-dots.wx-swiper-dots-horizontal {
+  bottom: 0rpx;
+}
+
+.topPic {
+  width: 100%;
+  height: 450rpx;
+}
+
+/* 商品信息  */
+
+.going {
+  color: #fff;
+  line-height: 1.05;
+}
+
+.priBox {
+  padding: 16rpx 0 16rpx 20rpx;
+}
+
+.currentPrice {
+  font-weight: 700;
+}
+
+.olderPrice {
+  color: #fff2de;
+  text-decoration: line-through;
+  margin-left: 16rpx;
+}
+
+.priBot>text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.hasSale {
+  line-height: 40rpx;
+  padding: 0 20rpx;
+  margin-left: 20rpx;
+  font-size: 24rpx;
+  border-radius: 100rpx;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.detCountDown {
+  width: 300rpx;
+  text-align: center;
+  padding-top: 24rpx;
+  padding-left: 16rpx;
+  letter-spacing: 1rpx;
+  font-size: 30rpx;
+  -webkit-clip-path: polygon(16rpx 0, 100% 0, 100% 100%, 16rpx 100%, 0 50%);
+  clip-path: polygon(5% 0, 100% 0, 100% 100%, 5% 100%, 0 50%);
+}
+
+.hmsBox {
+  margin-top: 12rpx;
+}
+
+.hmsBox>text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.maohao {
+  width: 30rpx;
+  text-align: center;
+}
+
+.hms {
+  width: 48rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  background-color: #fff;
+}
+
+.closure {
+  padding: 20rpx;
+  color: #fff;
+  align-items: center;
+  background-color: rgba(179, 179, 179, 1);
+}
+
+.forenotice {
+  color: #fff;
+  line-height: 1.05;
+}
+
+/*商品标题  */
+
+.hdTit {
+  padding: 30rpx 20rpx;
+  line-height: 44rpx;
+  font-weight: 700;
+}
+
+/* 砍价状态  */
+
+/*没参与过  */
+
+.tipsBox {
+  justify-content: center;
+  padding: 50rpx 0 30rpx;
+}
+
+/*商家信息  */
+
+.shopInfo {
+  padding: 0 30rpx;
+}
+
+.shopInfoTop {
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 0;
+}
+
+.shopInfoTit {
+  position: relative;
+  padding-left: 40rpx;
+  line-height: 1;
+}
+
+.shopInfoTit::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26rpx;
+  height: 32rpx;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+  background-color: currentColor;
+}
+
+.shopInfoMore {
+  padding-right: 50rpx;
+  font-size: 28rpx;
+  color: #888;
+}
+
+.shopInfoBot {
+  padding: 15rpx 0 30rpx;
+}
+
+.shopAdd {
+  line-height: 1.3;
+  font-size: 28rpx;
+  margin-right: 30rpx;
+}
+
+.telBox {
+  width: 100rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 44rpx;
+  text-align: center;
+}
+
+.telBox::before {
+  background-color: #aaa;
+}
+
+/*活动详情  排行榜tab  */
+
+.hrContainer {
+  background-color: #fff;
+}
+
+.hrContainer .sub {
+  padding: 30rpx;
+}
+
+.hrContainer .mainColor {
+  position: relative;
+}
+
+.hrContainer .mainColor::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4rpx;
+  background-color: currentColor;
+  transform: scale(0.6, 0.5);
+}
+
+/*活动说明  */
+
+.commdityDetail_bardesc {
+  padding-top: 60rpx;
+}
+
+.desTitBox {
+  padding: 0 30rpx;
+}
+
+.desContent {
+  padding: 0 40rpx;
+  margin-top: 22rpx;
+}
+
+.dotted {
+  display: inline-block;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  margin-right: 14rpx;
+  margin-bottom: 4rpx;
+  background-color: #666;
+}
+
+.staEnd {
+  color: #666;
+}
+
+.desRule {
+  font-size: 30rpx;
+  line-height: 44rpx;
+  padding-top: 10rpx;
+}
+.kjProgress .subColor01{
+  font-size: 20rpx;
+}
+/*商品说明  */
+
+.richTextBox {
+  padding-top: 50rpx;
+}
+
+.desPicBox {
+  padding: 20rpx 30rpx;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.desPicBox image {
+  width: 100%;
+  max-width: 100% !important;
+}
+
+/*斩获榜  */
+
+.rankItem {
+  align-items: center;
+  padding: 40rpx 30rpx;
+}
+
+.rankItem>.sub {
+  height: 70rpx;
+  margin-top: 8rpx;
+  line-height: 1.02;
+  font-size: 28rpx;
+}
+
+.rankItem .red {
+  font-size: 30rpx;
+}
+
+.rankItem .red .f12 {
+  margin-right: 4rpx;
+}
+.mingciBox{
+  width: 50rpx;
+  height: 50rpx;
+  overflow: hidden;
+  margin-right: 20rpx;
+  text-align: center;
+}
+.mingciBox image{
+  width: 100%;
+  height: 100%;
+}
+.mingci {
+  width: 60rpx;
+  margin-right: 6rpx;
+  color: #999;
+  font-size: 34rpx;
+}
+
+.starPic {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+.proContainer{
+  justify-content: space-between;
+  align-items: center;
+}
+.progressBox{
+  position: relative;
+  width: 280rpx;
+  height: 10rpx;
+  border-radius: 100rpx;
+  background-color: #eee;
+  margin-top: 30rpx;
+  overflow: hidden;
+}
+
+.innerProgress{
+  position: absolute;
+  top: 0;
+  left: 0;
+   height: 100%; 
+   border-radius: 100rpx;
+  width: 80%;
+}
+
+/*底部按钮  */
+
+.footerBox {
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 92rpx;
+  color: #666;
+  background-color: #fff;
+}
+
+.footerBox button {
+  border-radius: 0;
+  height: 92rpx;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.footerBox button::after {
+  display: none;
+}
+
+.homeBtn {
+  position: relative;
+  width: 200rpx;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  padding-top: 10rpx;
+}
+.homeBtn::before{
+  background-color: #ccc;
+}
+.homeBtn:nth-child(2) {
+  border-left: 1rpx solid #ccc;
+}
+
+.homeBtn .iconfont {
+  font-size: 44rpx;
+}
+
+
+.partiBtn {
+  color: #fff;
+  line-height: 100rpx;
+}
+.disabledBg{
+  color: #888;
+  background-color: #ccc;
+}
+
+/*  弹窗  转发/生成海报  */
+
+.commdityDetail_share {
+  z-index: 1000;
+}
+
+.shareBg {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.shareBg .shade_bg {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.shareButton {
+  font-size: 28rpx;
+  line-height: 1;
+  color: #666;
+  background-color: #fff;
+  padding: 72rpx 0 50rpx 0;
+  border-radius: 0;
+}
+
+.shareButton::after {
+  width: 0;
+  height: 0;
+}
+
+.shareButton:active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.shareBox .sub .subIconBox {
+  font-size: 90rpx;
+}
+
+.subIconBox .icon-fenxianggeipengyou {
+  color: #09bb07;
+}
+
+.subIconBox .icon-shengchenghaibao {
+  color: #3fabf2;
+}
+
+.cancleBtn {
+  padding: 30rpx 0;
+}
+
+.cancleBtn:active {
+  background-color: #ccc;
+}
+
+/*弹窗 看看其他活动  */
+
+.commdityDetail_kkqt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 630rpx;
+  padding: 50rpx 20rpx;
+  border-radius: 8rpx;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  border: 2rpx solid #666;
+  color: #666;
+  transform: rotate(45deg);
+}
+
+.closeBtn:active {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.closeBtn::before, .closeBtn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: currentColor;
+}
+
+.closeBtn::before {
+  width: 50%;
+  height: 2rpx;
+}
+
+.closeBtn::after {
+  width: 2rpx;
+  height: 50%;
+}
+
+.kkCon {
+  margin-left: 60rpx;
+}
+
+.tankkqtBtn {
+  width: 80%;
+  color: #fff;
+  font-size: 30rpx;
+  margin-top: 40rpx;
+}
+
+/*返回首页 */
+
+.goHome {
+  position: fixed;
+  z-index: 100;
+  bottom: 200rpx;
+  right: 2px;
+  color: #fff;
+  font-size: 56rpx;
+  padding: 18rpx 16rpx;
+  border-radius: 50%;
+}
+
+.goHome:active {
+  opacity: 0.85;
+}
+
+/*弹出框  底部弹出  */
+
+.bounce {
+  animation: bounce 0.3s linear forwards;
+}
+
+/*斩获榜没有数据 */
+
+.no-content-img {
+  width: 320rpx;
+  height: 320rpx;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}

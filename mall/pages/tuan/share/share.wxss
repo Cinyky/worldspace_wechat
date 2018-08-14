@@ -1,0 +1,50 @@
+/* 字体文件 */
+@import "/pages/tuan/common/infoFont.wxss";
+
+.iconfont {
+  font-size: inherit;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+/* 多色版文件 */
+@import "/css/DuoguanTuan/DuoguanTuan-template-default.wxss";
+
+.topPic {
+  width: 100%;
+}
+
+.savePicBtn {
+  width: 94%;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  margin-bottom: 30rpx;
+}
+
+.savePicBtn::after {
+  width: 0;
+  height: 0;
+}
+
+.cavimg {
+  width: 94%;
+  height: 100%;
+  margin: 20rpx 3%;
+  border-radius: 8rpx;
+  margin-bottom: 60rpx;
+}
+
+.load {
+  padding-top: 40%;
+  line-height: 24px;
+}
+
+.save {
+  color: #fff;
+  background-color: var(--mColor);
+}
+
+.goHome {
+  color: var(--mColor);
+  background-color: #fff;
+}

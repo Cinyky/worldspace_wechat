@@ -1,0 +1,102 @@
+<!--商品列表页  -->
+<scroll-view class='scrollBox white_bg' scroll-x>
+<view class='scrollItem' catchtap='jumpHome' data-category='home'>首页</view>
+<block wx:for="{{category}}">
+   <view class='scrollItem {{group_val == item.id ? "topTab_on" : ""}}' catchtap='selectCategory' data-category='{{item.id}}'>{{item.cate_name}}</view> 
+</block>
+</scroll-view>
+
+
+<view class='commdityList white_bg'>
+  <block wx:for="{{goods}}" wx:key="index">
+    <view class='commdityItem {{item.notcut==true || item.goods_num==0 ? "end" : ""}}' bindtap='cutgoods' data-id="{{item.id}}" wx:if="{{group_val == item.cate_id}}">
+    <view class='endMask'></view>
+      <view class='comPicBox'>
+        <!--5:3  -->
+        <image class='comPic' mode='aspectFill' src='{{item.goods_icon_url}}'></image>
+        <view class='countDown f14' wx:if="{{item.notcut==true}}">
+          <text class='iconfont icon-huodongshijian'></text> 活动已结束
+        </view>
+        <view class='countDown f14' wx:if="{{item.cutdaowbefore==false}}">
+          <text class='iconfont icon-huodongshijian'></text> 还剩{{item.cutdown}}
+        </view>
+        <view class='countDown f14' wx:if="{{item.cutdaowbefore==true}}">
+          <text class='iconfont icon-huodongshijian'></text> 距离开始还剩{{item.cutdown}}
+        </view>
+        <!--售罄 -->
+        <view class='yisq' wx:if="{{item.goods_num==0}}">
+          <text class='iconfont icon-zaicigoumaiyishouqing'></text>
+        </view>
+        <!--库存 -->
+        <view class='status' wx:else>
+          <text>库存</text>
+          <text class='f16 orange'>{{item.goods_num}}</text>
+        </view>
+        <!--需砍几次 -->
+        <view class='status' hidden='true'>只需砍
+          <text class='f16 orange'>{{item.bargain_num}}</text> 次
+        </view>
+      </view>
+      <view class='commInfo'>
+        <view class='itemTit mb5 f18 lineText2'>{{item.goods_name}}</view>
+        <view class='ppbox grey mb10'>
+          <view class='ppAvarat' wx:if="{{item.headimg}}">
+            <block wx:for="{{item.headimg}}" wx:index="{{index}}">
+              <image src='{{item.headimgurl}}' class='ppItem' mode='aspectFill'></image>
+            </block>
+            <text></text>
+          </view>
+          <text>{{item.people}}人正在参加</text>
+        </view>
+        <view class='bottPriBox flex'>
+          <view class='boxLf grey sub f14'>
+            <text>最低<text class='f24 red'>￥{{item.low_price}}</text></text>
+            <text class='ml10'>价格￥{{item.const_price}}</text>
+          </view>
+          <view class='boxRg'>
+            立即参与
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </block>
+  <!-- <view class='commdityItem' >
+        <view class='comPicBox'>
+          <image class='comPic' mode='aspectFill' src='{{item.goods_icon_url}}'></image>
+          <view class='bottPriBox flex'>
+            <view class='boxLf sub '>
+              <view class='zdkgj '>最低砍购价</view>
+              <view class='kPriYPri flex'>
+                <view class='kPri mr15 lineText'>
+                  <text>￥</text>
+                  <text class=' f20 bold'></text>
+                </view>
+                <view class='yPri lineText'>
+                  <text class='mr5'>价格</text>
+                  <text><text class='f12'  >￥</text></text>
+                </view>
+              </view>
+            </view>
+            <view class='boxRg tc lineText'>
+              <text>立即参与</text>
+              <text class='iconfont icon-lijicanyu '></text>
+            </view>
+          </view>
+        </view>
+        <view class='commInfo f14'>
+          <view class='itemTit mb5 lineText2'></view>
+          <view class='grey lineText'>
+            <text class='iconfont icon-huodongshijian  mr5'></text>
+            <text>活动日期：</text>
+            <text>{{item.start_time}} 至 {{item.end_time}}</text>
+          </view>
+          <view class='partiCou redColor lineText'>
+            <text class='iconfont icon-canyurenshu mr5'></text>
+            <text class='cyrs'>人</text>
+            <text class='grey'>正在参加</text>
+          </view>
+        </view>
+      </view> -->
+
+</view>

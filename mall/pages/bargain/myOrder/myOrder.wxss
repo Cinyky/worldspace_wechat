@@ -1,0 +1,81 @@
+@import "../common.wxss";
+@import "/css/DuoguanBargain/DuoguanBargain-template-default.wxss";
+
+
+.moTopBox {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 94rpx;
+  line-height: 88rpx;
+  padding: 0 30rpx;
+}
+
+.topTab {
+  max-width: 150rpx;
+}
+
+/*列表*/
+
+.orderList {
+  margin-top: 114rpx;
+}
+
+.orderItem {
+  padding: 30rpx;
+}
+.kanzhi{
+  -webkit-transform: translateY(6rpx); 
+  transform: translateY(6rpx);
+}
+
+.thmaBox{
+  margin-top: 20rpx;
+   padding: 10rpx 0; 
+  color: #666;
+  text-align: right;
+}
+.tihuoma{
+  display: inline-block;
+  line-height: 48rpx;
+  padding: 0 20rpx;
+  transform: translateY(16rpx); 
+  
+}
+.tihuoma::before{
+  border-color: #666;
+  border-radius: 8rpx;
+}
+.tihuoma:active {
+  color: #fff;
+  border-radius: 8rpx;
+}
+.tihuomaBox{
+  text-align: right;
+}
+.tihuomaBtn{
+  line-height: 60rpx;
+  font-size: 30rpx;
+  display: inline-block;
+  color: #666;
+  transform: translateY(24rpx)
+}
+.tihuomaBtn::after{
+  border-color: currentColor
+}
+
+/*弹窗  */
+.tanInnerBox{
+   width: 75%;
+   background-color: #fff;
+   padding: 50rpx  30rpx 80rpx 30rpx;
+   border-radius: 10rpx;
+   box-shadow: 0 2rpx 30rpx rgba(0, 0, 0, 0.38)
+}
+
+canvas.scand-img{
+  width: 300rpx;
+  height: 300rpx;
+  margin: 0 auto;
+}

@@ -1,0 +1,206 @@
+<!--砍价进度  -->
+<template name="commdityDetail_priPgr">
+
+  <!--我看到的  -->
+
+  <!--参与过  显示砍价进度   -->
+  <block wx:if="{{helprecod==1}}">
+    <view class="meProBox  {{my_record?'':display_hide}}">
+      <view class=' flex flexCCen '>
+        <image class='kjrPic mr10' mode='aspectFill' src='{{headimgurl}}'></image>
+        <view class='sub kjrTit'>
+          <text class='mr10'>{{nick_name}}</text>
+          <text class='succParti redColor'>已砍{{cutall}}元，还差{{outprice}}元到底价,快快邀请小伙伴帮砍吧~</text>
+        </view>
+      </view>
+      <view class='pd15'>
+        <view>
+          <view class='proBox'>
+            <view class='progBarBox'>
+              <view class='curProgress subColor02_bg f12' style='left: calc({{100-proval}}% - 50rpx)'>
+                <text class='proPriVal'> <text class='f10'>￥</text>{{outprice}}</text>
+              </view>
+              <view class='progBar subColor02_bg' style='width:{{proval/100*630}}rpx'></view>
+              <view class='progBarInner'></view>
+            </view>
+          </view>
+
+          <view class='clearfix mt5'>
+            <view class='fl grey f14'>价格：￥{{const_price}}</view>
+            <view class='fr subColor02'>底价：￥{{low_price}}</view>
+          </view>
+
+
+        </view>
+        <view class='flex flexMBtw flexCCen mt20 ' catchtap='partic' data-gid="{{goods_id}}" data-uid="{{uid}}">
+          <view class='sub'>
+            <block wx:for="{{helpimg}}" wx:key="index">
+              <image class='parpantPic' mode='aspectFill' src='{{item.headimgurl}}'></image>
+              <block wx:if="{{index>4}}">
+                <text class='shluehao transLeft3'>...</text>
+              </block>
+            </block>
+          </view>
+          <view class='bargVal lineText sub f14'>
+            <text>{{num}}人共砍掉了</text>
+            <text class='redColor'>{{cutall}}</text>
+            <text>元</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!--参与过 砍价成功  -->
+  <block wx:if="{{helprecod==4}}">
+    <view class="commdityDetail_kddj  {{my_record?'':display_hide}}">
+      <view class='mb15 tc comKddjTop'>
+        <image class='barSucSmile' mode='aspectFill' src='http://x.ixiaochengxu.cc/resource/images/bargain/lowest.png'></image>
+        <view class='comKddjTopCon ml5'>
+          <view>
+            <text>你已成功砍到底价</text>
+            <text class='subColor02'>￥{{low_price}}</text>
+            <text class=' ml10'>，赶快入手吧！</text>
+          </view>
+          <view class='f14 grey'>库存有限，先到先得，售完为止</view>
+        </view>
+      </view>
+
+      
+      <form class='sub' bindsubmit="gobuy" report-submit='true'>
+      <input type='text' name='goods_id' value='{{goods_id}}' hidden='true'></input>
+      <button class='ljBuyBtn mainColor_bg' formType='submit'>一键购买</button>
+      </form>
+      <!-- <button class='ljBuyBtn mainColor_bg' open-type='share'>炫耀一下</button> -->
+      
+      <view class='flex flexMBtw flexCCen mt30' catchtap='partic' data-gid="{{goods_id}}" data-uid="{{uid}}">
+        <view class='sub aliLeft'>
+          <block wx:for="{{helpimg}}" wx:key="index">
+            <image class='parpantPic' mode='aspectFill' src='{{item.headimgurl}}'></image>
+            <block wx:if="{{index>4}}">
+              <text class='shluehao transLeft3'>...</text>
+            </block>
+          </block>
+        </view>
+        <view class='bargVal  lineText sub f14'>
+          <text>{{num}}人共砍掉了</text>
+          <text class='redColor'>{{cutall}}</text>
+          <text>元</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+
+
+  <block wx:if="{{helprecod==6}}">
+    <!--参与过 购买此宝贝  -->
+    <view class='commdityDetail_priPgr ' wx:if="{{orderid}}">
+
+      <view class='hdEnded tc f14 recColor'>哎呦，不错哦！你已经购买了此宝贝！</view>
+      <view class='ljBuyBox mt30'>
+        <button class='ljBuyBtn mainColor_bg' bindtap='tomyorder' data-id="{{orderid}}" data-status="{{pay_status}}">查看订单</button>
+      </view>
+      <view class='dsrDsqBox flex flexMBtw flexCCen mt25' catchtap='partic' data-gid="{{goods_id}}" data-uid="{{uid}}">
+        <view class='sub'>
+          <block wx:for="{{helpimg}}" wx:key="index">
+            <image class='parpantPic' mode='aspectFill' src='{{item.headimgurl}}'></image>
+            <block wx:if="{{index>4}}">
+              <text class='shluehao transLeft3'>...</text>
+            </block>
+          </block>
+        </view>
+        <view class='bargVal lineText sub f14'>
+          <text>{{num}}人共砍掉了</text>
+          <text class='mainColor'>{{cutall}}元</text>
+        </view>
+      </view>
+    </view>
+    <!--参与过  没购买  活动已结束 或者 商品售罄  -->
+    <view class='meProBox  ' wx:else>
+      <view class='kjrBox flex flexCCen '>
+        <image class='kjrPic mr10' mode='aspectFill' src='{{headimgurl}}'></image>
+        <view class='sub kjrTit'>
+          <text class='mr10'>{{nick_name}}</text>
+          <text class='succParti redColor' wx:if="{{goods_num > 0}}">你出手慢了,活动已经结束~</text>
+           <text class='succParti redColor' wx:if="{{goods_num == 0}}">你出手慢了,宝贝已被抢光了~</text> 
+        </view>
+      </view>
+      <view class='pd15'>
+        <view>
+          <view class='proBox'>
+            <view class='progBarBox'>
+              <view class='curProgress grey_bg f12' style='left: calc({{100-proval}}% - 50rpx)'>
+                <text class='proPriVal'> <text class='f12'>￥</text>{{outprice}}</text>
+              </view>
+              <view class='progBar ' style='width:{{proval/100*630}}rpx;background:#999;'></view>
+              <view class='progBarInner'></view>
+            </view>
+          </view>
+
+          <view class='clearfix mt10'>
+            <view class='fl grey f14'>价格：￥{{const_price}}</view>
+            <view class='fr mainColor '>底价：￥{{low_price}}</view>
+          </view>
+        </view>
+        <view class='flex flexMBtw flexCCen mt20 ' catchtap='partic' data-gid="{{goods_id}}" data-uid="{{uid}}">
+          <view class='sub'>
+            <block wx:for="{{helpimg}}" wx:key="index">
+              <image class='parpantPic' mode='aspectFill' src='{{item.headimgurl}}'></image>
+              <block wx:if="{{index>4}}">
+                <text class='shluehao transLeft3'>...</text>
+              </block>
+            </block>
+          </view>
+          <view class='bargVal  lineText sub f14'>
+            <text>{{num}}人帮你砍掉了</text>
+            <text class='mainColor'>{{cutall}}元</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+  </block>
+
+  <!--已点击购买  查看订单  -->
+  <block wx:if="{{helprecod==8}}">
+    <view class='commdityDetail_priPgr white_bg'>
+
+      <view class='hdEnded tc f14'>你已经购买此宝贝！</view>
+      <view class='ljBuyBox mt30'>
+        <button class='ljBuyBtn mainColor_bg' bindtap='tomyorder' data-id="{{orderid}}" data-status="{{pay_status}}">查看订单</button>
+      </view>
+      <view class='dsrDsqBox flex flexMBtw flexCCen mt25' catchtap='partic' data-gid="{{goods_id}}" data-uid="{{uid}}">
+        <view class='sub'>
+          <block wx:for="{{helpimg}}" wx:key="index">
+            <image class='parpantPic' mode='aspectFill' src='{{item.headimgurl}}'></image>
+            <block wx:if="{{index>4}}">
+              <text class='shluehao transLeft3'>...</text>
+            </block>
+          </block>
+        </view>
+        <view class='bargVal lineText sub f14'>
+          <text>{{num}}人共砍掉了</text>
+          <text class='mainColor'>{{cutall}}元</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+
+  <block>
+    <!--没参与  活动结束-->
+    <view class='tipsBox flex flexCen redColor' wx:if="{{helprecod == 0 && notcut == true}}">
+      <icon type='warn' size='23 '></icon>
+      <text class="ml10">你来晚了，本轮活动已经结束~</text>
+    </view>
+
+    <!--没参与  商品售罄-->
+    <view class='tipsBox flex flexCen redColor' wx:if="{{helprecod == 0 && notcut == false && goods_num == 0}}">
+      <icon type='warn' size='23 '></icon>
+      <text class="ml10">你来晚了，宝贝已经被抢光了~</text>
+    </view>
+  </block>
+  
+</template>

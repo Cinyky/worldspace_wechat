@@ -1,0 +1,17 @@
+/* pages/tuan/tuan-peo/index.wxss */
+
+/* 字体文件 */
+@import "/pages/tuan/common/infoFont.wxss";
+.iconfont{font-size: inherit;display: inline-block;vertical-align: bottom;}
+/* 多色版文件 */
+@import "/css/DuoguanTuan/DuoguanTuan-template-default.wxss";
+
+page{background: #fff;}
+.shop-msg{padding: 20rpx 30rpx;}
+.goods-img{width: 220rpx;height: 220rpx;}
+.goods-img image{width: 100%;height: 100%;}
+
+.people-img{width: 100rpx;height: 100rpx;margin-bottom: 20rpx;display: inline-block;vertical-align: bottom;}
+.people-img:nth-child(n+2){margin-left: 20rpx;}
+.people-img image{width: 100%;height: 100%;border-radius:50%;}
+.people-img .no-peo{line-height: 100rpx;color:#aaa;border:2px dashed currentColor;font-size:40rpx;width: 100%;height: 100%;border-radius:50%;display: inline-block;}

@@ -1,0 +1,214 @@
+<!--首页-->
+
+<import src="../template/commdityList.wxml" />
+
+<view class=''>
+  <!--轮播图-->
+
+  <view class="swiper " wx:if="{{imgUrls}}">
+    <swiper indicator-dots="{{indicatorDots}}" indicator-active-color="#fff" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item.imgurl}}" class="slide-image" mode="aspectFill" data-link="{{item.link}}" catchtap='jumpGoods'/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!--分类图标  -->
+  <view class='tabBox  f14 mb10' wx:if="{{category}}">
+    <block wx:for="{{category}}" wx:key="index">
+      <view class='tab ' catchtap='tocatecut' data-id="{{item.id}}">
+        <image class='inTabPic' mode='aspectFill' src='{{item.cate_img_url}}'></image>
+        <view class='lineText'>{{item.cate_name}}</view>
+      </view>
+    </block>
+  </view>
+<duoguan_ad ad_type="duoguanbargain_index_ad"/>
+
+  <!--列表  -->
+  <view class='listBox'>
+    <view class='flex tc navbar'>
+      <view class='navTab sub {{group_val == "ing" ? "topTab_on" : ""}}' catchtap='goodstype' data-goodstype='1'>进行中</view>
+      <view class='navTab sub {{group_val == "end" ? "topTab_on" : ""}}' catchtap='goodstype' data-goodstype='2'>已结束</view>
+      <view class='navTab sub {{group_val == "preview" ? "topTab_on" : ""}}' catchtap='goodstype' data-goodstype='3'>
+        <text>预告</text>
+        <view class='wedget'>NEW</view>
+      </view>
+    </view>
+    <view class='commdityList '>
+      <block wx:for="{{goods}}" wx:key="index">
+        <view class='commdityItem ' bindtap='cutgoods' data-id="{{item.id}}" wx:if='{{group_val == "ing" && timeall[index].notcut!=true && item.goods_num!=0 && timeall[index].cutdaowbefore!=true}}'>
+          <view class='comPicBox'>
+            <!--5:3  -->
+            <image class='comPic' mode='aspectFill' src='{{item.goods_icon_url}}'></image>
+            <!-- <view class='countDown f14' wx:if="{{timeall[index].notcut==true}}">
+              <text class='iconfont icon-huodongshijian'></text> 活动已结束
+            </view> -->
+            <view class='countDown f14' wx:if="{{timeall[index].cutdaowbefore==false&&timeall[index].notcut!=true}}">
+              <text class='iconfont icon-huodongshijian'></text> 还剩{{timeall[index].cutdown}}{{sec}}秒
+            </view>
+            <!-- <view class='countDown f14' wx:if="{{timeall[index].cutdaowbefore==true}}">
+              <text class='iconfont icon-huodongshijian'></text> 距离开始还剩{{timeall[index].cutdown}}{{sec}}秒
+            </view> -->
+            <!--已结束 -->
+            <view class='yisq' wx:if="{{item.goods_num==0}}">
+              <!--售罄  -->
+              <text class='iconfont icon-zaicigoumaiyishouqing'></text>
+              <!--过期  -->
+              <!-- <text class='iconfont icon-yiguoqi'></text> -->
+            </view>
+            <!--库存 -->
+            <view class='status' wx:if="{{item.set_style==1&&item.goods_num>0}}">
+              <text>库存</text>
+              <text class='f16 orange'>{{item.goods_num}}</text>
+            </view>
+            <!--需砍几次 -->
+            <view class='status' wx:if="{{item.set_style==2}}">只需砍
+              <text class='f16 orange'>{{item.bargain_num}}</text> 次
+            </view>
+          </view>
+          <view class='commInfo'>
+            <view class='itemTit mb5 f18 lineText2'>{{item.goods_name}}</view>
+            <view class='ppbox grey mb10'>
+              <view class='ppAvarat' wx:if="{{item.headimg}}">
+                <block wx:for="{{item.headimg}}" wx:index="{{index}}">
+                  <image src='{{item.headimgurl}}' class='ppItem' mode='aspectFill'></image>
+                </block>
+                <text></text>
+              </view>
+              <text>{{item.joincount}}人已参加</text>
+            </view>
+            <view class='bottPriBox flex'>
+              <view class='boxLf grey sub f14'>
+                <text>最低<text class='f24 red'>￥{{item.low_price}}</text></text>
+                <text class='ml10'>价格￥{{item.const_price}}</text>
+              </view>
+              <view class='boxRg endRg'>去砍价</view>
+              <!-- <view class='boxRg'>提醒我</view> -->
+            </view>
+          </view>
+
+          <!--已结束  -->
+          <view class='endMask'></view>
+        </view>
+
+
+        <view class='commdityItem end' bindtap='cutgoods' data-id="{{item.id}}" wx:if='{{(group_val == "end" && timeall[index].notcut==true) || (group_val == "end" && item.goods_num==0)}}'>
+          <view class='comPicBox'>
+            <!--5:3  -->
+            <image class='comPic' mode='aspectFill' src='{{item.goods_icon_url}}'></image>
+            <view class='countDown f14' wx:if="{{timeall[index].notcut==true}}">
+              <text class='iconfont icon-huodongshijian'></text> 活动已结束
+            </view>
+            <!--已结束 -->
+            <view class='yisq' wx:if="{{item.goods_num==0 && timeall[index].notcut!=true}}">
+              <text class='iconfont icon-zaicigoumaiyishouqing'></text>
+            </view>
+            <!--售罄  -->
+            <view class='yisq'wx:if="{{timeall[index].notcut==true}}">
+              <text class='iconfont icon-yiguoqi'></text>
+            </view>
+            <!--库存 -->
+            <view class='status' wx:if="{{item.set_style==1&&item.goods_num>0}}">
+              <text>库存</text>
+              <text class='f16 orange'>{{item.goods_num}}</text>
+            </view>
+            <!--需砍几次 -->
+            <view class='status' wx:if="{{item.set_style==2}}">只需砍
+              <text class='f16 orange'>{{item.bargain_num}}</text> 次
+            </view>
+          </view>
+          <view class='commInfo'>
+            <view class='itemTit mb5 f18 lineText2'>{{item.goods_name}}</view>
+            <view class='ppbox grey mb10'>
+              <view class='ppAvarat' wx:if="{{item.headimg}}">
+                <block wx:for="{{item.headimg}}" wx:index="{{index}}">
+                  <image src='{{item.headimgurl}}' class='ppItem' mode='aspectFill'></image>
+                </block>
+                <text></text>
+              </view>
+              <text>{{item.joincount}}人已参加</text>
+            </view>
+            <view class='bottPriBox flex'>
+              <view class='boxLf grey sub f14'>
+                <text>最低<text class='f24 red'>￥{{item.low_price}}</text></text>
+                <text class='ml10'>价格￥{{item.const_price}}</text>
+              </view>
+              <view class='boxRg endRg'>去砍价</view>
+              <!-- <view class='boxRg'>提醒我</view> -->
+            </view>
+          </view>
+
+          <!--已结束  -->
+          <view class='endMask'></view>
+        </view>
+
+        <view class='commdityItem ' bindtap='cutgoods' data-id="{{item.id}}" wx:if='{{group_val == "preview" && timeall[index].cutdaowbefore==true}}'>
+          <view class='comPicBox'>
+            <!--5:3  -->
+            <image class='comPic' mode='aspectFill' src='{{item.goods_icon_url}}'></image>
+            <view class='countDown f14' wx:if="{{timeall[index].cutdaowbefore==true}}">
+              <text class='iconfont icon-huodongshijian'></text> 距离开始还剩{{timeall[index].cutdown}}{{sec}}秒
+            </view>
+            <!--已结束 -->
+            <view class='yisq' wx:if="{{item.goods_num==0}}">
+              <!--售罄  -->
+              <text class='iconfont icon-zaicigoumaiyishouqing'></text>
+              <!--过期  -->
+              <!-- <text class='iconfont icon-yiguoqi'></text> -->
+            </view>
+            <!--库存 -->
+            <view class='status' wx:if="{{item.set_style==1&&item.goods_num>0}}">
+              <text>库存</text>
+              <text class='f16 orange'>{{item.goods_num}}</text>
+            </view>
+            <!--需砍几次 -->
+            <view class='status' wx:if="{{item.set_style==2}}">只需砍
+              <text class='f16 orange'>{{item.bargain_num}}</text> 次
+            </view>
+          </view>
+          <view class='commInfo'>
+            <view class='itemTit mb5 f18 lineText2'>{{item.goods_name}}</view>
+            <view class='ppbox grey mb10'>
+              <view class='ppAvarat' wx:if="{{item.headimg}}">
+                <block wx:for="{{item.headimg}}" wx:index="{{index}}">
+                  <image src='{{item.headimgurl}}' class='ppItem' mode='aspectFill'></image>
+                </block>
+                <text></text>
+              </view>
+              <text>{{item.joincount}}人已参加</text>
+            </view>
+            <view class='bottPriBox flex'>
+              <view class='boxLf grey sub f14'>
+                <text>最低<text class='f24 red'>￥{{item.low_price}}</text></text>
+                <text class='ml10'>价格￥{{item.const_price}}</text>
+              </view>
+              <view class='boxRg endRg'>{{item.msg}}</view>
+              <!-- <view class='boxRg'>提醒我</view> -->
+            </view>
+          </view>
+
+          <!--已结束  -->
+          <view class='endMask'></view>
+        </view>
+
+
+      </block>
+    </view>
+  </view>
+</view>
+
+<!--客服悬窗  -->
+<button class='concatBtn mainColor_bg' open-type="contact">
+  <text class='iconfont icon-icon_kefu'></text>
+</button>
+
+<!--回到顶部  -->
+<button class='concatBtn mainColor_bg toTop' bindtap='toTop' wx:if="{{to_top == true}}">
+  <text class='iconfont icon-huidaodingbu'></text>
+</button>
+
+<!-- 广告弹框 -->
+ <import src='../../plug-in/template/tpl.wxml' /> 
+<template is='popup-big' data='{{data:ad_popup}}' />

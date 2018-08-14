@@ -1,0 +1,25 @@
+<!--砍价团  -->
+<view class='white_bg ppBox'>
+  <view class='ppTopBox tc redColor'>
+    <view class='geili bold'>给力！</view>
+    <view class='kdMoney mt15'>小伙伴儿们功力了得一起砍掉了{{datalist.price}}元！ </view>
+  </view>
+  
+  <view class='ppList' >
+  <block wx:for="{{datalist.help}}" wx:key="index">
+    <view class='gridXb ppItem'>
+      <view class='flex'>
+        <image class='kjrPic mr10' mode='aspectFill' src='{{item.headimgurl}}'></image>
+        <view class='ppItemRg sub'>
+          <text class='mr10'>{{item.nickname}}：</text>
+          <text class='grey f14'>砍砍砍！重要的事情说三遍,帮我砍掉了<text class='mainColor'>{{item.help_price}}元</text></text>
+        </view>
+      </view>
+      <view class='kjTime f14 grey mr10'>
+        <text class='mr5'>{{item.createtime}}</text>
+      </view>
+    </view>
+    </block>
+  </view>
+
+</view>

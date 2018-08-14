@@ -1,0 +1,111 @@
+<!--pages/bargain/friendseeDetail/friendseeDetail.wxml-->
+<view class='indexPage'>
+  <!--   -->
+  <view class='sectionBox white_bg'>
+    <view class='tc friheader'>
+      <image class='friendPic' mode='aspectFill' src='{{proval.headimgurl}}'></image>
+      <view class='linght f14'>{{proval.nick_name}}</view>
+      <view>
+        <text class='yinhao'>“</text>
+        <text wx:if="{{proval.helprecod == 2 || proval.helprecod == 3 || proval.helprecod == 7}}"> 我发现一件好货，请求大侠帮忙补一刀！</text>
+        <text wx:if="{{proval.helprecod == 5}}"> 我已底价入手了，羡慕就来参与吧！</text>
+        <text wx:if="{{proval.helprecod == 9}}"> 哈哈哈，还好出手快，我已经抢到了！</text>
+        <text class='yinhao'>”</text>
+      </view>
+    </view>
+    <view class='commodityInfo flex mt10' bindtap='gogoodsdetail'>
+      <image class='commodityPic' mode='aspectFill' src='{{goods.goods_icon_url}}'></image>
+      <view class='sub'>
+        <view class='lineText3 '>{{goods.jianjie[0]}}</view>
+        <view class='subColor02 mt5' wx:if="{{proval.helprecod != 7}}">距离结束剩余{{cutdown.dd}}天{{cutdown.hh}}:{{cutdown.mm}}:{{cutdown.ss}}</view>
+        <view class='subColor02 mt5' wx:if="{{proval.helprecod == 7}}">距离结束剩余00天00:00:00</view>
+      </view>
+    </view>
+    <view class='mt10'>
+      <view class='redColor tc lineText' wx:if="{{proval.helprecod == 2 || proval.helprecod == 3}}">已砍{{proval.cutall}}元，还差{{proval.outprice}}元到底价</view>
+      <view class='progBarBox' wx:if="{{goods.goods_num > 0 && proval.helprecod != 7}}">
+
+        <!-- <view class='curProgress subColor02_bg f12' style='left: calc({{100-proval.proval}}% - 50rpx)'>
+          <text class='proPriVal'> <text class='f10'>￥</text>{{proval.outprice}}</text>
+        </view> -->
+
+        <view class='progBar subColor02_bg' style='width:{{proval.proval/100*630}}rpx'></view>
+        <view class='progBarInner'></view>
+
+        <!-- <view class='progBar subColor02_bg' style='left: calc({{100-proval.proval}}% - 50rpx)'></view>
+        <view class='progBarInner'></view> -->
+      </view>
+      <view class='friPriceBox clearfix' wx:if="{{goods.goods_num > 0 && proval.helprecod != 7}}">
+        <view class='fl grey f14'>价格：￥{{proval.const_price}}</view>
+        <view class='fr subColor02'>底价：￥{{proval.low_price}}</view>
+      </view>
+
+      <!--参与砍价  -->
+      <view class='flex friBtnBox'>
+        <view class='sub kbBtn mainColor_bg' catchtap='helpbargain' wx:if="{{proval.helprecod == 2}}">帮TA补一刀</view>
+        <view class='sub iWantBtn ' bindtap='gomycut' wx:if="{{proval.helprecod != 7}}">我也想要</view>
+      </view>
+
+      <!--砍过一刀  砍到底价  已购买 -->
+      <!-- <view class='flex friBtnBox'>
+        <view class='sub iWantBtn ' bindtap='gomycut'>我也想要</view>
+      </view> -->
+    </view>
+
+
+    <view class='redColor' wx:if="{{goods.goods_num == 0 || proval.helprecod == 7}}">
+      <!-- 售罄  -->
+      <!-- 活动结束  -->
+      <view>
+        <view class='tipsBox flex flexCen '>
+          <icon type='warn' size='23 '></icon>
+          <text class="ml10" wx:if="{{goods.goods_num == 0}}">你来晚了，宝贝已经被抢光了~</text>
+          <text class="ml10" wx:if="{{proval.helprecod == 7}}">你来晚了，本轮活动已经结束~</text>
+        </view>
+        <view class='flex friBtnBox'>
+          <view class='sub iWantBtn ' catchtap='jumpHome'>看看其它活动</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <duoguan_ad ad_type="duoguanbargain_friend_ad"/>
+
+  <!--砍价团  -->
+  <view class='sectionBox white_bg mt10 kjt'>
+    <view class='helperTitle subColor02'>我的砍价团</view>
+    <view class='helperList'>
+      <view class='helperItem flex' wx:for="{{proval.helpimg}}">
+        <image class='helperPic' mode='aspectFill' src='{{item.headimgurl}}'></image>
+        <view class='ml10 sub'>
+          <view class='lineText'>{{item.nickname}}</view>
+          <view class='f12 grey mt5'>砍！砍！砍！重要的事情说三遍</view>
+        </view>
+        <view class='redColor ml5 helpVal lineText'>砍掉{{item.help_price}}元</view>
+      </view>
+    </view>
+  </view>
+
+  <!--底部按钮  -->
+  <view class='footerBtn subColor02_bg' wx:if="{{proval.helprecod == 7 || proval.helprecod == 5}}" catchtap='jumpHome'>前去首页</view>
+</view>
+
+
+<!-- 弹窗  帮砍 -->
+<view class="shade_bg" catchtap='hidemy' wx:if="{{proval.helprecod==3&&hidehelp}}">
+  <view class='commdityDetail_zrbk white_bg tc  f14 fadein'>
+    <view class='cirBox'>
+      <view class='innerCir'></view>
+      <view class='outerCir'>
+        <view class='tble'>太棒了</view>
+      </view>
+    </view>
+    <view class='kanDiao'>
+      <text>一出手就帮朋友砍掉了 </text>
+      <text class='duoShao redColor'>{{proval.help_price}}元</text>
+    </view>
+    <button class='zrbkBtn mainColor_bg' wx:if="{{proval.mycutgo}}" bindtap='gomycut'>去我的砍价页</button>
+    <button class='zrbkBtn mainColor_bg' wx:else bindtap='gomycut'>我也要</button>
+  </view>
+</view>

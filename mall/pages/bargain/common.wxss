@@ -1,0 +1,856 @@
+@import "fonts.wxss";
+
+page {
+  font-size: 32rpx;
+  color: #333;
+  padding-bottom: 120rpx;
+}
+
+.iconfont {
+  font-size: inherit;
+}
+
+.navigator-hover {
+  opacity: 1;
+}
+
+button[type="warn"][plain] {
+  border: none;
+  font-size: 12px;
+  border-radius: 6rpx;
+}
+
+button[type="warn"][plain]:active {
+  color: #fff;
+}
+
+input {
+  font-family: inherit;
+}
+
+.display_hide {
+  display: none;
+}
+
+.display_show {
+  display: block;
+}
+
+.shade_bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.white_bg {
+  background-color: #fff;
+}
+
+.grey_bg {
+  background-color: #999;
+}
+
+.redColor {
+  color: #F76260;
+}
+
+.mt25 {
+  margin-top: 50rpx;
+}
+
+.mt30 {
+  margin-top: 60rpx;
+}
+
+.mt35 {
+  margin-top: 70rpx;
+}
+
+.pd15 {
+  padding: 0 15rpx;
+}
+
+.flexW {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.MCCen {
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexMBtw {
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+.flexMArd {
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+
+.flexMCen {
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.flexMEnd {
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+.flexCCen {
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.flexCBtw {
+  -webkit-align-content: space-between;
+  align-content: space-between;
+}
+
+.flexCArd {
+  -webkit-align-content: space-around;
+  align-content: space-around;
+}
+
+.flexCEnd {
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+.selfEnd {
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+}
+
+.selfCen {
+  -webkit-align-self: center;
+  align-self: center;
+}
+
+.selfStr {
+  -webkit-align-self: stretch;
+  align-self: stretch;
+}
+
+.selfFirst {
+  -webkit-order: -1;
+  order: -1;
+}
+
+.selfLast {
+  -webkit-order: 1;
+  order: 1;
+}
+/*已结束蒙层  */
+.endMask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(230, 230, 230, 0.45);
+  display: none;
+}
+
+.end .endMask{
+  display: block;
+}
+.end .itemTit{
+  color: #888;
+}
+.end .bottPriBox .red{
+  color: #999;
+}
+.end .endRg{
+   background-color: #999;
+}
+/*支付方式 弹窗  */
+
+.payTypeBox {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.selType {
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 34rpx;
+  background-color: #eee;
+}
+
+.typeBox {
+  width: 100%;
+  padding: 40rpx 0 40rpx 30rpx;
+}
+
+.payRadio {
+  transform: translateX(-70rpx);
+}
+
+.confirmBtn {
+  font-size: 34rpx;
+  color: #fff;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin-top: 120rpx;
+}
+
+/*谁购买了  */
+
+.buyBg {
+  position: absolute;
+  z-index: 6;
+  top: 15%;
+  left: 30rpx;
+  width: 100%;
+  overflow: hidden;
+}
+
+.fadeIn {
+  animation: fadein 3s linear forwards;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeOut {
+  animation: fadeout 3s linear forwards;
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.buyBox {
+  align-items: center;
+  max-width: 58%;
+  color: #fff;
+  font-size: 24rpx;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 100rpx;
+}
+
+.buyBox .sub .lineText {
+  max-width: 40%;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.buyerPic {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+
+
+/*弹出框  底部弹出  */
+
+.bounce {
+  animation: bounce 0.3s linear forwards;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+/*顶部tab被选中*/
+
+.topTab_on {
+  position: relative;
+}
+
+.topTab_on::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  height: 6rpx;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+/*暂无数据  */
+
+.nodata {
+  color: #ccc;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 200rpx 0;
+}
+
+.nodata .icon-kongbaiyemian {
+  font-size: 200rpx;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/*模板 商品列表  */
+
+.comPicBox {
+  position: relative;
+  width: 100%;
+  height: 414rpx;
+}
+
+.comPic {
+  width: 100%;
+  height: 100%;
+}
+
+.countDown {
+  position: absolute;
+  left: 50%;
+  line-height: 2;
+  border-radius: 3px 3px 0 0;
+  bottom: 0;
+  white-space: nowrap;
+  text-align: center;
+  padding: 0 30rpx;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  transform: translateX(-50%);
+}
+
+.boxRg .icon-lijicanyu {
+  font-size: 28rpx;
+}
+
+.boxLf {
+  padding-top: 10rpx;
+}
+
+.itemTit {
+  font-weight: bold;
+}
+
+.boxRg {
+  padding: 0 40rpx;
+  font-size: 14px;
+  height: 72rpx;
+  line-height: 72rpx;
+  border-radius: 50px;
+  background: #f05d5e;
+  color: #fff;
+}
+
+.boxRg:active {
+  opacity: 0.8;
+}
+
+.yuGaoList .boxRg {
+  background-color: #aaa;
+}
+
+.ppbox {
+  display: flex;
+  justify-content: space-between;
+  line-height: 60rpx;
+}
+
+.ppItem {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.ppItem:nth-child(n+2) {
+  margin-left: -10rpx;
+}
+
+.ppAvarat text {
+  display: inline-block;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50px;
+  border: 1px solid;
+  margin-left: -10rpx;
+  background: #eee;
+  vertical-align: top;
+  position: relative;
+  color: #fff;
+}
+
+.ppAvarat text::after {
+  content: "";
+  width: 3px;
+  height: 3px;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: currentColor;
+  box-shadow: -5px 0 0 #fff, 5px 0 0 #fff;
+}
+
+/*模板 商品详情 砍价进度  */
+
+.commdityDetail_priPgr {
+  padding: 0 30rpx;
+}
+
+.kjrBox {
+  padding-top: 30rpx;
+}
+
+.kjrPic {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+}
+
+.ljBuyBox {
+  padding: 0 15rpx;
+}
+
+.hdEnded {
+  padding-top: 70rpx;
+}
+
+.meProBox {
+  width: 100%;
+  padding: 30rpx;
+}
+
+
+
+.proBox {
+  position: relative;
+  width: 100%;
+  height: 28rpx;
+  margin-top: 100rpx;
+}
+
+.curProgress {
+  position: absolute;
+  top: -70rpx;
+  color: #fff;
+  border-radius: 40rpx;
+  padding: 0 15rpx;
+  margin-bottom: 10rpx;
+}
+
+.curProgress::before {
+  content: "";
+  position: absolute;
+  top: 45rpx;
+  left: 40rpx;
+  width: 0;
+  height: 0;
+  border-left: 15rpx solid transparent;
+  border-right: 15rpx solid transparent;
+}
+
+.curProgress.grey_bg::before{
+   border-top:20rpx solid #999;
+}
+
+.progBarBox {
+  position: relative;
+  width: 630rpx;
+  margin: 0 auto;
+  height: 28rpx;
+}
+
+.progBar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 5;
+  height: 100%;
+  border-radius: 20rpx;
+}
+
+.progBarInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: #e7e7e7;
+  border-radius: 20rpx;
+}
+
+/* 多人少砍了多少钱  */
+
+.dsrDsqBox {
+  padding: 0 15rpx 40rpx 15rpx;
+}
+
+.parpantPic {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  border: 4rpx solid #fff;
+}
+
+.transLeft1 {
+  -webkit-transform: translateX(-10rpx);
+  transform: translateX(-10rpx);
+}
+
+.transLeft2 {
+  -webkit-transform: translateX(-20rpx);
+  transform: translateX(-20rpx);
+}
+
+.transLeft3 {
+  -webkit-transform: translateX(-30rpx);
+  transform: translateX(-30rpx);
+}
+
+.transLeft4 {
+  -webkit-transform: translateX(-40rpx);
+  transform: translateX(-40rpx);
+}
+
+.shluehao {
+  display: inline-block;
+  transform: translate(-20rpx, -0rpx);
+  font-weight: bold;
+}
+
+.bargVal {
+  text-align: right;
+  color: #999;
+}
+
+/* 砍价成功  */
+
+.commdityDetail_kddj {
+  padding: 40rpx 45rpx;
+}
+.comKddjTop{
+  padding: 0 30rpx;
+}
+
+.barSucSmile {
+  width: 330rpx;
+  height: 100rpx;
+  margin-bottom: 20rpx;
+  /* border-radius: 50%; */
+}
+
+.comKddjMid {
+  display: block;
+  padding: 0 30rpx;
+  margin-top: 60rpx;
+}
+
+.ljBuyBtn {
+  height: 86rpx;
+  line-height: 86rpx;
+  color: #fff;
+  font-size: 34rpx;
+  margin: 0 60rpx;
+}
+
+.ljBuyBtn::after {
+  width: 0;
+  height: 0;
+}
+
+button:active {
+  opacity: 0.92;
+}
+
+.aliLeft {
+  text-align: left;
+}
+
+/*模板 商品详情 找人帮砍弹窗  */
+
+.commdityDetail_zrbk {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 564rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.cirBox {
+  position: relative;
+  left: -28rpx;
+  z-index: 10;
+  transform: translateY(-260rpx);
+}
+
+.outerCir {
+  position: absolute;
+  width: 630rpx;
+  height: 370rpx;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.tble {
+  position: absolute;
+  bottom: 30rpx;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  font-size: 32rpx;
+  letter-spacing: 4rpx;
+}
+
+.innerCir {
+  position: absolute;
+  width: 630rpx;
+  height: 370rpx;
+  border-radius: 50%;
+  -webkit-transform-origin: 0 50%;
+  -webkit-transform: rotate(2.5deg) translateX(2rpx);
+  transform-origin: 0 50%;
+  transform: rotate(2.5deg) translateX(2rpx);
+}
+
+.kanDiao {
+  margin-top: 170rpx;
+}
+
+.lookFir {
+  margin-top: 20rpx;
+}
+
+.zrbkBtn {
+  width: 400rpx;
+  height: 74rpx;
+  line-height: 74rpx;
+  color: #fff;
+  font-size: 28rpx;
+  margin-top: 40rpx;
+  margin-bottom: 60rpx;
+}
+
+.zrbkBtn::after {
+  width: 0;
+  height: 0;
+}
+
+/*模板 商品详情 分享选择  */
+
+.commdityDetail_share {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.commdityDetail_shaBtn {
+  font-size: 30rpx;
+  border-radius: 0;
+  padding: 10rpx;
+}
+
+.commdityDetail_shaBtn::after {
+  width: 0;
+  height: 0;
+}
+
+.pt14 {
+  padding-top: 28rpx;
+}
+
+.pb14 {
+  padding-bottom: 28rpx;
+}
+
+/*模板 砍价成功 弹窗 */
+
+.commdityDetail_kjcg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 564rpx;
+  border-radius: 16rpx;
+  padding: 90rpx 82rpx 50rpx 82rpx;
+}
+
+.kjcgPic {
+  position: absolute;
+  left: 50%;
+  top: -136rpx;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 400rpx;
+  height: 226rpx;
+}
+
+.ljBuyBtn_tan {
+  color: #fff;
+  height: 74rpx;
+  line-height: 74rpx;
+  font-size: 28rpx;
+  border-radius: 6rpx;
+}
+
+.ljBuyBtn_tan::after {
+  width: 0;
+  height: 0;
+}
+
+/*模板  订单商品信息 下单页用 */
+
+.orderComInfo_pic {
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.orderComInfo .oComRg {
+  position: relative;
+  margin-top: -4rpx;
+}
+
+.orderComInfo .oComRg .lineText2 {
+  line-height: 40rpx;
+}
+
+.orderPrice {
+  color: #999;
+  -webkit-transform: translateY(12rpx);
+  transform: translateY(12rpx);
+}
+
+.olderPri {
+  text-decoration: line-through;
+}
+
+.kanzhi {
+  font-size: 34rpx;
+}
+
+/* 订单记录列表页 */
+
+.ordComMid {
+  width: 340rpx;
+  margin-top: -4rpx;
+}
+
+.ordComMid .comCon {
+  line-height: 36rpx;
+}
+
+.ordStatus {
+  margin-top: -10rpx;
+  text-align: right;
+}
+
+/*模板  订单快递信息 */
+
+.orderDetail_mailInfo {
+  padding: 30rpx;
+}
+
+.orderDetail_mailInfo:active {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/*模板  订单收货人信息  */
+
+.orderDetail_recInfo {
+  padding: 30rpx;
+}
+
+.orderDetail_recInfo .recName, .recTel {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.orderDetail_recInfo .recaddress {
+  line-height: 40rpx;
+}
+
+/*模板  订单信息  */
+
+.oInfoBox {
+  padding: 0 30rpx;
+}
+
+.oTit {
+  padding: 25rpx 0;
+  color: #333;
+}
+
+.oContentBox {
+  color: #666;
+  padding: 20rpx 0;
+}
+
+.concatOffer {
+  padding: 30rpx 0;
+  font-size: 30rpx;
+}
+
+.concat {
+  padding: 30rpx 0;
+}
+
+.concat:active {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.yisq {
+  position: absolute;
+  bottom: 0rpx;
+  right: 10rpx;
+  z-index: 6;
+  font-size: 160rpx;
+  color: #666;
+  opacity: 0.9;
+}
+
+.status {
+  position: absolute;
+  top: 0;
+  right: 60rpx;
+  color: #fff;
+  font-size: 26rpx;
+  background-color: rgba(251, 93, 94, 0.8);
+  padding: 4rpx 20rpx;
+  border-radius: 0 0 4rpx 6rpx;
+}

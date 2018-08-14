@@ -1,0 +1,30 @@
+@import "../common.wxss";
+@import "/css/DuoguanBargain/DuoguanBargain-template-default.wxss";
+
+.ppBox{
+  margin: 30rpx;
+  border-radius: 16rpx;
+  padding-bottom: 120rpx;
+}
+.ppTopBox{
+  padding: 50rpx 50rpx 30rpx 50rpx;
+}
+.geili{
+  font-size: 38rpx;
+}
+.kdMoney{
+  font-size: 34rpx;
+}
+
+/*列表  */
+.ppItem{
+  width: 100%;
+  height: auto;
+   padding: 30rpx; 
+}
+.ppItemRg{
+  margin-top: -8rpx;
+}
+.kjTime{
+   text-align: right;
+}

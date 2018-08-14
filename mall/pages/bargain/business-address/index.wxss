@@ -1,0 +1,5 @@
+/* pages/shop/business-address/index.wxss */
+
+.address-item{background: #fff;padding: 20rpx 30rpx;}
+.shore-name{font-weight: bold;}
+.shore-address{color: #666;}

@@ -1,0 +1,46 @@
+{
+  "extEnable":true,
+  "pages":[
+    "pages/store/store-info/index","pages/custom/custom_669907976","pages/custom/custom_930435294","pages/custom/custom_671706839","pages/bargain/index/index","pages/bargain/commdityList/commdityList","pages/bargain/commdityDetail/commdityDetail","pages/bargain/participant/participant","pages/bargain/bargainRecord/bargainRecord","pages/bargain/orderDetail/orderDetail","pages/bargain/myOrder/myOrder","pages/bargain/placard/placard","pages/bargain/buy/buy","pages/bargain/refund/refund","pages/bargain/friendseeDetail/friendseeDetail","pages/bargain/shopCenter/shopCenter","pages/bargain/business-address/index","pages/store/store-home/index","pages/store/store-phone-binding/index","pages/store/store-active/index","pages/store/store-order-sure/index","pages/store/store-order-list/index","pages/store/store-order-info/index","pages/store/store-order-comment/index","pages/store/store-chargeoff-order/index","pages/store/store-goods-details/index","pages/store/market-index/index","pages/store/store-coupon/index","pages/store/store-goods-list/index","pages/store/store-rapid-pay/index","pages/store/store-list/index","pages/store/store-pay-success/index","pages/store/store-ruzhu-rule/index","pages/store/store-webview/index","pages/store/store-refund-detail/index","pages/store/store-refund-write/index","pages/store/location/index","pages/store/market-search/index","pages/store/market-topics/index","pages/store/store-map/index","pages/tuan/index/index","pages/tuan/info/info","pages/tuan/join/join","pages/tuan/order/order","pages/tuan/wuliu/index","pages/tuan/tuan/list/index","pages/tuan/tuan/info/index","pages/tuan/rebate-rule/index","pages/tuan/shop/address_list/index","pages/tuan/shop/address_add/index","pages/tuan/tuan/comment/index","pages/tuan/tuan/extension-list/index","pages/tuan/shop-center/index","pages/tuan/site/site","pages/tuan/share/share","pages/coupon/card_recharge/index","pages/coupon/card_list/index","pages/user/user_index/index","pages/user/user_edit/index","pages/user/setting/index","pages/user/mcard/index","pages/user/mcard/pay","pages/user/mcard/recharge","pages/user/mcard/tradelog","pages/user/mcard/coupon","pages/user/company/index","pages/user/address/index","pages/user/tips-info/index","pages/user/fenxiao/index/index","pages/user/fenxiao/qcode/qcode","pages/user/fenxiao/record/record","pages/user/fenxiao/team/team","pages/user/fenxiao/teamlist/teamlist","pages/user/fenxiao/withdraw/withdraw","pages/user/fenxiao/wrecord/wrecord","pages/user/fenxiao/distribution/index","pages/user/red-packet/packet/index","pages/user/red-packet/cash-rule/index","pages/user/red-packet/cash-record/index","pages/user/red-packet/cash/index","pages/user/red-packet/cash-waiting/index","pages/user/red-packet/redwallet-record/index","pages/user/red-packet/write-account/index","pages/user/red-packet/fenxiao-record/index","pages/user/red-packet/write-mobile/index","pages/user/red-packet/activity-promot-record/index","pages/user/red-packet/records/index","pages/user/exam/index","pages/integral/integral-mall/index","pages/integral/integral-record/index","pages/integral/integral-goods/index","pages/integral/integral-detail/index","pages/integral/integral-info/index","pages/plug-in/luckDraw/lotteryDraw/lotteryDraw","pages/plug-in/luckDraw/awardRecord/awardRecord","pages/plug-in/collectWord/index/index","pages/plug-in/supportCompetition/index/index","pages/plug-in/supportCompetition/help/help","pages/plug-in/supportCompetition/ranking/ranking","pages/user/member/member-grade/index","pages/user/member/member-center/index","pages/user/member/pay-records/index","pages/user/userMobile/userMobile","pages/user/web-view/index","pages/user/mcard/receive-coupon/receive-coupon"
+  ],
+  	"tabBar": {
+		"color":"#aeb6bd",
+		"selectedColor":"#009aff",
+		"backgroundColor":"#ffffff",
+		"borderStyle":"black",
+		"list": [{
+					  "pagePath": "pages/store/store-info/index",
+					  "text": "及时达",
+					  "iconPath":"/images/superbar/c051cf416e1dd464739119adf0e04044.png",
+					  "selectedIconPath":"/images/superbar/c051cf416e1dd464739119adf0e04044_in.png"
+					},{
+					  "pagePath": "pages/custom/custom_669907976",
+					  "text": "聚划算",
+					  "iconPath":"/images/superbar/c684246208426d6392e733ea88820d88.png",
+					  "selectedIconPath":"/images/superbar/c684246208426d6392e733ea88820d88_in.png"
+					},{
+					  "pagePath": "pages/custom/custom_930435294",
+					  "text": "购物车",
+					  "iconPath":"/images/superbar/fcd988514f1c9ba4fc5c5585aa1e81dd.png",
+					  "selectedIconPath":"/images/superbar/fcd988514f1c9ba4fc5c5585aa1e81dd_in.png"
+					},{
+					  "pagePath": "pages/custom/custom_671706839",
+					  "text": "优惠买单",
+					  "iconPath":"/images/superbar/3f11225871429d400d0d8bf07fed7d74.png",
+					  "selectedIconPath":"/images/superbar/3f11225871429d400d0d8bf07fed7d74_in.png"
+					},{
+					  "pagePath": "pages/user/user_index/index",
+					  "text": "我的",
+					  "iconPath":"/images/superbar/1345aa4c36b08513e95f5e5a56134136.png",
+					  "selectedIconPath":"/images/superbar/1345aa4c36b08513e95f5e5a56134136_in.png"
+					}]
+  },
+  "window":{
+    "titleBarColor": "#009aff",
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#009aff",
+    "navigationBarTextStyle": "white",
+    "defaultTitle": "馋喵鲜生",
+    "navigationBarTitleText": "馋喵鲜生"
+  }
+}

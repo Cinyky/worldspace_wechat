@@ -1,0 +1,9 @@
+{
+"navigationBarTitleText":"砍价",
+"backgroundTextStyle":"dark",
+"enablePullDownRefresh":true,
+"usingComponents":{
+"duoguan_ad":"/pages/plug-in/components/ad/index"
+}
+
+}

@@ -1,0 +1,33 @@
+/* pages/store/market-search/index.wxss */
+@import "/pages/store/store-common/common.wxss";
+@import "/pages/store/store-common/storetpl.wxss";
+
+page{background: #fff;}
+.top-search{display: flex;display: -webkit-flex;padding: 20rpx 30rpx;}
+.search-box{background: #fafafa;margin-right: 20rpx;padding: 0 20rpx;flex: 1;display: flex;line-height: 64rpx;}
+.search-inp{font-size: 14px;height: 64rpx;width: 100%;}
+.search-btn{background: transparent;font-size: 30rpx;line-height: 64rpx;}
+.search-btn.button-hover{background: #fafafa;}
+
+.search-tab{line-height: 60rpx;text-align: center;}
+.search-tab-item{display: inline-block;padding: 0 40rpx;border: 1px solid #aaa;color: #999;}
+.search-tab-item.active{background: var(--DStore-mcolor);color:#fff;border-color: var(--DStore-mcolor)}
+.search-tab-item:first-child{border-radius: 60rpx 0 0 60rpx;}
+.search-tab-item:last-child{border-radius: 0 60rpx 60rpx 0;}
+
+.shop-list{padding: 30rpx;}
+
+.shop-list-logo{width: 80rpx;height: 80rpx;border-radius: 50%;overflow: hidden;}
+.shop-list-img{width: 200rpx;height: 150rpx;}
+.shop-title{font-weight: bold;display: inline-block;max-width: 260rpx;vertical-align: bottom;}
+.shop-adress{line-height: 1;}
+.many-shop .shop-tag{height: 56rpx;overflow: hidden;}
+.shop-activity-box{display: inline-block;vertical-align: bottom;line-height: 1.4;}
+.shop-activity{display: inline-block;font-size: 10px;width: 17px;height: 17px;line-height: 17px;color: #fff;background: #f66;text-align: center;border-radius: 6rpx;margin-right: 10rpx;vertical-align: top;}
+.shop-activity.jian{background: #ffa766;}
+.search-goods-item{margin-top: 20rpx;}
+.goods-name{font-size: 28rpx;font-weight: bold;}
+.new-price{color:#f66;}
+.more-goods{font-size: 24rpx;color: #999;text-align: center;}
+.more-goods::after{content: '';display: inline-block;width: 6px;height: 6px;border-top: 1px solid;border-right: 1px solid;margin-left: 10rpx;transform: rotate(135deg) scale(0.9);vertical-align: middle;}
+.more-goods.active::after{transform: rotate(-45deg) scale(0.9);}

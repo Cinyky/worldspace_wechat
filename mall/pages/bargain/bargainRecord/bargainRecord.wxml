@@ -1,0 +1,56 @@
+<!--砍价记录  -->
+
+<view class='brTabBox white_bg tc grey gridXb  flex flexMArd'>
+  <view class="brTab lineText {{status==1? 'topTab_on' :''}}" catchtap='setStatus1'>正在砍价中</view>
+  <view class="brTab lineText {{status==2? 'topTab_on' :''}}" catchtap='setStatus2'>砍价完成</view>
+</view>
+
+<!--砍价中  -->
+
+<view class='kjList' wx:if="{{status==1}}">
+  <view class='orderItem white_bg mb10 ' wx:for="{{lists}}" >
+    <view class='flex  orderComInfo f14' data-id="{{item.id}}" catchtap='tocommdity'>
+      <view class='mr10'>
+        <image class='orderComInfo_pic' mode='aspectFill' src='{{item.goods_icon_url}}'></image>
+      </view>
+      <view class='ordComMid flex flexC flexMBtw'>
+        <view class='comCon lineText2 '>
+          <text>{{item.goods_name}}</text>
+        </view>
+        <view class='mt15  flex '>
+          <text class='redColor sub lineText'>最低价：￥{{item.low_price}} </text>
+          <text class='olderPri f12 grey lineText'>价格￥{{item.const_price}}</text>
+        </view>
+      </view>
+      <view class='ordStatus sub mainColor lineText'>砍价中</view>
+
+    </view>
+  </view>
+</view>
+
+<!--已结束  -->
+<view class='kjList'  wx:if="{{status==2}}">
+
+  <view class='orderItem white_bg mb10' wx:for="{{lists}}">
+    <view class='flex  orderComInfo f14' data-id="{{item.id}}" catchtap='tocommdity'>
+      <view class='mr10'>
+        <image class='orderComInfo_pic' mode='aspectFill' src='{{item.goods_icon_url}}'></image>
+      </view>
+      <view class='ordComMid flex flexC flexMBtw'>
+        <view class='comCon lineText2 '>
+          <text>{{item.goods_name}}</text>
+        </view>
+        <view class='mt15  flex '>
+          <text class='redColor sub lineText'>最低价：￥{{item.low_price}}</text>
+          <text class='olderPri f12   grey lineText'>价格￥{{item.const_price}}</text>
+        </view>
+      </view>
+      <!--已过期  -->
+      <view class='ordStatus sub grey lineText'wx:if="{{item.over}}">已过期</view>
+      <view class='ordStatus sub grey lineText'wx:else>已购买</view>
+    </view>
+    <view class='thmaBox grey gridXt'>
+      <view class='tihuoma gridFour f14'>删除</view>
+    </view>
+  </view>
+</view>
