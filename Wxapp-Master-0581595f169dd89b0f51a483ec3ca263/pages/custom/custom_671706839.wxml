@@ -1,0 +1,79 @@
+<import src="/pages/superHome/custom/tpl.wxml" />
+<import src="/wxParse/wxParse.wxml" />
+<wxs module="utils">
+    var getModularStyle = function(options) {
+        if (!options) return '';
+
+        var result = [];
+        if (options.backgroundSize) result.push('background-size: ' + options.backgroundSize);
+	 	if (options.backgroundRepeat) result.push('background-repeat: ' + options.backgroundRepeat);
+        if (options.backgroundColor) result.push('background-color: ' + options.backgroundColor);
+        if (options.backgroundImage) result.push('background-image: url(' + options.backgroundImage + ')');
+        if (options.backgroundPosition) result.push('background-position: ' + options.backgroundPosition);
+
+        if (options.padding) {
+            result.push('padding-left: ' + (options.padding.left * 2) + 'rpx');
+            result.push('padding-top: ' + (options.padding.top * 2) + 'rpx');
+            result.push('padding-right: ' + (options.padding.right * 2) + 'rpx');
+            result.push('padding-bottom: ' + (options.padding.bottom * 2) + 'rpx');
+        }
+        return result.join(';');
+    };
+
+    var getModularClass = function(options) {
+        if (!options) return '';
+
+        var result = [];
+        if (options.controlMargin) result.push('module-bottom-space');
+        if (options.textColor) result.push(options.textColor);
+
+        options.isContainerBackground = options.isContainerBackground !== false;
+        result.push(options.isContainerBackground ? 'containerBackground' : '');
+
+        return result.join(' ');
+    }
+
+    module.exports.getModularStyle = getModularStyle;
+    module.exports.getModularClass = getModularClass;
+</wxs><view class="page-cont"><view class="modular {{utils.getModularClass(config_options['dg-single-store-info'])}}" style="{{utils.getModularStyle(config_options['dg-single-store-info'])}}">
+<view class="modular {{config_options['dg-single-store-info']['space_style']}}">
+  <view class="modular-container mds-store-info-box">
+    <view class="mdS-swiper">
+      <swiper class="scale-rule" autoplay="true" circular="true" bindchange="dgsinglestore_storeSwiperChange">
+        <swiper-item wx:for="{{dgsinglestore_store_data.store_shijing_arr}}" wx:for-item="simgitem">
+          <image class="img" src="{{simgitem}}" mode="aspectFill"></image>
+        </swiper-item>
+      </swiper>
+      <view class="mdS-swiper-dots">{{dgsinglestore_storeSwiperNum+1}} / {{dgsinglestore_store_data.store_shijing_arr.length}}</view>
+    </view>
+    <view class="mdS-store-info">
+      <view class="flex">
+        <image class="mdS-store-logo" src="{{dgsinglestore_store_data.store_logo}}" mode="aspectFill"></image>
+        <view class="sub">{{dgsinglestore_store_data.store_name}}</view>
+      </view>
+      <view class="mdS-store-tag">
+        <block wx:for="{{dgsinglestore_store_data.store_fuwu}}" wx:for-item="fuwuItem">
+          <text class="mdS-store-tag-item" wx:if="{{fuwuItem}}">{{fuwuItem}}</text>
+        </block>
+
+      </view>
+      <view class="mdS-store-time">
+        <text class="grey iconfont icon-timefill"></text>
+        <text bindtap='dgsinglestore_huodong_info_bind'>{{dgsinglestore_store_data.store_open_time_text}}：{{dgsinglestore_store_data.office_time}}</text>
+      </view>
+      <view class="mdS-address-tell">
+        <view class="mdS-store-address">
+          <text class="grey iconfont icon-locationfill"></text>
+          <text class="mdS-address-text" bindtap='dgsinglestore_get_location_bind'>{{dgsinglestore_store_data.store_address}}</text>
+        </view>
+        <view class="mdS-store-tell gridYl">
+          <button type="primary" class="mdS-tell-btn iconfont icon-dianhua" bindtap="dgsinglestore_call_phone_bind"></button>
+        </view>
+      </view>
+      <button class="mdS-pay-btn" type="primary" wx:if="{{dgsinglestore_store_data.is_rapid_pay==1&&!dgsinglestore_store_data.xcx_appid}}" bindtap='dgsinglestore_rapid_pay_bind'>
+        <text class='iconfont icon-Paywechat'></text> 优惠买单
+      </button>
+    </view>
+  </view>
+</view>
+</view></view><view class="asideFloatBox"></view>

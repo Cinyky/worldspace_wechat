@@ -330,7 +330,7 @@ Page({
     // 限制拼团购买数量为1件商品
     let buy_type = parseInt(this.data.buy_type)
     let cart_default_number = parseInt(this.data.cart_default_number)
-    if (cart_default_number > this.data.goods_info.tuan_max_num && this.data.goods_info.tuan_max_num > 0) {
+    if ((cart_default_number > this.data.goods_info.tuan_max_num && this.data.goods_info.tuan_max_num > 0) && this.data.buy_type==2) {
       wx.showToast({
         title: '超过商品数量限制！',
         icon: 'success',

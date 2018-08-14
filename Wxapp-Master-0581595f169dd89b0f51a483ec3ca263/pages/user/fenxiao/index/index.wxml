@@ -12,7 +12,7 @@
     </view>
     <view class="sub gridYr">
       <view class="f20">{{fxinfo.wtotal_money}}</view>
-      <view class="f14 linght">未到账收入</view>
+      <view class="f14 linght">未结算收入</view>
     </view>
   </view>
 
@@ -22,12 +22,12 @@
         <text class="arrowL">分销记录</text>
       </view>
     </navigator>
-    <navigator url="url">
+    
       <view class="ftab-item false gridXt">
         <view class="fr grey lineText">{{fxinfo.refername}}</view>
         <text class="arrowL">我的推荐人</text>
       </view>
-    </navigator>
+    
     <navigator url="../team/team">
       <view class="ftab-item gridXt">
         <text class="arrowL">我的团队</text>
