@@ -287,7 +287,7 @@ Page({
 
 
   },
-  //购物车下单
+   //外卖购物车下单
   goods_order_bind: function () {
     var that = this;
     //如果是外卖 则限制配送区域
@@ -303,14 +303,15 @@ Page({
         success: function (res) {
           _dg.hideToast();
           var requestData = {};
-          requestData.store_id = that.data.
-
-            store_id;
+          requestData.store_id = that.data.this_store_id;
           requestData.ws_lat = res.latitude;
           requestData.ws_lng = res.longitude;
-          requestUtil.get(_DgData.duoguan_host_api_url + '/index.php/addon/DgStore/Api/checkPeisongLimit.html', requestData, (juliInfo) => {
+          that.comfirm_goods_order();
+          /* requestUtil.get(_DgData.duoguan_host_api_url + '/index.php?s=/addon/DgStore/Api/checkPeisongLimit.html', requestData, (juliInfo) => {
             that.comfirm_goods_order();
-          }, that, {});
+          }, that, {}); 
+          不在此请求当前用户定位地址
+          */
         },
         fail: function () {
           //弹出系统设置
