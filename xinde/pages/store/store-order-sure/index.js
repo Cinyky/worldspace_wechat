@@ -58,6 +58,13 @@ Page({
     }
     //获取卡券列表
     that.getmycard();
+
+    if (that.data.select_pay_type == true) {
+      that.setData({
+        select_pay_type: false,
+        is_show_remark: 1
+      });
+    }
   },
   onLoad: function(options) {
     var that = this;
