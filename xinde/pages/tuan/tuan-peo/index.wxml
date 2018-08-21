@@ -1,0 +1,22 @@
+<!--pages/tuan/tuan-peo/index.wxml-->
+<view>
+  <view class="flex shop-msg">
+    <view class="goods-img mr15"><image src="/images/default.png" mode="asceptFill"></image></view>
+    <view class="sub flexC">
+      <view class="f16 sub">[大S推荐]防勾丝超薄连裤袜丝袜[春夏新品]</view>
+      <view class="flex">
+        <view class="sub f16 grey"><text class="mr5 iconfont icon-qunzu"></text> <text class="f14">3人团</text></view>
+        <view><text class="delLine grey mr5">￥46</text><text class="red f20">￥30</text></view>
+      </view>
+    </view>
+  </view>
+  <!-- 参团人数 -->
+  <view class="tc m15">
+    <view class="people-img"><image src="/images/default.png" mode="asceptFill"></image></view>
+    <view class="people-img"> <text class="no-peo">?</text> </view>
+    <view class="people-img"> <text class="no-peo">?</text> </view>
+    <view class="grey">还差 <text class="pink">2</text>人，01:30:23后结束</view>
+  </view>
+
+  <view class="m20"><button type="primary">呼唤小伙伴来参团</button></view>
+</view>

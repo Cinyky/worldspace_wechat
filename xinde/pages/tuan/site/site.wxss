@@ -1,0 +1,10 @@
+/* pages/shop/business-address/index.wxss */
+.searchBox{height: 108rpx;}
+.searchFiexdBox{padding: 20rpx 50rpx;background: #f8f8f8;position: fixed;top: 0;left: 0;right: 0;z-index: 1;}
+.searchFiexd{line-height: 68rpx;border-radius: 68rpx;background: #fff;display: flex;align-items: center;}
+.searchInp{flex: 1;padding: 0 30rpx;}
+.searchBtn{padding: 0 30rpx;}
+
+.address-item{background: #fff;padding: 20rpx 30rpx;}
+.shore-name{font-weight: bold;}
+.shore-address{color: #666;}

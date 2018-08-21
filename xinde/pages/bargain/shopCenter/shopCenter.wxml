@@ -1,0 +1,103 @@
+<!--pages/bargain/shopCenter/shopCenter.wxml-->
+<view class='shopInfo white_bg'>
+  <view class='flex shopNameBox'>
+    <view class='sub lineText'>
+      <text class='iconfont icon-dianpu mr5'></text>
+      <text class='shopName'>{{store_info.store_name}}</text>
+    </view>
+    <button class='shareBtn mainColor_bg' open-type='share'>推荐给朋友</button>
+  </view>
+  <view class='flex flexCell mt15' catchtap='toadress'>
+    <view class='flexTitle grey mr10'>商家地址</view>
+    <view class='sub flexCon'>{{store_info.store_address}}</view>
+  </view>
+  <view class='flex flexCell mt5' catchtap='bind_contant_phone'>
+    <view class='flexTitle grey mr10'>商家电话</view>
+    <view class='sub flexCon'>{{store_info.store_con_mobile}}</view>
+  </view>
+</view>
+
+<view class='commdityList mt15 white_bg'>
+  <block wx:for="{{goods}}" wx:key="index">
+    <view class='commdityItem mb10 {{timeall[index].notcut==true || item.goods_num==0 ? "end" : ""}}' bindtap='cutgoods' data-id="{{item.id}}">
+      <!--蒙曾  -->
+      <view class='endMask'></view>
+      <view class='comPicBox'>
+        <image class='comPic' mode='aspectFill' src='{{item.goods_icon_url}}'></image>
+        <!--售罄 -->
+        <view class='yisq' wx:if="{{item.goods_num==0}}">
+          <text class='iconfont icon-zaicigoumaiyishouqing'></text>
+        </view>
+        <!--库存 -->
+        <view class='status' wx:if="{{item.set_style==1&&item.goods_num>0}}">
+          <text>库存</text>
+          <text class='f16 orange'>{{item.goods_num}}</text>
+        </view>
+        <!--需砍几次 -->
+        <view class='status' wx:if="{{item.set_style==2}}">只需砍
+          <text class='f16 orange'>{{item.bargain_num}}</text> 次
+        </view>
+        <view class='countDown f14' wx:if="{{timeall[index].notcut==true}}">
+          <text class='iconfont icon-huodongshijian'></text> 活动已结束
+        </view>
+        <view class='countDown f14' wx:if="{{timeall[index].cutdaowbefore==false&&timeall[index].notcut!=true}}">
+          <text class='iconfont icon-huodongshijian'></text> 还剩{{timeall[index].cutdown}}{{sec}}秒
+        </view>
+        <view class='countDown f14' wx:if="{{timeall[index].cutdaowbefore==true}}">
+          <text class='iconfont icon-huodongshijian'></text> 距离开始还剩{{timeall[index].cutdown}}{{sec}}秒
+        </view>
+      </view>
+      <!--倒计时  -->
+      <!-- <view class='countDown f14' wx:if="{{timeall[index].notcut==true}}">
+        <text>活动已结束</text>
+      </view> -->
+      <!-- <view class='countdown mainColor_bg tc'>
+        <block wx:if="{{timeall[index].notcut==true}}">
+          <text>活动已结束</text>
+        </block>
+        <block wx:if="{{timeall[index].cutdaowbefore==false&&timeall[index].notcut!=true}}">
+          <text>距离结束还剩</text>
+          <text>{{timeall[index].cutdown.dd}}</text>
+          <text class='mr15'>天</text>
+          <text class='hms mainColor'>{{timeall[index].cutdown.hh}}</text>
+          <text class='maohao'>:</text>
+          <text class='hms mainColor'>{{timeall[index].cutdown.mm}}</text>
+          <text class='maohao'>:</text>
+          <text class='hms mainColor'>{{sec}}</text>
+        </block>
+        <block wx:if="{{timeall[index].cutdaowbefore==true}}">
+          <text>距离开始还剩</text>
+          <text>{{timeall[index].cutdown.dd}}</text>
+          <text class='mr15'>天</text>
+          <text class='hms mainColor'>{{timeall[index].cutdown.hh}}</text>
+          <text class='maohao'>:</text>
+          <text class='hms mainColor'>{{timeall[index].cutdown.mm}}</text>
+          <text class='maohao'>:</text>
+          <text class='hms mainColor'>{{sec}}</text>
+        </block>
+      </view>  -->
+
+      <view class='commInfo '>
+        <view class='itemTit mb5 f18 lineText2'>{{item.goods_name}}</view>
+        <view class='ppbox grey mb10'>
+          <view class='ppAvarat' wx:if="{{item.headimg}}">
+            <block wx:for="{{item.headimg}}" wx:index="{{index}}">
+              <image src='{{item.headimgurl}}' class='ppItem' mode='aspectFill'></image>
+            </block>
+            <text></text>
+          </view>
+          <text>{{item.people}}人已参加</text>
+        </view>
+        <view class='bottPriBox flex'>
+          <view class='boxLf grey sub f14'>
+            <text>底价 <text class='f24 red'> <text class='f14'>￥</text>{{item.low_price}}</text>
+            </text>
+            <text class='ml10'>原价 <text class='f12'>￥</text>{{item.const_price}}</text>
+          </view>
+          <view class='boxRg endRg'>去砍价</view>
+        </view>
+      </view>
+    </view>
+
+  </block>
+</view>

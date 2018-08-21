@@ -1,0 +1,50 @@
+<!--pages/store/test/index.wxml-->
+<view class="page-body flex flexC">
+  <view class="map-search flex">
+    <view class="map-search-ico iconfont icon-search"></view>
+    <input class="map-search-inp sub" confirm-type="search" bindconfirm="onSearch" placeholder='请输入店铺名称'></input>
+  </view>
+  <view class="map-box">
+    <map class='map-cont'
+      id="myMap"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"  
+      polyline="{{polyline}}" 
+      circles="{{circles}}"
+      controls="{{controls}}"
+   
+      show-location="true"
+      bindcallouttap="goToTarget"
+      bindregionchange="getNearStore"
+    >
+    <cover-view class='map-location'><cover-image class="map-location-img" src="http://www.ixiaochengxu.cc/resource/images/store/position.png" mode='aspectFit' /></cover-view>
+    </map>
+  </view>
+  
+  <!-- <view class="btn-area"> -->
+    <!-- <button bindtap="getCenterLocation" class="page-body-button" type="primary">获取位置</button> -->
+    <!-- <button bindtap="moveToLocation" class="page-body-button" type="primary">移动位置</button> -->
+    <!-- <button bindtap="translateMarker" class="page-body-button" type="primary">移动标注</button> -->
+    <!-- <button bindtap="includePoints" class="page-body-button" type="primary">缩放视野展示所有经纬度</button> -->
+  <!-- </view> -->
+
+<view class='flex address-title-box'>
+    <view class="address-title sub">地图上的门店</view>
+    <button bindtap="moveToLocation" class="address-my-btn"><text class='iconfont icon-dingwei'></text> 我的位置</button>
+  </view>
+<view class='sub shop-box'>
+  <view class='shop-item-box'>
+    <view class='shop-item flex gridXb' wx:for="{{list}}" wx:this="{{item}}" data-id="{{item.id}}" bindtap='jumpToStore'>
+      <image class='shop-item-logo' src='{{item.store_logo}}' mode='aspectFill'></image>
+      <view class='sub shop-item-info'>
+        <view class='shop-item-name lineText'>{{item.store_name}}</view>
+        <view class='lineText shop-item-adress'><text class='mr5 iconfont icon-locationfill'></text><text>{{item.store_address}}</text></view>
+      </view>
+      <view class='shop-item-distance'>{{item.store_julimi}}</view>
+    </view>
+  </view>
+</view>
+
+
+</view>

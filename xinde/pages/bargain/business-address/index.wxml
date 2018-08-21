@@ -1,0 +1,8 @@
+<!--pages/shop/business-address/index.wxml-->
+<view class="address-item gridXb" wx:for="{{all_address}}" catchtap='selectAddress' data-address_name="{{item.address_name}}" data-address="{{item.address}}" data-mobile="{{item.mobile}}" data-distance="{{item.distance}}" data-longitude="{{item.longitude}}" data-latitude="{{item.latitude}}" data-id="{{item.id}}">
+  <view class="shore-name">{{item.address_name}}</view>
+  <view class="shore-address flex">
+    <view class="sub mr10">{{item.address}}</view>
+    <view class="f12">{{item.distance}}km</view>
+  </view>
+</view>

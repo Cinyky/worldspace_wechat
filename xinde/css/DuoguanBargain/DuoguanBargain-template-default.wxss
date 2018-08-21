@@ -1,0 +1,128 @@
+/************blue color  #009aff **************/
+
+/*主要颜色  */
+
+.mainColor {
+  color: #009aff;
+}
+
+.mainColor_bg {
+  background-color: #009aff;
+}
+
+.subColor01 {
+  color: #00aeff;
+}
+
+.subColor01_bg {
+  background-color: #00aeff;
+}
+
+.subColor02 {
+  color: #0086ff;
+}
+
+.subColor02_bg {
+  background-color: #0086ff;
+}
+
+/*顶部tab被选中*/
+
+.topTab_on {
+  color: #009aff;
+}
+
+.topTab_on::after {
+  background-color: #009aff;
+}
+
+/*页面背景  */
+
+.indexPage {
+  background-color: #009aff;
+}
+
+/* 朋友看到的详情页  */
+
+.kbBtn {
+  border-bottom: 4rpx solid #0086ff;
+}
+
+.iWantBtn {
+  background-color: #f35150;
+  border-bottom: 4rpx solid #f14140;
+}
+
+/* 朋友看到的 砍价团  */
+
+.helperList {
+  border: 4rpx solid #0086ff;
+}
+
+/*砍价进度条 当前价格指向进度条的小箭头 */
+
+.curProgress::before {
+  border-top: 20rpx solid #0086ff;
+}
+
+/*找人帮砍 弹窗  */
+
+.outerCir {
+  background-color: #18a3fe;
+}
+
+.innerCir {
+  background-color: #c5e4f8;
+}
+
+/*砍价记录页 订单页  */
+
+.tihuoma:active {
+  background-color: #009aff;
+}
+
+/*下单页  立即支付按钮  */
+
+.footPayBtn:active {
+  background-color: #0e8de0;
+}
+
+/*支付方式 弹窗  */
+
+.wx-radio-input-checked {
+  background-color: #009aff !important;
+}
+
+.confirmBtn:active {
+  background-color: #0e8de0;
+}
+
+/*自提时间 选中  */
+
+.tab_on {
+  color: #009aff;
+}
+
+.tab_on::after {
+  background-color: #009aff;
+}
+
+.selTime {
+  background-color: #009aff;
+}
+
+/*订单详情页 顶部背景  */
+
+.topStaBox {
+  background-color: #58bbfc;
+}
+
+.ordDetFooter .mainColor_bg:active {
+  background-color: #0e8de0;
+}
+
+/*申请退款 按钮  */
+
+.refund::before {
+  border-color: #009aff;
+}

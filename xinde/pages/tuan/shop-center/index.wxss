@@ -1,0 +1,34 @@
+/* pages/tuan/shop-center/index.wxss */
+@import "/css/DuoguanTuan/DuoguanTuan-template-default.wxss";
+@import "/pages/tuan/common/infoFont.wxss";
+.iconfont{font-size: inherit;}
+page{font-size: 32rpx;}
+.no-content-img{width: 50%;}
+
+.shop-msgbox{background: #fff;}
+.shop-namebox{padding: 20rpx;display: flex;align-items: center;justify-content: space-between;color: #666;}
+.shop-name{font-weight: bold;margin-left: 10rpx;color: #333;}
+.shop-share-btn{line-height: 68rpx;background: transparent;margin: 0;font-size: 28rpx;border-radius: 6rpx;}
+.shop-share-btn::after{border: none;}
+.shop-info-item{padding: 10rpx 20rpx;display: flex;display: -webkit-flex;}
+.shop-info-title{color: #888;width: 120rpx;font-size: 28rpx;}
+.shop-address{flex: 1;}
+
+/* 一级分类 */
+.g-nav-box{height: 92rpx;margin-bottom: 20rpx;}
+.g-nav{ height:92rpx; line-height: 92rpx; background: #fff; white-space: nowrap;position: fixed;top: 0;left: 0;right: 0;z-index: 2;box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);}
+.g-nav .g-nav-item{ display: inline-block; padding: 0 10px; position: relative;}
+.g-nav .active::after{ content: ""; display: block; position: absolute; left: 25%; right: 25%; bottom:0; height: 3px;}
+
+/* 商品列表 */
+.g-list .g-item{ background: #fff; margin-top: 8px; padding:12px;}
+.g-item-box{ width: 100%; padding-bottom:60%; position: relative;}
+.g-item-img{ position: absolute; left: 0; top: 0; width: 100%; height: 100%;}
+.g-item-tit{ margin: 8px 0 6px;}
+.g-item-sign-tag{display: inline-block;width: 18px;height: 18px;line-height: 18px;font-size: 10px;background: #f66;color: #fff;text-align: center;margin-right: 10rpx;vertical-align: middle;border-radius: 10%;}
+.g-item-count,.g-item-btn{padding: 0 8px; height: 24px; line-height: 24px; overflow: hidden;display: inline-block;}
+.g-item-count .iconfont,.g-item-btn .iconfont{font-size: 16px;display: inline-block;vertical-align: bottom;}
+.g-item-count{margin-right: -1px;}
+.g-item-count::before{border-radius: 6px 0px 0px 6px;}
+.g-item-btn{color: #fff; border-radius: 0 3px 3px 0;}
+.g-now-del{text-decoration: line-through;}

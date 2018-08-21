@@ -1,0 +1,11 @@
+<!--海报  -->
+<view class='picBox'>
+  <view class='load tc' wx:if='{{loadhide}}'>
+    <text class='loading-icon'></text> 正在生成中...
+  </view>
+  <canvas canvas-id='myCanvas' hidden='{{cavhide}}' style="width: {{c_w}}px; height: {{c_h}}px; opacity:0;border:1px solid"></canvas>
+  <image src="{{imgurl}}" class='cavimg' hidden='{{imghide}}' mode='widthFix'></image>
+
+  <button class='savePicBtn save' bindtap='savePic' disabled="{{loadhide}}">保存图片</button>
+  <button class='savePicBtn goHome' bindtap='goHome' disabled="{{loadhide}}">返回首页</button>
+</view>

@@ -1,0 +1,111 @@
+<!--下单支付页  给商家留言  -->
+<!-- <template name="pay_liuYan">
+  <view class='peiSongBox flex'>
+    <text>给商家留言：</text>
+    <textarea class='textarea sub' auto-height='true' placeholder=''></textarea>
+  </view>
+</template> -->
+
+<!--下单支付页  优惠券  -->
+<!-- <template name="pay_coupon">
+  <view class='commonBox couponBox arrowR '>
+    <view class='flex flexMBtw'>
+      <text>可用优惠券</text>
+      <text>10元优惠券</text>
+    </view>
+  </view>
+</template> -->
+
+<!--下单支付页  实付金额  -->
+<!-- <template name="pay_sfMoney">
+  <view class='peiSongBox  flex flexMBtw'>
+    <text>实付金额</text>
+    <text class='redColor'>￥30</text>
+  </view>
+</template> -->
+
+
+<!--快递配送  -->
+<template name="kuaidi">
+  <view class="kuaidi">
+    <view class='mb10'>
+      <view class='peiSongBox gridXb flex flexMBtw mb10'>
+        <text class=''>配送费</text>
+        <text class='psfei  redColor'>￥{{fare}}</text>
+        <input type='text' name="fare" hidden='true' value='{{fare}}' />
+      </view>
+      <view class='peiSongBox dilType arrowR flex flexMBtw mb10' catchtap='myaddress'>
+        <view class=''>选择收货地址</view>
+        <view class='myaddress lineText grey f14'>{{myaddress}}</view>
+      </view>
+      <input type='text' name="pay_address" hidden='true' value='{{myaddress}}' />
+      <input type='text' name="real_name" hidden='true' value='{{real_name}}' />
+      <input type='text' name="mobile" hidden='true' value='{{mobile}}' />
+    </view>
+  </view>
+</template>
+
+<!--到店自提  -->
+<template name="ziti">
+     <view class="ziti mb10">
+      <view class='mb10'>
+        <view class='peiSongBox gridXb flex flexMBtw'>
+          <view>下单人</view>
+          <input class='zitiInp' name='real_name' value='{{ziti_real_name}}' style='height:50rpx;' placeholder='请输入您的称呼' bindinput='nameInput'></input>
+        </view>
+        <view class='peiSongBox  flex flexMBtw'>
+          <view>手机号</view>
+          <input class='zitiInp' name='mobile' value='{{ziti_mobile}}' type="number " placeholder='请输入您的手机号' bindinput='mobileInput'></input>
+        </view>
+      </view>
+       <view class='mb10' wx:if="{{store_id == 0}}">
+        <view class='peiSongBox gridXb flex flexMBtw'>
+          <text>到店自提</text>
+          <text class='zitiAlert f14'>下单后凭取货码自行到店取货</text>
+        </view>
+        <view class='peiSongBox quhuoAddr flex' catchtap='toadress'>
+          <view class='qhAddr'>取货地址</view>
+          <view class='sub flex flexCCen'>
+            <view class='addrDetail grey f14 lineText2'>{{goods_adress}}</view>
+            <view class='posIcon sub tc mainColor'>
+              <text class='iconfont icon-daohang'></text>
+            </view>
+          </view>
+        </view>
+      </view> 
+      <view class="extraction-address-box mb10" wx:if="{{store_id != 0}}">
+        <view class="extraction-title flex">
+          <view class="sub">自提地址</view>
+           <view class="extraction-choose arrowR" catchtap='selectSelfAddress' wx:if="{{all_address.no_ziti != 1}}">请选择自提地址</view>  
+        </view>
+        <view class="extraction-address arrowR">
+          <view class="extraction-store-name flex">
+            <view class="lineText">{{all_address.address_name}}</view>
+            <view class="store-tell-btn mainColor"><text class="iconfont icon-dianhua" catchtap='bind_contant_phone'></text></view>
+          </view>
+          <view class="extraction-store-address flex">
+            <view class="sub mr10">{{all_address.address}}</view>
+            <view class="address-distance">{{all_address.distance}}km
+              <text class='iconfont icon-daohang mainColor posIcon' catchtap='to_self_adress'></text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class='peiSongBox auhuoTime flex flexMBtw arrowR mb10' catchtap='tomobile'>
+        <view>商家电话</view>
+        <view class='zitiTime  grey '>
+          <text>{{goods_mobile}}</text>
+        </view>
+      </view>
+
+      <view class="peiSongBox auhuoTime flex flexMBtw arrowR " hidden='true'>
+        <view>取货时间</view>
+        <picker mode="multiSelector " bindchange="bindMultiPickerChange " bindcolumnchange="bindMultiPickerColumnChange " value="{{multiIndex}} " range="{{multiArray}} ">
+          <view class="zitiTime f14 ">
+            {{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}} 点 {{multiArray[2][multiIndex[2]]}} 分
+          </view>
+        </picker>
+      </view>
+    </view> 
+</template>

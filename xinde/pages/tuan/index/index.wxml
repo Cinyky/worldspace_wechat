@@ -1,0 +1,100 @@
+<!--grounp - list-->
+<import src='../../plug-in/template/tpl.wxml' />
+<template is='popup-big' data='{{data:ad_popup}}' />
+<block wx:if="{{glo_is_load}}">
+  <view class="glo_load_view">
+    <text class="iconfont icon-loading animated infinite rotate mr5"></text>
+    <text>正在努力加载</text>
+  </view>
+</block>
+<block wx:else>
+  <!-- 拼团提示 -->
+  <view class="pin-tipsbox {{tiptext.classText}}">
+    <image class="pin-img" src="{{tiptext.headimgurl}}" mode="aspectFill"></image>
+    <view class="pin-cont">{{tiptext.nickname}}发起了拼团</view>
+  </view>
+  <view class="g-nav-box" wx:if="{{config.c_category!=2}}">
+    <scroll-view scroll-x class="g-nav gridXb f16">
+      <block wx:if="{{this_item == 0}}">
+        <view class="g-nav-item active" bindtap="index_item_bind" id="0">全部</view>
+      </block>
+      <block wx:else>
+        <view class="g-nav-item" bindtap="index_item_bind" id="0">全部</view>
+      </block>
+      <block wx:for="{{cate_list}}" wx:key="key">
+        <block wx:if="{{this_item == item.id || item.id==pid}}">
+          <text class="g-nav-item active" bindtap="index_item_bind" id="{{item.id}}">{{item.name}}</text>
+        </block>
+        <block wx:else>
+          <text class="g-nav-item" bindtap="index_item_bind" id="{{item.id}}">{{item.name}}</text>
+        </block>
+      </block>
+    </scroll-view>
+  </view>
+  <scroll-view scroll-x="true" class="g-menu-box" wx:if="{{config.c_category==1}}">
+    <block wx:if="{{pid>0||this_item>0}}" wx:for="{{cate_list}}" wx:key="key">
+      <block wx:if="{{item.id==pid || item.id == this_item}}">
+        <block wx:for="{{item._child}}" wx:for-item="ele" wx:key="key">
+          <view wx:if="{{this_item==ele.id}}" class="g-menu-item active" bindtap="index_item_bind1" id="{{ele.id}}">
+            <image class="g-menu-item-img" src="{{ele.icon}}" mode="aspectFill"></image>
+            <view>{{ele.name}}</view>
+          </view>
+
+          <view wx:else class="g-menu-item" bindtap="index_item_bind1" id="{{ele.id}}">
+            <image class="g-menu-item-img" src="{{ele.icon}}" mode="aspectFill"></image>
+            <view>{{ele.name}}</view>
+          </view>
+        </block>
+      </block>
+    </block>
+  </scroll-view>
+  <!--广告-->
+  <duoguan_ad ad_type="duoguantuan_index_top" />
+  <view class="g-list">
+    <block wx:if="{{goods_list == null}}">
+      <!--暂无内容提示 start-->
+      <view class="no-content tc">
+        <text class="no-content-icon iconfont icon-yemianwuneirong"></text>
+        <view class="no-content-font">暂无商品信息</view>
+      </view>
+      <!--暂无内容提示 end-->
+    </block>
+    <block wx:else>
+      <block wx:for="{{goods_list}}" wx:key="key">
+        <view class="g-item" bindtap="detail" id="{{item.id}}">
+          <view class="g-item-box">
+            <image src="{{item.g_img}}" mode="aspectFill" class="g-item-img"></image>
+            <view class="g-item-special" wx:if="{{item.discounts_status !=2&&item.tuan_type==0}}">
+              <text class="iconfont icon-qunzu"></text> 团长享特惠</view>
+          </view>
+          <view class="g-item-tit">
+            <text wx:if="{{item.tuan_type==1}}" class="g-item-sign-tag">返</text>
+            <text wx:if="{{item.tuan_type==2}}" class="g-item-sign-tag">选</text>
+            <text>{{item.g_name}}</text>
+          </view>
+          <view class="g-item-info">
+            <view class="fr">
+              <text class="g-item-count gridFourRadio">
+              <text class="iconfont icon-friend"></text>
+              <text wx:if="{{item.tuan_type!=2}}">{{item.tuan_num}}人团</text>
+              <text wx:if="{{item.tuan_type==2}}">自选团</text>
+              </text>
+              <text class="g-item-btn"><text class="iconfont icon-cart"></text> 去开团</text>
+
+            </view>
+            <view class="g-item-price">
+              <text class="g-now-price pink mr10">￥<text class="f20">{{item.tuan_price}}</text></text>
+              <text class="g-now-del linght">￥{{item.market_price}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+      <!--loading start-->
+      <view class="m20 tc grey loading" wx:if="{{showLoading}}">
+        <text class="iconfont icon-loading animated infinite rotate mr5"></text>
+        <text>正在加载...</text>
+      </view>
+      <!--loading end-->
+    </block>
+  </view>
+</block>

@@ -1,0 +1,400 @@
+<!--顶部照片  -->
+<view class='topPicBox '>
+  <view class="swiper">
+    <!--谁购买了  -->
+    <view class="buyBg {{echodm ? 'fadeIn' : 'fadeOut'}}" wx:if="{{echodm}}">
+      <view class='buyBox flex'>
+        <image class='buyerPic mr10' src='{{echodm.headimgurl}}' mode='aspectFill'></image>
+        <view class='sub'>
+          <text class='mr5 lineText red'>{{echodm.nick_name}}</text>
+          <text>刚刚下单成功了</text>
+        </view>
+      </view>
+    </view>
+
+    <!--已售罄 -->
+    <view class='yisq' wx:if="{{goods.goods_num==0}}">
+      <text class='iconfont icon-zaicigoumaiyishouqing'></text>
+    </view>
+
+    <!--轮播  -->
+    <swiper indicator-dots="{{indicatorDots}}" indicator-active-color="#fff" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{goods.goods_images}}" wx:key="index">
+        <swiper-item>
+          <image class='topPic' mode='aspectFill' src='{{item}}'></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>
+
+<view class='comInfoBox'>
+  <!-- 进行中  -->
+  <view class='going flex subColor02_bg {{cutdaowbefore==false&&goods.notcut==false? "" :"display_hide"}}' wx:if="{{goods.notcut!=true && goods.goods_num>0 && cutdaowbefore!=true}}">
+    <view class='sub priBox'>
+      <view class='lineText'>
+        <text class='f14 currentPrice'>￥<text class='f24'>{{goods.low_price}}</text></text>
+        <text class='f12  olderPrice'>￥<text class='f14'>{{goods.const_price}}</text></text>
+      </view>
+      <view class='mt5 priBot lineText'>
+        <text class=''>底价</text>
+        <text class='hasSale ' wx:if="{{goods.goods_num>0}}">{{proval.joincount}}人已参与，仅剩{{goods.goods_num}}份</text>
+        <text class='hasSale ' wx:else>商品已售光</text>
+      </view>
+    </view>
+    <view class='detCountDown subColor01_bg'>
+      <!-- <view class='lineText {{goods.notcut==true? "" :"display_hide"}}'>活动已结束</view> -->
+      <!-- <view class='lineText {{cutdaowbefore==true&&goods.notcut==false? "" :"display_hide"}}' wx:if="{{cutdaowbefore}}">距离开始还剩{{cutdown}}</view>  -->
+      <view class='lineText {{cutdaowbefore==false&&goods.notcut==false? "" :"display_hide"}}'>距离结束还剩{{cutdown.dd}}天</view>
+      <view class='hmsBox'>
+        <text class='hms subColor01'>{{cutdown.hh}}</text>
+        <text class='maohao'>:</text>
+        <text class='hms subColor01'>{{cutdown.mm}}</text>
+        <text class='maohao'>：</text>
+        <text class='hms subColor01'>{{cutdown.ss}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!--已结束  -->
+  <view class='closure flex f14' wx:if="{{goods.goods_num == 0 || goods.notcut==true && cutdaowbefore!=true}}">
+    <view class='lineText sub'>
+      <text>底价</text>
+      <text class='f14 currentPrice'>￥<text class='f24'>{{goods.low_price}}</text></text>
+      <text class='f12  olderPrice'>￥<text class='f14'>{{goods.const_price}}</text></text>
+    </view>
+    <view class=''>
+      <text class='hasSale ' wx:if="{{goods.goods_num>0}}">{{proval.joincount}}人已参与，仅剩{{goods.goods_num}}份</text>
+      <text class='hasSale ' wx:else>{{proval.joincount}}人已参与，商品已售光</text>
+    </view>
+  </view>
+
+  <!--预告  -->
+  <view class='forenotice subColor02_bg flex' wx:if="{{cutdaowbefore==true}}">
+    <view class='sub priBox'>
+      <view class='lineText'>
+        <text class='f14 currentPrice'>￥<text class='f24'>{{goods.low_price}}</text></text>
+        <text class='f12  olderPrice'>￥<text class='f14'>{{goods.const_price}}</text></text>
+      </view>
+      <view class='mt5 priBot lineText'>
+        <text class=''>底价</text>
+        <text class='hasSale '>砍价君，准备好砍刀哦~</text>
+      </view>
+    </view>
+    <view class='detCountDown subColor01_bg'>
+      <view class='lineText'>距离开始还剩{{cutdown.dd}}天</view>
+      <view class='hmsBox'>
+        <text class='hms subColor01'>{{cutdown.hh}}</text>
+        <text class='maohao'>:</text>
+        <text class='hms subColor01'>{{cutdown.mm}}</text>
+        <text class='maohao'>：</text>
+        <text class='hms subColor01'>{{cutdown.ss}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商品标题  -->
+  <view class='hdTit lineText3 white_bg'>{{goods.goods_name}}</view>
+
+</view>
+
+<duoguan_ad ad_type="duoguanbargain_info_top"/>
+
+
+<!--砍价状态 -->
+<view class='mt10 white_bg'>
+  <import src="../template/commdityDetail.wxml" />
+  <template is="commdityDetail_priPgr" data='{{...proval}}'></template>
+</view>
+
+<!--商家信息  -->
+<view class='shopInfo mt10 white_bg' wx:if="{{goods.store_info != ''}}">
+  <view class='shopInfoTop flex  gridXb'>
+    <view class='shopInfoTit subColor01'>商家信息</view>
+    <view class='shopInfoMore arrowR' catchtap='jumpStore'>更多活动</view>
+  </view>
+  <view class='shopInfoBot'>
+    <view class='shopName ' catchtap='toadress'>{{goods.store_info.store_name}}</view>
+    <view class='flex flexCCen shopAddTel'>
+      <view class='grey sub shopAdd' catchtap='toadress'>{{goods.store_info.store_address}}</view>
+      <view class='telBox subColor02 gridYl'>
+        <text class='iconfont icon-dianhua' catchtap='bind_contant_phone'></text>
+      </view>
+    </view>
+
+  </view>
+</view>
+
+
+<!--活动详情   排行榜tab  -->
+<view class='hrContainer gridXb flex tc mt10'>
+  <view class="sub {{desinfo ? 'mainColor' : '' }}" catchtap='getdesinfo'>活动详情</view>
+  <!-- <view class="sub {{rankinfo ? 'mainColor' : ''}}" catchtap='getrankinfo'>砍价进度({{proval.rankpeople}})</view> -->
+  <view class="sub {{rankinfo ? 'mainColor' : ''}}" catchtap='getrankinfo'>砍价进度榜</view>
+</view>
+
+
+<!--活动详情  -->
+<view wx:if="{{desinfo}}">
+  <!--活动说明  -->
+  <view class='commdityDetail_bardesc white_bg '>
+    <view class='desTitBox   subColor01'>
+      <text class='iconfont icon-huodongshuoming mr10'></text>
+      <text class=''>活动说明</text>
+    </view>
+    <view class='desContent f14'>
+      <view class='staEnd  '>
+        <view class='lineText'>
+          <text class='dotted'></text>
+          <text>活动开始时间：{{goods.start_time}}</text>
+        </view>
+        <view class='lineText'>
+          <text class='dotted'></text>
+          <text>活动结束时间：{{goods.end_time}}</text>
+        </view>
+      </view>
+      <view class='grey  mt5 kjProgress'>
+        <text class='mr5'>点击砍价</text>
+        <text class='subColor01'>》》 </text>
+        <text class='mr5'>找人帮砍</text>
+        <text class='subColor01'> 》》 </text>
+        <text class='mr5'>砍到最低</text>
+        <text class='subColor01'> 》》 </text>
+        <text>优惠购买</text>
+      </view>
+      <view class='desRule mt5'>
+        <block wx:if="{{goods.jianjie}}" wx:for="{{goods.jianjie}}">
+          <view>{{item}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+  <!--商品说明  -->
+  <view class='white_bg richTextBox'>
+    <view class='desTitBox   subColor01'>
+      <text class='iconfont icon-shangpinshuoming mr10'></text>
+      <text class=''>商品说明</text>
+    </view>
+
+    <view class='desPicBox'>
+      <import src="../../../wxParse/wxParse.wxml" />
+      <template is="wxParse" data="{{wxParseData:description.nodes}}" />
+    </view>
+  </view>
+
+</view>
+
+<!--斩获榜  -->
+<view class='rankList white_bg' wx:if="{{rankinfo}}">
+  <block wx:if="{{ranklist!=null&&ranklist!=false}}">
+    <view class='rankItem flex' wx:for="{{ranklist}}" wx:for-index='index' wx:key="{{index}}">
+
+
+      <view class='mingciBox' wx:if="{{index==0}}">
+        <image mode='aspectFill' src='http://x.duoguan.com/resource/images/bargain/first.png'></image>
+      </view>
+      <view class='mingciBox' wx:elif="{{index==1}}">
+        <image mode='aspectFill' src='http://x.duoguan.com/resource/images/bargain/second.png'></image>
+      </view>
+      <view class='mingciBox' wx:elif="{{index==2}}">
+        <image mode='aspectFill' src='http://x.duoguan.com/resource/images/bargain/third.png'></image>
+      </view>
+      <view class='mingciBox' wx:else>{{index+1}}</view>
+
+
+
+      <image class='starPic' src='{{item.headimgurl}}' mode='aspectFill'></image>
+      <view class='sub'>
+        <view class=' flex'>
+          <view class='lineText sub'>{{item.nick_name}}</view>
+        </view>
+
+        <view class='flex proContainer' wx:if="{{item.progress!=100}}">
+          <view class=' progressBox'>
+            <view class="innerProgress subColor01_bg" style='width:{{item.progress}}%;'></view>
+          </view>
+          <view>
+            <text class='linght'>已砍<text class='red f12'>￥{{item.help_price}}</text></text>
+          </view>
+        </view>
+
+        <view class='mt5 f14 grey' wx:else>
+          <text>好友助力砍掉</text>
+          <text class='red'>￥{{item.help_price}}</text>
+          <text>，轻松底价购！</text>
+        </view>
+
+
+        <!-- <view class='grey f14' wx:if="{{item.my_record==4}}">看我身手不凡，抢先入手此宝贝</view>
+        <view class='f14' wx:else>
+          <text class='grey mr10'>号令一出莫敢不从，已砍掉</text>
+          <text class='red'><text class='f12'>￥</text>{{item.help_price}}元</text>
+        </view> -->
+      </view>
+
+    </view>
+  </block>
+  <block wx:else>
+    <!--斩获榜没有数据 -->
+    <view class="no-content tc">
+      <image class="no-content-img" src="http://www.ixiaochengxu.cc/resource/images/common/no-order.png" mode="widthFix"></image>
+      <view class="f14">暂时还没人进入榜单哦~</view>
+    </view>
+  </block>
+</view>
+<duoguan_ad ad_type="duoguanbargain_info_bottom"/>
+
+
+<!--底部  -->
+
+<view class="white_bg {{is_helpuser==false?'':'display_hide'}}">
+
+  <!-- 我要参与  -->
+  <view class='footerBox flex ' wx:if="{{proval.helprecod==0&&goods.goods_num>0}}">
+    <button class='homeBtn gridXt' catchtap='jumpHome'>
+      <view class='iconfont icon-fanhuishouye'></view>
+      <view>首页</view>
+    </button>
+    <form class='sub' bindsubmit='cut' report-submit='true'>
+      <button class=' mainColor_bg  partiBtn' form-type='submit' hidden="{{goods.noopen}}">我要参与</button>
+    </form>
+  </view>
+
+  <!-- 已参与   -->
+  <view class='footerBox flex ' wx:if="{{proval.helprecod!=8&&proval.helprecod!=0&&goods.goods_num>0&&proval.helprecod!=4}}" hidden="{{goods.notcut}}">
+    <button class=' homeBtn gridXt' catchtap='jumpHome'>
+      <view class='iconfont icon-fanhuishouye'></view>
+      <view>首页</view>
+    </button>
+    <form bindsubmit='gobuy' report-submit='true'>
+      <input type='text' name='goods_id' hidden='true' value='{{goods.id}}'></input>
+      <button class='homeBtn gridXt ' formType='submit'>
+        <!-- <view class=''>￥{{(proval.outprice * 100 + proval.low_price * 100) / 100}}</view> -->
+        <view class=''>￥{{proval.buy_price}}</view>
+        <view>现价入手</view>
+      </button>
+    </form>
+    <form class="sub {{proval.helprecod==4? 'display_hide' : ''}}" bindsubmit='helpcut' report-submit='true'>
+      <button class=' mainColor_bg  partiBtn' formType='submit'>找人帮砍</button>
+    </form>
+  </view>
+
+  <!-- 砍到底价  -->
+  <!-- <view class='footerBox flex ' wx:if="{{proval.helprecod==4}}">
+    <button class='homeBtn gridXt' catchtap='jumpHome'>
+      <view class='iconfont icon-fanhuishouye'></view>
+      <view>首页</view>
+    </button>
+    <form class='sub' bindsubmit="gobuy" report-submit='true'>
+      <input type='text' name='goods_id' value='{{goods.id}}' hidden='true'></input>
+      <button class=' mainColor_bg  partiBtn' formType='submit'>立即入手</button>
+    </form>
+  </view> -->
+
+
+  <!--提醒我  -->
+  <view class='footerBox flex ' wx:if="{{cutdaowbefore==true}}">
+    <button class='homeBtn gridXt' catchtap='jumpHome'>
+      <view class='iconfont icon-fanhuishouye'></view>
+      <view>首页</view>
+    </button>
+    <button class='homeBtn gridXt ' open-type='share' data-share="2">
+      <view class='iconfont icon-share'></view>
+      <view>分享给好友</view>
+    </button>
+    <form class='sub' bindsubmit="remindme" report-submit='true'>
+      <button hover-class='none' class=' mainColor_bg  partiBtn' formType='submit' wx:if="{{is_remind==false}}">提醒我</button>
+      <button hover-class='none' class='disabledBg   partiBtn' wx:else>已提醒</button>
+    </form>
+  </view>
+
+
+  <!--其它状态  -->
+  <view class='footerBox flex ' wx:if="{{proval.helprecod == 6 || proval.helprecod == 8 || (goods.notcut==true && cutdaowbefore!=true) || goods.goods_num==0 || proval.helprecod==4}}">
+    <button class='sub mainColor_bg  partiBtn' catchtap='jumpHome'>前去首页</button>
+  </view>
+
+</view>
+
+<!--弹窗  -->
+
+<!-- 找人帮砍弹窗 -->
+<view class="shade_bg  {{is_my&&is_help==false ? '' : 'display_hide'}}" catchtap='hidemy' hidden='{{hidemy}}'>
+  <view class='commdityDetail_zrbk white_bg tc  f14 fadein'>
+    <view class='cirBox'>
+      <view class='innerCir'></view>
+      <view class='outerCir'>
+        <view class='tble'>太棒了</view>
+      </view>
+    </view>
+    <view class='kanDiao'>
+      <text>你一出手就帮自己砍掉了 </text>
+      <text class='duoShao redColor'>{{mycutprice}}元</text>
+    </view>
+    <view class='lookFir'>
+      <text>去试试小伙伴的功力~~</text>
+    </view>
+    <form bindsubmit='onShareAppMessage' report-submit='true'>
+      <button class='zrbkBtn mainColor_bg' open-type='share' form-type='submit' data-share="1">找人帮砍</button>
+    </form>
+  </view>
+</view>
+
+<!--转发.生成海报  弹窗  -->
+<view class="shareBg {{is_help ? '' : 'display_hide'}}">
+  <!--蒙层  -->
+  <view class='shade_bg' hidden='{{sbg}}'></view>
+
+  <!--弹窗内容  -->
+  <view class='commdityDetail_share white_bg tc bounce'>
+    <view class='shareBox flex f14 grey'>
+
+      <form class=' sub' bindsubmit='onShareAppMessage' report-submit='true'>
+        <button class='shareButton ' open-type='share' hover-stop-propagation='true' form-type='submit'>
+          <view class='subIconBox mb10 '>
+            <text class='iconfont icon-fenxianggeipengyou'></text>
+          </view>
+          发送给朋友
+        </button>
+      </form>
+
+      <button class='shareButton sub' bindtap='showshare'>
+        <view class='subIconBox mb10'>
+          <text class='iconfont icon-shengchenghaibao'></text>
+        </view>
+        生成海报
+      </button>
+    </view>
+    <view class='cancleBtn gridXt' catchtap='helpcuthide'>取消</view>
+  </view>
+</view>
+
+<!--砍价成功 弹窗  -->
+<block wx:if="{{proval.helprecod==4}}">
+  <view class="shade_bg " hidden='{{closehide}}' catchtap='changehide'>
+    <view class='commdityDetail_kjcg white_bg tc fadein '>
+      <view>
+        <image class='kjcgPic' mode='aspectFill' src='http://www.ixiaochengxu.cc/resource/images/bargain/ribbon.png'></image>
+      </view>
+      <view class='kj_suces mt10 redColor bold'>恭喜您砍价成功</view>
+      <view class='cddj_mid f14 mt15'>小伙伴们合力发功成功帮你砍到底价 ，马上入手！</view>
+      <form class='ljBuyBtn_tan' bindsubmit="gobuy" report-submit='true'>
+        <input type='text' name='goods_id' value='{{goods.id}}'></input>
+        <button class='ljBuyBtn_tan mainColor_bg f12 mt15' formType="submit">立即购买</button>
+      </form>
+    </view>
+  </view>
+</block>
+
+<!-- 已参加活动 进入页面时库存不为0  但是点击购买时候库存为0  弹窗 -->
+<view class="shade_bg" wx:if="{{goodsnum}}" catchtap='hidegnum'>
+  <view class='commdityDetail_kkqt  white_bg f14'>
+    <view class='closeBtn'></view>
+    <view class='kkCon'>
+      <view>抱歉，你下手慢了，宝贝已被抢光！</view>
+      <view>去看看其他活动吧~</view>
+    </view>
+    <button class='tankkqtBtn mainColor_bg' catchtap='gohome'>看看其他活动</button>
+  </view>
+</view>

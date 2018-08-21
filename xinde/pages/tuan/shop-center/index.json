@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "go-home": "/pages/tuan/common/component/dg-tuan-go-home"
+  }
+}
