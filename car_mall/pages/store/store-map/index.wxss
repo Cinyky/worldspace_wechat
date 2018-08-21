@@ -1,0 +1,31 @@
+/* pages/store/test/index.wxss */
+/* 门店公共样式 */
+@import "/pages/store/store-common/common.wxss";
+/* page{background: #fff;} */
+
+.page-body{height: 100vh;}
+
+.map-box{width: 100%;height: 500rpx;position: relative;}
+.map-cont{width: 100%;height: 100%;position:relative;}
+.map-search{background: #fff;width: 710rpx;margin: 20rpx auto;border-radius: 6rpx;align-items: center;}
+.map-search-ico{padding: 0 30rpx;line-height: 92rpx;font-size: 36rpx;}
+.map-search-inp{width: 100%;height: 92rpx;padding-right: 20rpx;}
+
+.map-location{position: absolute;top: 50%;left: 50%;-webkit-transform: translate(-50%,-50%);transform: translate(-50%,-50%);margin-top: -26rpx;}
+.map-location-img{width: 80rpx;height: 80rpx;}
+
+.address-title-box{line-height: 92rpx;align-items: center;background: #fff;}
+.address-title{font-weight: bold;font-size: 36rpx;padding: 0 20rpx;}
+.address-my-btn{color:#2EA499;font-size: 28rpx;background: transparent;font-weight: normal;}
+.address-my-btn.button-hover{color: #009aff;}
+
+.shop-box{background: #fff;}
+.shop-item-box{max-height: 100%;overflow-y: auto;-webkit-overflow-scrolling: touch;}
+
+.shop-item{align-items: center;padding: 30rpx 20rpx;}
+.shop-item:first-child{padding-top: 12rpx;}
+.shop-item:active{opacity: 0.8;}
+.shop-item-logo{width: 90rpx;height: 90rpx;margin-right: 20rpx;}
+.shop-item-info{line-height: 1;}
+.shop-item-adress{font-size: 28rpx;color: #999;margin-top: 20rpx;}
+.shop-item-distance{color: #999;font-size: 28rpx;margin-left: 10rpx;}

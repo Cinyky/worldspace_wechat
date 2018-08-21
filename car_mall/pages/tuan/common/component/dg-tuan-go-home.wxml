@@ -1,0 +1,2 @@
+<!--pages/tuan/common/component/dg-tuan-go-home.wxml-->
+<view wx:if="{{is_show}}" class="return-home-tips">点击这里回到首页 <text class="return-home-colse" bindtap='dgtuanclose'></text></view>

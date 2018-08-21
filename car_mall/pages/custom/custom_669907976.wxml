@@ -1,0 +1,131 @@
+<import src="/pages/superHome/custom/tpl.wxml" />
+<import src="/wxParse/wxParse.wxml" />
+<wxs module="utils">
+    var getModularStyle = function(options) {
+        if (!options) return '';
+
+        var result = [];
+        if (options.backgroundSize) result.push('background-size: ' + options.backgroundSize);
+	 	if (options.backgroundRepeat) result.push('background-repeat: ' + options.backgroundRepeat);
+        if (options.backgroundColor) result.push('background-color: ' + options.backgroundColor);
+        if (options.backgroundImage) result.push('background-image: url(' + options.backgroundImage + ')');
+        if (options.backgroundPosition) result.push('background-position: ' + options.backgroundPosition);
+
+        if (options.padding) {
+            result.push('padding-left: ' + (options.padding.left * 2) + 'rpx');
+            result.push('padding-top: ' + (options.padding.top * 2) + 'rpx');
+            result.push('padding-right: ' + (options.padding.right * 2) + 'rpx');
+            result.push('padding-bottom: ' + (options.padding.bottom * 2) + 'rpx');
+        }
+        return result.join(';');
+    };
+
+    var getModularClass = function(options) {
+        if (!options) return '';
+
+        var result = [];
+        if (options.controlMargin) result.push('module-bottom-space');
+        if (options.textColor) result.push(options.textColor);
+
+        options.isContainerBackground = options.isContainerBackground !== false;
+        result.push(options.isContainerBackground ? 'containerBackground' : '');
+
+        return result.join(' ');
+    }
+
+    module.exports.getModularStyle = getModularStyle;
+    module.exports.getModularClass = getModularClass;
+</wxs><view class="page-cont"><view class="modular {{utils.getModularClass(config_options['dg-kj-comList'])}}" style="{{utils.getModularStyle(config_options['dg-kj-comList'])}}">
+<!-- <view class="modular {{config_options['dg-kj-comList'].space_style}}"> -->
+  <view class='modular-container kj-comList commdityList '>
+    <view class="modular-title {{config_options['dg-kj-comList'].title_line_style}}" wx:if="{{config_options['dg-kj-comList'].setTitle==1}}" catchtap="onNavigateTap" data-url='/pages/bargain/index/index'>
+      <view class="modular-title-text">{{config_options['dg-kj-comList'].title}}</view>
+      <view class="modular-title-more arrowR" wx:if="{{config_options['dg-kj-comList'].is_show_more}}" >更多</view>
+    </view>
+    <block wx:for="{{dgBargain_goods}}" wx:key="index">
+      <view class='commdityItem' data-id="{{item.id}}" bindtap='dgBargain_cutgoods'>
+        <view class='comPicBox'>
+          <!--5:3  -->
+          <image class='scale-rule' mode='aspectFill' src='{{item.goods_icon_url}}'></image>
+
+          <view class='countDown f14' wx:if="{{dgBargain_timeall[index].notcut==true}}">
+            <text class='iconfont icon-huodongshijian'></text> 活动已结束
+          </view>
+          <view class='countDown f14' wx:if="{{dgBargain_timeall[index].cutdaowbefore==false && dgBargain_timeall[index].notcut!=true}}">
+            <text class='iconfont icon-huodongshijian'></text> 还剩{{dgBargain_timeall[index].cutdown}}{{dgBargain_sec}}秒
+          </view>
+          <view class='countDown f14' wx:if="{{dgBargain_timeall[index].cutdaowbefore==true}}">
+            <text class='iconfont icon-huodongshijian'></text> 距离开始还剩{{dgBargain_timeall[index].cutdown}}{{dgBargain_sec}}秒
+          </view>
+          <!--售罄 -->
+          <view class='yisq new-price' wx:if="{{item.goods_num==0}}">
+            <text class='iconfont icon-zaicigoumaiyishouqing'></text>
+          </view>
+          <!--库存 -->
+          <view class='status' wx:if="{{item.set_style==1&&item.goods_num>0}}">
+            <text>库存</text>
+            <text class='f16 orange'>{{item.goods_num}}</text>
+          </view>
+          <!--需砍几次 -->
+          <view class='status' wx:if="{{item.set_style==2}}">只需砍
+            <text class='f16 orange'>{{item.bargain_num}}</text> 次
+          </view>
+        </view>
+        <view class='commInfo'>
+          <view class='itemTit mb10 f18 lineText2'>{{item.goods_name}}</view>
+          <view class='ppbox grey mb10'>
+            <view class='ppAvarat' wx:if="{{item.headimg}}">
+              <block wx:for="{{item.headimg}}" wx:index="{{index}}">
+                <image src='{{item.headimgurl}}' class='ppItem' mode='aspectFill'></image>
+              </block>
+            </view>
+            <text>{{item.people}}人已参加</text>
+          </view>
+          <view class='bottPriBox flex'>
+            <view class='botboxLf grey sub f14'>
+              <text>最低<text class='new-price f20'>￥{{item.low_price}}</text></text>
+              <text class='ml10 del-price'>原价￥{{item.const_price}}</text>
+            </view>
+            <view class='botboxRg'>立即砍价</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+<!-- </view> -->
+</view><view class="modular {{utils.getModularClass(config_options['duoguan-pt-goodsItem'])}}" style="{{utils.getModularStyle(config_options['duoguan-pt-goodsItem'])}}">
+<!--<view class="modular {{config_options['duoguan-pt-goodsItem'].vertical}}">-->
+  <view class="modular-container">
+      <view class="modular-title {{config_options['duoguan-pt-goodsItem'].title_line_style}}" wx:if="{{config_options['duoguan-pt-goodsItem'].is_show_notice}}">
+          <view class="modular-title-text">{{config_options['duoguan-pt-goodsItem'].notice}}</view>
+          <view class="modular-title-more arrowR" wx:if="{{config_options['duoguan-pt-goodsItem'].is_show_more}}" bindtap="dgTuangoTuanIndex">更多</view>
+      </view>
+    <view class=" pt-goods-box {{config_options['duoguan-pt-goodsItem'].row}} ">
+      <block wx:for="{{dgTuan_goods_list}}">
+        <view class="pt-goods item-termbox" bindtap="dgTuandetail" id="{{item.id}}">
+          <view class="pt-goods-img">
+            <image class='scale-rule' src="{{item.g_img}}" mode="aspectFill"></image>
+          </view>
+          <view class="pt-goods-info">
+            <view class="pt-goods-name">
+              <text class="pt-goods-sign-tag" wx:if="{{item.tuan_type==1}}">返</text>
+              <text>{{item.g_name}}</text>
+            </view>
+            <view class='pt-goods-bottom'>
+              <view class="pt-goods-price">
+                <text class="new-price">￥{{item.tuan_price}}</text>
+                <text class="del-price ml10">￥{{item.market_price}}</text>
+              </view>
+              <view class="pt-goods-btnbox">
+                <button class="pt-goods-btn">{{item.tuan_num}}人团</button>
+                <button class="pt-goods-btn pt-btnfill">去开团</button>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!-- <view class="see-more-list">查看更多</view> -->
+  </view>
+<!--</view>-->
+</view></view><view class="asideFloatBox"></view>

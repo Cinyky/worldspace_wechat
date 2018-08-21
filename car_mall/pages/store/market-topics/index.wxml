@@ -1,0 +1,18 @@
+<!--pages/store/market-topics/index.wxml-->
+<view class="goodsItemBox">
+  
+  <block wx:if="{{goods.length>0}}" wx:for="{{goods}}" wx:for-item="good">
+  <view class="goodsItem" data-goods_category_id='{{good.goods_category_id}}' data-goods_id='{{good.goods_id}}' data-store_id="{{good.store_id}}"  bindtap='toStoreGoodsInfo'>
+    <view class="goodsImg"><image class="scale-rule" src="{{good.g_img_url}}" mode="aspectFill"></image></view>
+    <view class="goodsInfo">
+      <view class="goodsName lineText">{{good.g_name}}</view>
+      <view class="goodsShopName lineText"><text class="iconfont icon-dianpu"></text> {{good.store_name}}</view>
+      <view class="flex goodsPriceBox">
+        <view class="goodsPrice sub">￥{{good.shop_price}}</view>
+        <button class="buyBtn" data-store_id="{{good.store_id}}" data-goods_id="{{good.goods_id}}" data-goods_category_id="{{good.cate_id}}" bindtap='push_to_store'>去购买</button>
+      </view>
+    </view>
+  </view>
+  </block>
+ 
+</view>

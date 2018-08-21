@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "商品详情",
+    "backgroundTextStyle":"dark",
+    "enablePullDownRefresh":true,
+    "usingComponents": {
+      "duoguan_ad": "/pages/plug-in/components/ad/index"
+    }
+}

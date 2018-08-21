@@ -1,0 +1,61 @@
+/*orderdetails.wxss*/
+@import "/css/DuoguanTuan/DuoguanTuan-template-default.wxss";
+@import "/pages/tuan/common/infoFont.wxss";
+
+page{font-size: 32rpx;}
+
+/* 自提信息 */
+.ziti-msg,.express-msg{background: #fff;margin: 20rpx 0;border-radius: 20rpx 20rpx 0 0;}
+.ziti-msg-item{padding:16rpx 20rpx;display: flex;display: -webkit-flex;}
+.ziti-msg-title{color: #888;width: 120rpx;font-size: 30rpx;}
+.ziti-msg-inp{flex:1;}
+.ziti-msg-address{flex: 1;overflow: hidden;margin-right: 20rpx;}
+.ziti-msg-shop{font-weight: bold;}
+.ziti-daohang{color: var(--mColor);align-self: center;}
+
+/* 快递信息 */
+.express-item{padding: 16rpx 20rpx;}
+
+/* 商品信息 */
+.mall-name{background: #fff;padding: 20rpx;display: flex;display: -webkit-flex;align-items: center;}
+.mall-name .iconfont{color: #888;margin-right: 10rpx;}
+.mall-name-text{display: inline-block;font-weight: bold;flex: 1;overflow: hidden;}
+.mall-name-text::before{right: 0;}
+.mall-goods-item{padding: 20rpx;background: #fff;}
+.goods-item-img{ width: 60px; height: 60px; display: block; margin-right: 8px;}
+.mall-goods-title{ line-height: 140%;}
+
+
+.hexiao-card{background: #fff;padding: 20rpx;}
+.hexiao-card canvas{width: 150px;height: 150px;margin: 0 auto;}
+.hexiao-card .hid-canvas{display: none}
+
+.pt-numInfo{background: #fff;padding: 20rpx;margin-top: 10rpx;}
+.pt-tit,.pt-num-box{padding: 10rpx 0;}
+.pt-num-box{display: flex;display: -webkit-flex;align-items: center;justify-content: space-between;}
+.pt-peo{width: 60rpx;height: 60rpx;border-radius: 50%;border: 1px solid #fff;}
+.pt-peo:nth-child(n+2){margin-left: -20rpx;}
+.pt-numMore{display: inline-block;background: transparent;line-height: 30px;font-size: 14px;margin: 0;border-radius: 6rpx;border:1px solid #f00;color:#f00;}
+.pt-numMore::after{border-radius: 6rpx;}
+
+.mallsure-title{ background: #fff; padding: 10px;}
+.mallsure-content{ margin: 5px 0;}
+.sure-item{ padding:15px 10px; background: #fff;}
+.right-more{padding-right: 20rpx;}
+.right-more::before{right: 0;}
+.sure-img{ width: 60px; height: 60px; display: block; margin-right: 8px;}
+.sure-title{ line-height: 140%;}
+.od-price{ width: 140px; display: inline-block;}
+.od-info{ background: #fff; padding: 10px;}
+.od-receipt{ width: 100%; position: relative; margin-top:5px; background-color: #fffaf3;padding: 30rpx 20rpx;}
+.od-receipt::after{ content: ""; display: block; position: absolute;top: 0; left: 0; height: 3px; width: 100%; background-image:linear-gradient(135deg,#ff89bf,#ff89bf 5%,#fff 5%, #fff 10%,#89b9ff 10%, #89b9ff 15%,#fff 15%, #fff 20%,#ff89bf 20%, #ff89bf 25%,#fff 25%, #fff 30%,#89b9ff 30%, #89b9ff 35%,#fff 35%, #fff 40%,#ff89bf 40%, #ff89bf 45%,#fff 45%, #fff 50%,#89b9ff 50%, #89b9ff 55%,#fff 55%,#fff 60%, #ff89bf 60%,#ff89bf 65%,#fff 65%, #fff 70%,#89b9ff 70%, #89b9ff 75%,#fff 75%, #fff 80%,#ff89bf 80%, #ff89bf 85%,#fff 85%, #fff 90%,#89b9ff 90%, #89b9ff 95%,#fff 95%, #fff 100%)}
+.od-receipt::after{ top: auto; bottom: 0;}
+.no-pay-button{background: #e64340; color: #fff; text-align: center;}
+.no-pay-button-gray{background: #cccccc; color: #fff; text-align: center;}
+.ping-order-icon{color:#ff0000;font-size:16px;line-height: 24px;}
+
+.fixed-bottom{height: 92rpx;}
+.no-pay{position: fixed;bottom: 0;left: 0;right: 0;}
+.no-pay-button{border-radius: 0;}
+.no-pay-button::after{border: none;}
+.no-pay-button.disabled{background: #999;color: #eee;}

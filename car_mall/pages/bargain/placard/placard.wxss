@@ -1,0 +1,45 @@
+@import "../common.wxss";
+@import "/css/DuoguanBargain/DuoguanBargain-template-default.wxss";
+page{
+  padding-bottom: 30rpx;
+}
+
+.iconfont {
+  font-size: inherit;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+
+.savePicBtn {
+  width: 94%;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  margin-bottom: 30rpx;
+}
+
+.savePicBtn::after {
+  width: 0;
+  height: 0;
+}
+
+.cavimg {
+  width: 94%;
+  margin: 20rpx 3%;
+  border-radius: 8rpx;
+  margin-bottom: 60rpx; 
+}
+
+.load {
+  padding-top: 40%;
+  line-height: 24px;
+}
+
+.save {
+  color: #fff;
+}
+
+.goHome {
+  color: var(--DShop-mcolor);
+  background-color: #fff;
+}

@@ -1,0 +1,261 @@
+<block wx:if="{{glo_is_load}}">
+  <view class="glo_load_view">
+    <text class="iconfont icon-loading animated infinite rotate mr5"></text>
+    <text>正在努力加载</text>
+  </view>
+</block>
+<block wx:else>
+  <page>
+    <view class="shade" wx:if="{{show_sharing}}" bindtap='bind_cancel_sharing'></view>
+    <!--头部  -->
+    <view>
+      <!--在团中 正常看到的头部  -->
+      
+      <view class='top-box flex mb10' bindtap='tuan_join_bind' data-val='false' wx:if="{{tuan_info.is_buy != 0 || tuan_info.tuan_status ==3}}">
+        <view class='com-pic-box' >
+          <image class='commodity-pic' src="{{tuan_info.goods_img}}" mode="aspectFill"></image>
+        </view>
+        <view class='sub com-info-rg flex flexC'>
+          <view class='lineText2 com-title'>{{tuan_info.goods_name}}</view>
+          <view>
+            <view class='linght ptsds'>拼团省{{tuan_info.diff_price}}元 </view>
+            <view class='jrt-price flex'>
+              <view>
+                <text class='iconfont icon-friend mr5'></text>
+                <text class='pink f16'>{{tuan_info.tuan_num}}</text> 人团
+              </view>
+              <view class='red f16'>
+                <text class='f12'>￥</text>{{tuan_info.tuan_price}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!--在团中 将要分享 看到的头部-->
+      <view class="group-good flex mb10" bindtap="tuan_join_bind" data-val='false' wx:if="{{tuan_info.is_buy == 0 && tuan_info.tuan_status == 1}}">
+        <view class="good-img">
+          <image src="{{tuan_info.goods_img}}" mode="aspectFill" class="good-imgg"></image>
+        </view>
+        <view class="sub join-tit flex flexC">
+          <view class='save-money'>
+            <view class=''>限时</view>
+            <view>
+              立省
+              <text class='smonVal'>{{tuan_info.percentum}}</text>%
+            </view>
+          </view>
+
+          <view class="gd-info-top">
+            <view class="gd-now-price">
+              <text>￥</text>
+              <text class="f20">{{tuan_info.tuan_price}}</text>
+            </view>
+            <view class="gd-now-del linght">￥{{tuan_info.market_price}}</view>
+
+            <!-- <view class="gd-tips clearfix linght f12" style='float:right'>
+            <text class="gd-count mr10"><text class="pink">{{tuan_info.tuan_num}}</text>人团</text>
+          </view> -->
+          </view>
+
+          <view>
+            <view class='gridFour quickBuy'>限时抢购</view>
+            <view class='countdown '>
+              <text class=''>{{tuan_info.tuan_sheng_time}}</text>
+              <text>后结束</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!--评团成功 看到的头部  -->
+      <view class='success-box mb10' wx:if="{{tuan_info.is_buy == 0 && tuan_info.tuan_status == 2}}">
+        <view class='flex suc-box-top'>
+          <view class='success-icon'></view>
+          <text>拼团成功</text>
+        </view>
+        <view class='grey'>
+          <text>您已团购成功请前往订单查看宝贝详情</text>
+          <!-- <text class='pink' bindtap='tuan_join_bind'>查看宝贝详情</text> -->
+        </view>
+      </view>
+
+    </view>
+
+
+    <!--头像组  -->
+    <view class="parti-header">
+      <block wx:for="{{tuan_info.tuan_list}}" wx:key="key">
+        <view class="tuan-item gridFourCirle has-header">
+          <block wx:if="{{item.is_tuanzhang}}">
+            <text class="t-z">团长</text>
+          </block>
+          <image src="{{item.user_headimgurl}}" mode="aspectFill"></image>
+        </view>
+      </block>
+      <block wx:for="{{tuan_info.kong_arr}}" wx:key="key">
+        <view class="tuan-item gridFourCirle" wx:if="{{tuan_info.tuan_status!=2}}">
+          <!-- <text class="icon-peoplefill linght"></text>  -->
+          <text class='f20 linght'>?</text>
+        </view>
+        <view class="tuan-item gridFourCirle" wx:else>
+          <image src="{{replace}}" mode="aspectFill"></image>
+        </view>
+      </block>
+    </view>
+
+    <!--状态以及按钮  -->
+    <view class="status-btn-box tc  gridXb">
+
+      <!-- 未成团  不在团 -->
+      <view wx:if="{{tuan_info.tuan_status==1}}">
+        <view wx:if="{{tuan_info.is_buy != 0}}">
+          <view class="tuan-time tc mt10">
+            <view class="jinsheng">仅剩
+              <text class="red f16"> {{tuan_info.tuan_sheng_num}} </text>个名额
+              <text class='ml10 red'>{{tuan_info.tuan_sheng_time}}</text>后结束</view>
+          </view>
+          <button class="tuan-button mt10" bindtap='tuan_join_bind' data-val='true'>立即参团</button>
+          <button class="tuan-button btn-grey mt10" bindtap='go_index_bind' data-val='true'>前往首页</button>
+        </view>
+        <!--未成团  在团 -->
+        <view wx:if="{{tuan_info.is_buy == 0}}">
+          <view class="tuan-time tc mt10">
+            <view class="jinsheng" wx:if="{{tuan_info.tuan_status==1}}">仅剩
+              <text class="red f16"> {{tuan_info.tuan_sheng_num}} </text>个名额</view>
+          </view>
+         <button class="tuan-button mt10" wx:if="{{ tuan_info.oid >0}}" bindtap="tuan_sharing_bind">邀请好友拼团</button>
+          <button class="tuan-button mt10" wx:if="{{tuan_info.is_extension >0 && tuan_info.oid ==null}}" bindtap="tuan_sharing_bind">推广</button>
+          <view class='mt5 grey'>
+            <text class='iconfont icon-friend f18 mr5'></text>
+            <text>分享3个群后，拼团成功率高达<text class='red'>90%</text></text>
+          </view>
+        </view>
+      </view>
+      <!--状态  拼团失败  -->
+      <view wx:if="{{tuan_info.tuan_status == 3}}">
+        <view class=' grey'>
+          <text class='red'>拼团失败，</text>
+          <text>款项将原路返回</text>
+        </view>
+        <!--未在团 拼团失败  -->
+        <button class="tuan-button mt10" wx:if="{{tuan_info.is_buy != 0}}" bindtap='tuan_join_bind'>我来开个团</button>
+        <button class="tuan-button btn-grey mt10" bindtap='go_index_bind' wx:if="{{tuan_info.is_buy != 0}}">前往首页</button>
+        <!--在团 拼团失败  -->
+        <button class="tuan-button mt10" bindtap='go_index_bind' wx:if="{{tuan_info.is_buy == 0}}">前往首页</button>
+      </view>
+      <!--拼团成功  -->
+      <view wx:if="{{tuan_info.tuan_status == 2}}">
+        <!--在团中 拼团成功 -->
+        <view wx:if="{{tuan_info.is_buy == 0}}">
+          <button wx:if="{{tuan_info.oid>0}}" class="tuan-button mt10" bindtap='order_detail_bind'>查看订单</button>
+        </view>
+        <!--不在团中 拼团成功   -->
+        <view wx:if="{{tuan_info.is_buy != 0}}">
+          <view class=' grey'>
+            <text class='red'>团已满</text>
+          </view>
+          <button class="tuan-button mt10" bindtap='tuan_join_bind'>我来开个团</button>
+          <button class="tuan-button btn-grey mt10" bindtap='go_index_bind'>前往首页</button>
+        </view>
+      </view>
+
+      <view wx:if="{{tuan_info.is_buy==0}}">
+        <button wx:if="{{tuan_info.tuan_status == 1 || tuan_info.tuan_status == 2}}" class="goHome" bindtap='go_index_bind'>前去首页</button>
+      </view>
+    </view>
+
+    <!--商品名称  -->
+    <view class='good-name flex arrowR ' wx:if="{{(tuan_info.tuan_status == 1 || tuan_info.tuan_status == 2) && tuan_info.is_buy ==0}}">
+      <view class='sub'>商品名称</view>
+      <view class='name-con lineText' bindtap='tuan_join_bind'>{{tuan_info.goods_name}}</view>
+    </view>
+    <view class='good-name flex arrowR ' wx:if="{{tuan_info.is_extension >0 && tuan_info.oid == null}}">
+      <view class='sub'>推广返佣{{tuan_info.award}}+</view>
+      <view class='name-con lineText' bindtap='tuan_fubao'>已返{{tuan_info.c_award}}元</view>
+    </view>
+    <!--热拼推荐  -->
+    <view class='recom-box mt15 tc'>
+      <view class='rec-title'>热拼推荐</view>
+      <view class='rec-list flex '>
+       
+        <view class='rec-item' wx:for="{{tuan_info.recommend}}" wx:key="key" bindtap='detail' id="{{item.id}}">
+          <view class='rec-item-top' >
+            <image class='rec-item-pic' src="{{item.g_img}}" mode="aspectFill"></image>
+          </view>
+          <view class='rec-item-bot'>
+            <view class='rec-item-tit lineText2'>{{item.g_name}}</view>
+            <view class='flex rec-bot-pri'>
+              <view class='red price'>￥{{item.tuan_price}}</view>
+              <view class='linght'>已团{{item.sale_number}}件</view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+
+
+    <!--拼团玩法  -->
+    <view class="pt-play mt10">
+      <view class="pt-tit f16">拼团玩法</view>
+      <view class="flex gridXt tc f10 grey mt10">
+        <view class="pt-item sub">
+          <text class="iconfont icon-pay"></text>
+          <view>支付开团或者参团</view>
+        </view>
+        <view class="pt-item sub">
+          <text class="iconfont icon-friend"></text>
+          <view>邀请好友参团</view>
+        </view>
+        <view class="pt-item sub">
+          <text class="iconfont icon-deliver"></text>
+          <view>人数达到分别发货</view>
+        </view>
+        <view class="pt-item sub">
+          <text class="iconfont icon-sponsor"></text>
+          <view>人数不够自动退款</view>
+        </view>
+      </view>
+    </view>
+    <!--转发.生成海报  弹窗  -->
+    <!-- <view class="" wx:if="{{show_sharing}}">
+      <view class='commdityDetail_share'>
+        <view class='shareBox flex f14 grey'>
+
+          <button class="commdityDetail_shaBtn" open-type="share"><text class="iconfont icon-favor"></text></button>
+
+          <button class='commdityDetail_shaBtn' bindtap='bind_poster_sharing'>
+            <text class="iconfont icon-favorfill"></text>
+          </button>
+        </view>
+        <view class='tc' bindtap='bind_cancel_sharing'>取消</view>
+      </view>
+    </view> -->
+    <view class="shade_bg gridXt" wx:if="{{show_sharing}}">
+      <view class='commdityDetail_share white_bg tc bounce'>
+        <view class='shareBox flex f14 grey'>
+
+          <form class=' sub' bindsubmit='onShareAppMessage' report-submit='true'>
+            <button class='shareButton ' open-type='share' hover-stop-propagation='true' form-type='submit'>
+              <view class='subIconBox mb10 '>
+                <text class='green iconfont icon-wx-pay'></text>
+              </view>
+              发送给朋友
+            </button>
+          </form>
+
+          <button class='shareButton sub' bindtap='bind_poster_sharing'>
+            <view class='subIconBox mb10'>
+              <text class='blue iconfont icon-erweima1'></text>
+            </view>
+            生成海报
+          </button>
+        </view>
+        <view class='cancleBtn gridXt' bindtap='bind_cancel_sharing'>取消</view>
+      </view>
+    </view>
+
+  </page>
+  <go-home></go-home>
+</block>

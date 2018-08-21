@@ -1,0 +1,46 @@
+@import "../common.wxss";
+@import "/css/DuoguanBargain/DuoguanBargain-template-default.wxss";
+
+.title {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: #f1f1f1;
+  font-size: 34rpx;
+  line-height: 92rpx;
+}
+.resBox{
+  margin: 92rpx 0;
+  border-radius: 8rpx 8rpx 0 0;
+}
+.checkbox {
+  font-size: 30rpx;
+  padding: 30rpx;
+}
+
+.check {
+  margin-right: 50rpx;
+}
+
+page .wx-checkbox-input {
+  border-radius: 50%;
+}
+
+page .wx-checkbox-input-checked {
+  background-color: #09bb07;
+}
+
+page .wx-checkbox-input-checked::before {
+  color: #fff;
+  border-radius: 50%;
+}
+
+.submit-btn {
+  position: fixed;
+  bottom: 0;
+   width: 100%;
+  line-height: 92rpx;
+  color: #fff;
+  border-radius: 0;
+}

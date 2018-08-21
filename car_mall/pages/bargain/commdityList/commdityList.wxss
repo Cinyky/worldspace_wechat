@@ -1,0 +1,42 @@
+@import "../common.wxss";
+
+.scrollBox{
+  padding-left: 20rpx;
+  white-space: nowrap;
+}
+.scrollItem{
+  display: inline-block;
+  position: relative;
+  padding: 30rpx;
+  line-height: 1;
+  color: #666;
+}
+.scrollItem:last-child{
+  margin-right: 80rpx;
+}
+.topTab_on::after{
+   width: 60%;
+}
+/*列表  */
+
+.commdityList {
+  margin-bottom: 50rpx;
+}
+
+.commInfo {
+  padding: 20rpx;
+}
+
+.commInfo .lineText {
+  line-height: 1.6;
+}
+
+.commdityItem {
+  margin: 20rpx 0;
+  overflow: hidden;
+  position: relative;
+}
+
+
+
+@import "/css/DuoguanBargain/DuoguanBargain-template-default.wxss";

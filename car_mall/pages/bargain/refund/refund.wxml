@@ -1,0 +1,47 @@
+<!--退款  -->
+<form bindsubmit="refund">
+  <view class='title tc'>
+    <text>退款原因</text>
+    <text class='grey f12'>（至少选一项）</text>
+  </view>
+
+  <view class='resBox white_bg'>
+    <checkbox-group bindchange="checkboxChange">
+      <label class="checkbox  flex flexMBtw">
+        <text>质量太差</text>
+        <checkbox name="refundinfo" class='check' value="质量太差" />
+      </label>
+
+      <label class="checkbox  flex flexMBtw">
+        <text>后悔了，不想买了</text>
+        <checkbox name="refundinfo" class='check' value="后悔了，不想买了" />
+      </label>
+
+      <label class="checkbox  flex flexMBtw">
+        <text>评价不好</text>
+        <checkbox name="refundinfo" class='check' value="评价不好" />
+      </label>
+
+      <label class="checkbox  flex flexMBtw">
+        <text>发现更优惠的</text>
+        <checkbox name="refundinfo" class='check' value="发现更优惠的" />
+      </label>
+
+      <label class="checkbox  flex flexMBtw">
+        <text>客服态度不好</text>
+        <checkbox name="refundinfo" class='check' value="客服态度不好" />
+      </label>
+
+      <label class="checkbox  flex flexMBtw">
+        <text>商家停业/装修/转让</text>
+        <checkbox name="refundinfo" class='check' value="商家停业/装修/转让" />
+      </label>
+
+      <label class="checkbox  flex flexMBtw">
+        <text>砍过了，不太满意</text>
+        <checkbox name="refundinfo" class='check' value="砍过了，不太满意" />
+      </label>
+    </checkbox-group>
+  </view>
+  <button class="submit-btn ljkjBtn tc mainColor_bg" form-type='submit' disabled="{{changedis}}">提交</button>
+</form>

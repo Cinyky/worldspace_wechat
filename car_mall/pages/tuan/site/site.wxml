@@ -1,0 +1,22 @@
+
+<!-- 搜索 -->
+<view class="searchBox">
+  <view class="searchFiexdBox">
+    <view class="searchFiexd"><input bindinput="write_site" class="searchInp" placeholder="请输入自提点名称"></input><text class="searchBtn iconfont icon-search" catchtap='search_site' data-site="{{search_sites}}"></text></view>
+  </view>
+</view>
+
+<view class="address-item gridXb"  catchtap='defaultSite'>
+  <view class="shore-name">{{store.store_name}}</view>
+  <view class="shore-address flex">
+    <view class="sub mr10">{{store.detailAddress}}</view>
+    <view class="f12">{{store.distance}}千米</view>
+  </view>
+</view>
+<view class="address-item gridXb"  catchtap='selectSite' wx:for="{{siteList}}" data-id='{{index}}'>
+  <view class="shore-name">{{item.address_name}}</view>
+  <view class="shore-address flex">
+    <view class="sub mr10">{{item._address}}{{item.address}}</view>
+    <view class="f12">{{item.distance}}千米</view>
+  </view>
+</view>

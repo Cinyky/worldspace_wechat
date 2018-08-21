@@ -1,0 +1,55 @@
+/*mallsure.wxss*/
+@import "/css/DuoguanTuan/DuoguanTuan-template-default.wxss";
+
+.top-select{background:#fff;overflow-x: auto;white-space: nowrap;-webkit-overflow-scrolling: touch;}
+.select-item{padding: 20rpx 30rpx;display: inline-block;}
+.top-select .active{color: #f35150;border-bottom: 4rpx solid #f35150;}
+
+
+/*orderlist.wxss*/
+.ol-item{ background: #fff; margin-bottom: 10px;}
+.ol-item-info,.ol-item-con{ padding: 20rpx;}
+.ol-item-con{background: #fafafa;margin: 0 20rpx;}
+.ol-img{ width: 60px; height: 60px;}
+.ol-img image{ width: 100%; height: 100%;}
+.ol-one-text{ margin-left: 15px; line-height: 20px; height: 60px; overflow: hidden; display: -webkit-box; -webkit-box-align: center;}
+.ol-item-foot{ padding: 10px;}
+.ol-item-pay{align-items: center;}
+.ol-item-pay button{border-radius: 6rpx;padding: 0 16rpx;}
+.ol-item-pay button:not([plain]):after{border: none;}
+.ol-oneplus{ width: 100%; overflow: hidden; white-space: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;}
+.ol-oneplus .ol-img{ margin-right: 6px; display:inline-block;}
+.ol-item-del{ width: 22px; height: 22px; display: block; line-height: 22px; text-align: center; font-size: 18px;}
+.ping-order-icon{color:#ff0000;font-size:16px;line-height: 24px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

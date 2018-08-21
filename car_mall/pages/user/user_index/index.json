@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "馋喵家",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#009aff",
+    "backgroundTextStyle":"dark",
+    "enablePullDownRefresh":true
+}

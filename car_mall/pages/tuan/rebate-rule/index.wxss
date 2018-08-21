@@ -1,0 +1,7 @@
+/* pages/tuan/rebate-rule/index.wxss */
+
+.rebate-rule{white-space: pre-wrap;
+max-width: 92%;
+margin: 0 auto;
+}
+.rebate-rule image,.rebate-rule view{max-width: 94%!important;}

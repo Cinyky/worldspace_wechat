@@ -1,0 +1,20 @@
+page{
+  --mColor:#009aff;
+  --mColorRgb:0,154,244;
+  --mColorLight:#00aeff;
+}
+
+/********** color **********/
+.pink,.g-nav .active,.g-item-count{ color: var(--mColor);}
+.g-item-count::before{ border-color:var(--mColor);}
+.g-nav .active::after,.g-item-btn,.t-buy,page .wx-swiper-dot-active,.gd-tags-item,.gd-o-btn button,.add-cart-btn,.options-ss.active,.t-z,.tuan-button,.mall-cart-btn,.psselicon.active,.add-address-btn{background: var(--mColor);}
+
+button[type="primary"]{background:var(--mColor);}
+.button-hover[type="primary"],button[type="primary"][disable],button[type="primary"][loading]{background:var(--mColorLight);}
+
+/********** tuan_info **********/
+.o-buy{ background: #f9a825;}
+
+
+page .wx-radio-input{width: 20px;height: 20px;}
+page .wx-radio-input-checked{background-color:var(--mColor)!important;border-color: var(--mColor)!important;}

@@ -1,0 +1,130 @@
+/* pages/bargain/friendseeDetail/friendseeDetail.wxss */
+@import "../common.wxss";
+@import "/css/DuoguanBargain/DuoguanBargain-template-default.wxss";
+
+page{
+  padding-bottom: 0;
+}
+.indexPage{
+  min-height: 100vh;
+  padding: 80rpx 20rpx 110rpx;
+}
+.sectionBox{
+  border-radius: 10rpx;
+}
+
+.friendPic{
+  width: 108rpx;
+  height: 108rpx;
+  border-radius: 50%;
+  margin-top: -54rpx;
+  border: 6rpx solid #eee;
+}
+.yinhao{
+  font-size: 60rpx;
+  font-weight: 700;
+  color: #aaa;
+}
+.commodityInfo{
+  padding: 20rpx;
+  background-color: #f5f5f5;
+}
+.commodityPic{
+  width: 250rpx;
+  height: 150rpx;
+  margin-right: 20rpx;
+  border-radius: 6rpx;
+}
+.commodityInfo .sub{
+  font-size: 30rpx;
+  line-height: 1.2;
+  color: #666; 
+}
+
+.progBarBox{
+  margin-top: 20rpx;
+}
+.friPriceBox{
+  width: 630rpx;
+  margin: 0 auto;
+}
+.friBtnBox{
+   width: 630rpx; 
+  margin: 0 auto;
+  padding: 40rpx 0;
+  text-align: center;
+}
+.friBtnBox .sub{
+   height: 82rpx;
+   line-height: 78rpx;
+   border-radius: 15rpx;
+   color: #ffead4;
+}
+.friBtnBox .sub:active{
+  opacity: 0.85;
+}
+.kbBtn{
+  margin-right: 80rpx;
+}
+
+.tipsBox {
+  justify-content: center;
+  margin-top: 50rpx;
+}
+
+/*我的砍价团  */
+.kjt.sectionBox{
+  position: relative;
+  padding: 40rpx 20rpx;
+}
+.helperTitle{
+  position: absolute;
+  z-index: 1;
+  top:23rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200rpx;
+  line-height: 40rpx;
+  text-align: center;
+  background-color: #fff;
+}
+
+.helperList{
+  padding: 50rpx 0rpx;
+  font-size: 30rpx;
+  border-radius: 12rpx;
+}
+.helperItem{
+  padding: 0 20rpx;
+  align-items: center;
+  line-height: 1.05;
+}
+.helperItem:nth-child(n+2){
+  margin-top: 40rpx;
+}
+.helperPic{
+  height: 75rpx;
+  width: 75rpx;
+  border-radius: 50%;
+}
+.helpVal{
+   max-width: 180rpx;
+   text-align: right;
+}
+
+/*底部  */
+.footerBtn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 90rpx;
+  line-height: 88rpx;
+  text-align: center;
+  color: #ffecde;
+  /* border-top: 2rpx solid #eee; */
+}
+.footerBtn:active{
+  opacity: 0.9;
+}

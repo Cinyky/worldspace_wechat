@@ -1,0 +1,54 @@
+@import "../common.wxss";
+@import "/css/DuoguanBargain/DuoguanBargain-template-default.wxss";
+
+.brTabBox{
+  position: fixed;
+  top:0 ;
+  z-index: 10;
+  width: 100%;
+  height: 94rpx;
+  line-height: 94rpx;
+}
+
+.brTab{
+  max-width: 300rpx;
+}
+
+
+/*列表  */
+.kjList{
+  margin-top: 114rpx;
+}
+.orderItem {
+  padding: 30rpx;
+}
+
+.ordComMid{
+  width: 400rpx;
+}
+
+.olderPri{
+  width: 40%;
+  text-align: right;
+  padding-right: 10rpx;
+}
+
+.thmaBox{
+  color: #666;
+  padding: 6rpx 0;
+  text-align: right;
+}
+.tihuoma{
+  display: inline-block;
+  line-height: 48rpx;
+  padding: 0 30rpx;
+  transform: translateY(16rpx); 
+  
+}
+.tihuoma::before{
+  border-color: #999;
+}
+.tihuoma:active {
+  color: #fff;
+  border-radius: 8rpx;
+}

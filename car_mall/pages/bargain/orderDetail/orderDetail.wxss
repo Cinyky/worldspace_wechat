@@ -1,0 +1,178 @@
+@import "../common.wxss";
+@import "/css/DuoguanBargain/DuoguanBargain-template-default.wxss";
+
+/*顶部状态  */
+
+.topStaBox {
+  height: 200rpx;
+  color: #fff;
+  padding: 0 80rpx;
+}
+
+.lijiPay {
+  font-size: 42rpx;
+}
+
+.topboxLf .mt10 {
+  opacity: 0.9;
+}
+
+.tsIconBox {
+  font-size: 90rpx;
+}
+
+/*自提信息  */
+
+.zitiInfo .white_bg{
+   padding: 15rpx 30rpx;
+}
+
+.ztBoxTop:nth-child(n+2) {
+   margin-top: 6rpx;
+}
+.ztBoxTop:active{
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.ztAddDet {
+  color: #666;
+  line-height: 40rpx;
+}
+
+.ztPosIcon {
+  width: 60rpx;
+  font-size: 36rpx;
+  text-align: center;
+}
+
+.ztBoxBot {
+  padding: 20rpx 0;
+}
+.xiadanren,.shoujihao{
+  letter-spacing: 10rpx;
+}
+
+/*  */
+.payTipBox{
+  padding: 10rpx 30rpx;
+  line-height: 1.4;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+.payTipBox .iconfontBox{
+  height: 30rpx;
+  transform: rotate(180deg);
+  margin-right: 20rpx;
+}
+/*商品信息  */
+
+.comOuterBox {
+  padding: 30rpx;
+  background-color: #fff;
+}
+
+
+
+/*运费  */
+
+.yunfei {
+  padding: 50rpx 0 20rpx 0;
+  color: #666;
+}
+
+.totalMon {
+  padding-top: 30rpx;
+  text-align: right;
+}
+
+/*订单信息  */
+
+.orderInBox {
+  margin-bottom: 140rpx;
+}
+
+/*底部按钮  */
+
+.footerBox {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 120rpx;
+  text-align: right;
+}
+.footerBox::before{
+  background: #f5f5f5;
+}
+
+.footBtn {
+  display: inline-block;
+  width: 180rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 20rpx;
+  margin-right: 30rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  overflow: hidden;
+  color: #666;
+}
+
+.fbPay {
+  color: #fff;
+  font-size: 32rpx;
+  padding-left: 0;
+  padding-right: 0;
+}
+.fbPay::after{
+  width: 0;
+  height: 0;
+}
+/*待支付  */
+
+.footBtn::before {
+  border-color: #666;
+}
+
+.footBtn:active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+
+
+/*待发货  */
+
+.refund {
+  display: inline-block;
+  width: 180rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 20rpx;
+  margin-right: 30rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.refund:active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+
+/*弹出框  底部弹出  */
+.bounce {
+  animation: bounce 0.3s linear forwards;
+}
+
+.pt25 {
+padding-top: 50rpx;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
